@@ -1,0 +1,45 @@
+.collection_info {
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #fff;
+
+    img {
+        display: block;
+        border-radius: 15px;
+        width: 350px;
+        height: 500px;
+    }
+
+    a {
+        color: inherit;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .info {
+        padding: 5px 30px;
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+    }
+
+    .discriptions {
+        font-size: 18px;
+
+        h4 {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+}

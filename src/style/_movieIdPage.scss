@@ -1,0 +1,140 @@
+.movie_info_bg {
+    margin-bottom: 20px;
+}
+
+.movie_info {
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #fff;
+
+    img {
+        display: block;
+        border-radius: 15px;
+        width: 350px;
+        height: 500px;
+    }
+
+    a {
+        color: inherit;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .info {
+        padding: 5px 30px;
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .original_title {
+            display: block;
+            margin-bottom: 5px;
+        }
+    }
+
+    .vote {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .date_genres {
+        margin-bottom: 10px;
+
+        time {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .list_genres {
+            list-style: none;
+            display: flex;
+            margin-bottom: 5px;
+
+            li {
+                margin-right: 10px;
+                &:first-of-type {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+
+    .budget {
+        margin-bottom: 20px;
+        p {
+            margin: 0 0 5px 0;
+        }
+    }
+
+    .discriptions {
+        font-size: 18px;
+
+        .tagline {
+            display: block;
+            margin-bottom: 20px;
+            opacity: 0.7;
+            font-size: 18px;
+        }
+
+        h4 {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+
+    .imdb_tmdb {
+        display: flex;
+        align-items: baseline;
+
+        h4 {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        a {
+            margin-right: 10px;
+        }
+    }
+}
+
+.collections {
+    color: #fff;
+
+    .collections_poster {
+        padding: 50px 20px;
+        border-radius: 12px;
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        a {
+            display: block;
+            width: 200px;
+            padding: 10px 5px;
+            border-radius: 12px;
+            color: inherit;
+            border: none;
+            background-color: #0062ff42;
+            text-align: center;
+            font-weight: 500;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #0062ff9f;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,23 @@
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.375;
+    background: #e9fffc;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 375px;
+    overflow: hidden;
+  }
+
+  .main {
+    flex-grow: 1;
+}
+
+.conteiner {
+    max-width:1360px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
