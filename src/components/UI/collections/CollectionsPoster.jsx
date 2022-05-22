@@ -8,7 +8,7 @@ function CollectionsPoster({ collectionInfo }) {
       <div
         style={{
           background: `linear-gradient( to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ), url('http://image.tmdb.org/t/p/w1440_and_h320_multi_faces/${collectionInfo.backdrop_path}') no-repeat`,
-          backgroundSize: 'cover'
+          // backgroundSize: 'cover'
         }}
         className='collections_poster'
       >

@@ -1,7 +1,21 @@
+::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+    background: #a1a1a1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(82, 82, 82);
+}
+
+
 body {
     font-family: 'Lato', sans-serif;
     line-height: 1.375;
     background: #e9fffc;
+    
 }
 
 .wrapper {

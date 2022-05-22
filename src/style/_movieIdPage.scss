@@ -109,6 +109,7 @@
 
 .collections {
     color: #fff;
+    margin-bottom: 30px;
 
     .collections_poster {
         padding: 50px 20px;
@@ -135,6 +136,69 @@
                 background-color: #0062ff9f;
             }
         }
+    }
+}
 
+.movieIdPageInfo {
+
+    .similarMovies {
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .listMovies {
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .movie_preview {
+            width: 250px;
+            flex-shrink: 0;
+            margin-right: 20px;
+            padding-bottom: 10px;
+
+            a {
+                color: inherit;
+                font-size: 17px;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow-y: hidden;
+            }
+
+            .title_date {
+                position: relative;
+                padding: 5px 0;
+            }
+
+            time {
+                position: absolute;
+                left: 0;
+                bottom: 100%;
+                text-align: center;
+                padding: 5px;
+                width: 100%;
+                background-color: rgba(219, 219, 219, 0.9);
+                display: none;
+                border-bottom-left-radius: 12px;
+                border-bottom-right-radius: 12px;
+                pointer-events: none;
+            }
+        }
+        
+        .poster {
+
+            img {
+                display: block;
+                border-radius: 12px;
+            }
+
+            &:hover ~ .title_date time {
+                display: block;
+            }
+        }
     }
 }

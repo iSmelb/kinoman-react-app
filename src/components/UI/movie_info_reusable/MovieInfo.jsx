@@ -9,8 +9,8 @@ function MovieInfo({ movie }) {
 
     return (
         <div style={{
-            background: `linear-gradient( to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ), url('http://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${movie.backdrop_path}')`,
-            backgroundSize: 'cover'
+            background: `linear-gradient( to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('http://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${movie.backdrop_path}')`,
+            // backgroundSize: 'cover'
         }} className='movie_info_bg'>
 
             <div className='movie_info conteiner'>

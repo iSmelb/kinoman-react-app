@@ -13,6 +13,11 @@ export default class MovieService {
         theMovieDb.movies.getById({id: movieId, language: 'ru'}, afterRespon, afterError)
     }
 
+    static getSimilarMovie = async function (movieId, afterRespon, afterError) {
+        theMovieDb.common.api_key = this.key
+        theMovieDb.movies.getSimilarMovies({id: movieId, language: 'ru'}, afterRespon, afterError)
+    }
+
     static getImagesForMovie = async function (movieId, afterRespon, afterError) {
         theMovieDb.common.api_key = this.key
         theMovieDb.movies.getImages({id: movieId, language: 'ru'}, afterRespon, afterError)
