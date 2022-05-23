@@ -11,6 +11,7 @@ function MovieIdPage() {
     let movieId = params.id
     const [movie, setMovie] = useState('')
     const [similarMovies, setSimilarMovies] = useState('')
+    const [credits, setCredits] = useState('')
     const [error, setError] = useState(false)
     const [movieIsLoading, setMovieIsLoading] = useState(false)
 
@@ -30,12 +31,26 @@ function MovieIdPage() {
             })
     }
 
+    const getCredits = async () => {
+        MovieService.getCreditsforMovie(
+            movieId,
+            (data) => {
+                const creditResult = JSON.parse(data)
+                setCredits(creditResult)
+                console.log(creditResult)
+            },
+            (error) => {
+                const unParseError = JSON.parse(error)
+            }
+        )
+    }
+
     const getSimilarMovie = async() => {
         MovieService.getSimilarMovie(
             movieId,
             (data) => {
                 const SimilarMovieResult = JSON.parse(data)
-                console.log(SimilarMovieResult.results)
+                //console.log(SimilarMovieResult.results)
                 setSimilarMovies(SimilarMovieResult.results)
             },
             (error) => {
@@ -47,13 +62,18 @@ function MovieIdPage() {
     useEffect(() => {
         getMovieFromId()
         getSimilarMovie()
+        getCredits()
     }, [movieId])
+
+    useEffect(() => {
+        document.title = movie.title
+    }, [movie])
 
     return (
         <main className='main'>
             {!movie
                 ? <div><Loader/></div>
-                : <MovieIdPageInfo movie={movie} similarMovies={similarMovies} />
+                : <MovieIdPageInfo movie={movie} credits={credits} similarMovies={similarMovies}/>
             }
         </main>
     )

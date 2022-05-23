@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useRef } from 'react/cjs/react.development'
-import MoviePreview from '../MoviePreview/MoviePreview'
+import MoviePreview from '../PreviewReusable/MoviePreview'
 
 function SimilarMovies({ movies }) {
     let listMovies = useRef(null)
@@ -15,7 +15,8 @@ function SimilarMovies({ movies }) {
             <div ref={listMovies} className='listMovies'>
                 {movies
                     ? movies.map(movie => <MoviePreview movie={movie} smallPoster={true} key={movie.id} />)
-                    : <span>К сожелению ничего не найдено</span>}
+                    : <span>К сожелению ничего не найдено</span>
+                }
             </div>
         </div>
     )

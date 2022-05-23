@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MovieService from '../API/MovieService';
 import Loader from './UI/loader/Loader'
-import MoviePreview from './UI/MoviePreview/MoviePreview';
+import MoviePreview from './UI/PreviewReusable/MoviePreview';
 import MyButon from './UI/Mybutton/MyButton'
 
 function MainHomePage() {

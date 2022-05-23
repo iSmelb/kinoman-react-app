@@ -27,4 +27,9 @@ export default class MovieService {
         theMovieDb.common.api_key = this.key
         theMovieDb.collections.getDetails({id: collectionId, language: 'ru'}, afterRespon, afterError)
     }
+
+    static getCreditsforMovie = async function (movieId, afterRespon, afterError) {
+        theMovieDb.common.api_key = this.key
+        theMovieDb.movies.getCredits({id: movieId, language: 'ru'}, afterRespon, afterError)
+    }
 }

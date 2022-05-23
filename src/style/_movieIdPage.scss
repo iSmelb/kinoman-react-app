@@ -107,6 +107,67 @@
     }
 }
 
+.cast {
+    margin-bottom: 30px;
+
+    h3 {
+        font-size: 24px;
+        margin-bottom: 5px;
+        font-weight: 700;
+    }
+
+    & h3 ~ a {
+        display: inline-block;
+        color: inherit;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .castList {
+        display: flex;
+        overflow-x: auto;
+        padding: 0 5px 25px;
+    }
+
+    .personPreview {
+        width: 138px;
+        flex-shrink: 0;
+        margin-right: 20px;
+        padding-bottom: 5px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    }
+
+    .photo {
+        img {
+            display: block;
+        }
+    }
+
+    .name {
+        padding: 5px 5px 0;
+
+        h5 {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 5px;
+
+            a {
+                color: inherit;
+
+                &:hover {
+                    opacity: 0.85;
+                }
+            }
+        }
+
+        span {
+            font-size: 0.9em;
+        }
+    }
+}
+
 .collections {
     color: #fff;
     margin-bottom: 30px;
