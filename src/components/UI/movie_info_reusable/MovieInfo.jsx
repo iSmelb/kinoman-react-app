@@ -45,7 +45,7 @@ function MovieInfo({ movie }) {
                         <p>Бюджет: {budget} $</p>
                         <p>Сборы: {revenue} $</p>
                     </div>
-                    <div className='discriptions'> 
+                    <div className='discriptions'>
                         {movie.tagline &&
                             <span className='tagline'>
                                 <em>{movie.tagline}</em>

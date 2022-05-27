@@ -8,7 +8,7 @@ function MoviePreview({ movie, smallPoster = false }) {
       <div className='poster'>
         <Link to={`/movies/${movie.id}`}>
           {smallPoster
-            ? <img src={"	https://www.themoviedb.org/t/p/w250_and_h141_face/" + movie.poster_path} alt={movie.title + " Poster"} />
+            ? <img src={"https://www.themoviedb.org/t/p/w250_and_h141_face/" + movie.poster_path} alt={movie.title + " Poster"} />
             : <img src={"http://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title + " Poster"} />
           }
         </Link>

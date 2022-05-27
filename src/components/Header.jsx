@@ -17,7 +17,7 @@ function Header() {
                   <div className='button_search'>
                       <img src={searchIcon}/>
                   </div>
-                  <input type='search'/>
+                  <input type='search' disabled/>
               </div>
               <nav className="header_nav">
                   <ul>

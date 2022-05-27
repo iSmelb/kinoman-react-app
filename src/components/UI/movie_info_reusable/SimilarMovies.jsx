@@ -10,7 +10,7 @@ function SimilarMovies({ movies }) {
     }, [movies]) //можно сделать через локал стор, чтобы избавиться от еффекта в этом компоненте
 
     return (
-        <div className='similarMovies conteiner'>
+        <div className='similarMovies'>
             <h3>Похожие фильмы</h3>
             <div ref={listMovies} className='listMovies'>
                 {movies

@@ -14,9 +14,9 @@ function CastList({objPersons}) {
     }, [objPersons]) //можно сделать через локал стор, чтобы избавиться от еффекта в этом компоненте
 
   return (
-    <div className='cast conteiner'>
+    <div className='cast'>
+        <Link to="#" className='showAll'>Смотреть весь состав<span/></Link>
         <h3>В главных ролях</h3>
-        <Link to="#">Смотреть весь состав</Link>
         <div ref={castList} className='castList'>
             {cast 
             ? cast.map( (person, index) => (index <= personToShow) && <PersonPreview personInfo={person} key={person.id}/> )

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useRef } from 'react/cjs/react.development';
 import MovieService from '../API/MovieService';
 import MovieIdPageInfo from '../components/MovieIdPageInfo';
 import Loader from '../components/UI/loader/Loader';
-import MovieInfo from '../components/UI/movie_info_reusable/MovieInfo';
 
 function MovieIdPage() {
     const params = useParams()
@@ -12,57 +10,40 @@ function MovieIdPage() {
     const [movie, setMovie] = useState('')
     const [similarMovies, setSimilarMovies] = useState('')
     const [credits, setCredits] = useState('')
-    const [error, setError] = useState(false)
-    const [movieIsLoading, setMovieIsLoading] = useState(false)
+    const [reviews, setReviews] = useState('')
+    // const [error, setError] = useState(false)
+    // const [movieIsLoading, setMovieIsLoading] = useState(false)
 
     const getMovieFromId = async () => {
-        MovieService.getMovieFromId(
-            movieId,
-            (data) => {
-                setMovieIsLoading(true)
-                const movieResult = JSON.parse(data)
-                console.log(movieResult)
-                setMovie(movieResult)
-            },
-            (error) => {
-                setMovieIsLoading(true)
-                const unParseError = JSON.parse(error)
-                setError(unParseError.status_message)
-            })
+        const respons = await MovieService.getMovieFromId(movieId)
+        console.log(respons)
+        setMovie(respons.data)
     }
 
     const getCredits = async () => {
-        MovieService.getCreditsforMovie(
-            movieId,
-            (data) => {
-                const creditResult = JSON.parse(data)
-                setCredits(creditResult)
-                console.log(creditResult)
-            },
-            (error) => {
-                const unParseError = JSON.parse(error)
-            }
-        )
+        const respons = await MovieService.getCreditsforMovie(movieId)
+        console.log(respons)
+        setCredits(respons.data)
     }
 
     const getSimilarMovie = async() => {
-        MovieService.getSimilarMovie(
-            movieId,
-            (data) => {
-                const SimilarMovieResult = JSON.parse(data)
-                //console.log(SimilarMovieResult.results)
-                setSimilarMovies(SimilarMovieResult.results)
-            },
-            (error) => {
-                const unParseError = JSON.parse(error)
-            }
-        )
+        const respons = await MovieService.getSimilarMovie(movieId)
+        console.log(respons)
+        setSimilarMovies(respons.data.results)
+    }
+
+    const getReviews = async() => {
+        const respons = await MovieService.getReviewsForMovie(movieId)
+        console.log(respons)
+        setReviews(respons.data)
     }
 
     useEffect(() => {
         getMovieFromId()
         getSimilarMovie()
         getCredits()
+        getReviews()
+        window.scrollTo(0,0)
     }, [movieId])
 
     useEffect(() => {
@@ -73,7 +54,7 @@ function MovieIdPage() {
         <main className='main'>
             {!movie
                 ? <div><Loader/></div>
-                : <MovieIdPageInfo movie={movie} credits={credits} similarMovies={similarMovies}/>
+                : <MovieIdPageInfo movie={movie} credits={credits} reviews={reviews} similarMovies={similarMovies}/>
             }
         </main>
     )
