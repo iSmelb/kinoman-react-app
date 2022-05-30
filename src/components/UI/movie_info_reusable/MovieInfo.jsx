@@ -8,7 +8,7 @@ function MovieInfo({ movie }) {
     let revenue = spaceForNumber(movie.revenue)
 
     return (
-        <div style={{
+        <section style={{
             background: `linear-gradient( to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('http://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${movie.backdrop_path}')`,
             // backgroundSize: 'cover'
         }} className='movie_info_bg'>
@@ -60,7 +60,7 @@ function MovieInfo({ movie }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

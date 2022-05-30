@@ -9,13 +9,15 @@
     gap: 0px 0px; 
     grid-template-areas: 
       "cast cast reviewsCOnteiner"
+      "media media reviewsCOnteiner" 
       "collections collections reviewsCOnteiner"
-      "similarMovies similarMovies reviewsCOnteiner"; 
-  }
-  .cast { grid-area: cast; }
-  .reviewsCOnteiner { grid-area: reviewsCOnteiner; }
-  .collections { grid-area: collections; }
-  .similarMovies { grid-area: similarMovies; }
+      "similarMovies similarMovies reviewsCOnteiner";
+}
+.cast { grid-area: cast; }
+.media {grid-area: media;}
+.reviewsCOnteiner { grid-area: reviewsCOnteiner; }
+.collections { grid-area: collections; }
+.similarMovies { grid-area: similarMovies; }
 
 .movie_info {
     display: flex;
@@ -208,6 +210,84 @@
     }
 }
 
+.media {
+    margin-bottom: 30px;
+    font-size: 18px;
+
+    .showAll {
+        margin: 0 30px 0 auto;
+        border-bottom: 3px solid transparent;
+        color: rgb(0, 102, 255);
+        font-size: 14px;
+    }
+
+    .media_nav {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+
+        h3 {
+            margin-right: 50px;
+            font-size: 24px;
+            font-weight: 700;
+            border-bottom: 3px solid transparent;
+        }
+    }
+
+    .media_nav_list {
+        display: flex;
+        list-style: none;
+
+        li {
+            margin-right: 30px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+
+            &.active {
+                border-color:  #000;
+            }
+        }
+    }
+
+    .posters,
+    .backdrops,
+    .video {
+        display: none;
+        overflow-x: scroll;
+        padding-bottom: 15px;
+        
+        div {
+            flex-shrink: 0;
+        }
+
+        img {
+            display: block;
+            height: 330px;
+        }
+    }
+
+    .video {
+        div {
+            width: 450px;
+            height: 330px;
+        }
+    }
+
+    .posters.active,
+    .backdrops.active,
+    .video.active {
+        display: flex;
+
+        a {
+            width: 100%;
+        }
+    }
+}
+
 .reviewsCOnteiner {
     margin-left: 20px;
     padding: 20px 10px;
@@ -218,8 +298,8 @@
         content: '';
         position: absolute;
         width: 40px;
-        height: 100%;
-        top: 0;
+        height: 95%;
+        top: 15px;
         left: 0;
         -webkit-box-shadow: -44px 10px 48px 13px #e9fffc;
         -moz-box-shadow: -44px 10px 48px 13px #e9fffc;
@@ -307,7 +387,8 @@
     .collections_poster {
         padding: 50px 20px;
         border-radius: 12px;
-        height: 195px;
+        min-height: 195px;
+        max-height: 240px;
 
         h2 {
             font-size: 32px;
@@ -334,7 +415,6 @@
 }
 
 .movieIdPageInfo {
-
     .similarMovies {
 
         h3 {

@@ -34,7 +34,17 @@ export default class MovieService {
     }
 
     static getReviewsForMovie = async function (movieId, pageId = 1) {
-        const respon = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${this.key}&language=en-US&page=${pageId}`)
-        return respon
+        const respons = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${this.key}&language=en-US&page=${pageId}`)
+        return respons
+    }
+
+    static getImagesForMovie = async function(movieId) {
+        const respons = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${this.key}`)
+        return respons
+    }
+
+    static getVideoForMovie = async function (movieId) {
+        const respons = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${this.key}&language=en-US`)
+        return respons
     }
 }
