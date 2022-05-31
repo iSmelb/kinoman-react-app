@@ -2,9 +2,9 @@ import React from 'react';
 
 function Movie() {
     return (
-        <main className='main'>
+        <div>
             Тут будут фильмы
-        </main>
+        </div>
     )
 }
 

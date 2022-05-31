@@ -28,7 +28,7 @@ function CollectionsIdPage() {
 
 
     return (
-        <main className='main'>
+        <>
             {collection &&
                 <div
                     style={{
@@ -53,7 +53,7 @@ function CollectionsIdPage() {
                         </div>
                     </div>
                 </div>}
-        </main>
+        </>
     )
 }
 

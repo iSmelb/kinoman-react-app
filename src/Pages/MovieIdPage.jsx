@@ -13,7 +13,7 @@ function MovieIdPage() {
     const [reviews, setReviews] = useState('')
     const [images, setImages] = useState('')
     const [video, setVideo] = useState('')
-
+    
     const getMovieFromId = async () => {
         const respons = await MovieService.getMovieFromId(movieId)
         //console.log(respons)
@@ -65,12 +65,12 @@ function MovieIdPage() {
     }, [movie])
 
     return (
-        <main className='main'>
+        <>
             {!movie
                 ? <div><Loader/></div>
                 : <MovieIdPageInfo movie={movie} credits={credits} reviews={reviews} similarMovies={similarMovies} images={images} video={video}/>
             }
-        </main>
+        </>
     )
 }
 

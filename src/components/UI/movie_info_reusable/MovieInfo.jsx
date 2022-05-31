@@ -10,11 +10,14 @@ function MovieInfo({ movie }) {
     return (
         <section style={{
             background: `linear-gradient( to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('http://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${movie.backdrop_path}')`,
-            // backgroundSize: 'cover'
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
         }} className='movie_info_bg'>
 
             <div className='movie_info conteiner'>
-                <img src={"http://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.original_title} />
+                <div className='mainPoster'>
+                    <img src={"http://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.original_title} />
+                </div>
                 <div className='info'>
                     <h1 className='title'>
                         <a target='_blank' href={"https://www.themoviedb.org/movie/" + movie.id}>
@@ -36,7 +39,7 @@ function MovieInfo({ movie }) {
                             <li>Жанры:</li>
                             {movie.genres.map((genr, index) =>
                                 <li key={genr.id}>
-                                    {index + 1 !== movie.genres.length ? genr.name + ' ,' : genr.name + '.'}
+                                    {index + 1 !== movie.genres.length ? genr.name + ', ' : genr.name + '.'}
                                 </li>)}
                         </ul>
                         <span>Продолжительность: {runtime.hours}ч {runtime.minutes}м</span>
@@ -45,7 +48,9 @@ function MovieInfo({ movie }) {
                         <p>Бюджет: {budget} $</p>
                         <p>Сборы: {revenue} $</p>
                     </div>
-                    <div className='discriptions'>
+                </div>
+                <div className='discriptions'>
+                    <div className='text'>
                         {movie.tagline &&
                             <span className='tagline'>
                                 <em>{movie.tagline}</em>

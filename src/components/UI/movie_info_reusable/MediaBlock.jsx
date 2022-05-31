@@ -1,31 +1,42 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react/cjs/react.development'
 
 function MediaBlock({ images, video }) {
+    const params = useParams()
+    let movieId = params.id
     const navUl = useRef(null)
+    const contentBlock = useRef(null)
     const arrTrailers = video.filter(video => video.type === 'Trailer')
-    const [elem, setElem] = useState('')
-    const [keys, setKey] = useState(arrTrailers[0].key)
-    console.log(arrTrailers)
+    const [linkToAllContent, setLinkToAllContent] = useState('')
 
     const changeActive = (e) => {
         if (e.target.tagName !== 'LI') return;
 
         let arrLi = [...navUl.current.children]
-        arrLi.forEach((elem) => elem.classList.remove('active'))
-        document.querySelectorAll('div[data-name]').forEach((elem) => elem.classList.remove('active'))
+        arrLi.forEach( domElem => domElem.classList.remove('active'))
         e.target.classList.add('active')
         let dataName = e.target.dataset.name
-        document.querySelector(`div[data-name="${dataName}"]`).classList.add('active')
-        setElem(document.querySelector('li.active').dataset.name)
+        let arrDiv = [...contentBlock.current.children]
+        arrDiv.forEach( domElem => {
+            domElem.classList.remove('active')
+            if(dataName === domElem.classList[0]) {
+                domElem.classList.add('active')
+            }
+        })
+        setLinkToAllContent(e.target.dataset.name)
     }
 
     useEffect(() => {
-        document.querySelectorAll('[data-name]').forEach((elem) => elem.classList.remove('active'))
-        document.querySelectorAll('[data-name="posters"').forEach((elem) => elem.classList.add('active'))
-        setElem(document.querySelector('li.active').dataset.name)
-    }, [images])
+        let arrLi = [...navUl.current.children]
+        arrLi.forEach( domElem => domElem.classList.remove('active'))
+        arrLi[0].classList.add('active')
+        let arrDiv = [...contentBlock.current.children]
+        arrDiv.forEach( domElem => domElem.classList.remove('active'))
+        arrDiv[0].classList.add('active')
+        setLinkToAllContent(navUl.current.children[0].dataset.name)
+        console.log(arrTrailers)
+    }, [movieId])
 
     return (
         <section className='media'>
@@ -40,27 +51,29 @@ function MediaBlock({ images, video }) {
                     <li data-name='backdrops'>Задники {images.backdrops.length}</li>
                     <li data-name='video'>Видео {arrTrailers.length}</li>
                 </ul>
-                <Link className='showAll' to={elem}>Смотреть все</Link>
+                <Link className='showAll' to={linkToAllContent}>Смотреть все</Link>
             </div>
-            <div data-name='posters' className='posters active'>
-                {images.posters.map((poster, index) => (index < 8) &&
-                    <div key={index + poster.file_path}>
-                        <img src={`https://www.themoviedb.org/t/p/w220_and_h330_face${poster.file_path}`} alt="poster" />
-                    </div>
-                )}
-            </div>
-            <div data-name='backdrops' className='backdrops'>
-                {images.posters.map((backdrop, index) => (index < 3) &&
-                    <div key={index + backdrop.file_path}>
-                        <img src={`https://www.themoviedb.org/t/p/w533_and_h300_bestv2/${backdrop.file_path}`} alt="backdrop" />
-                    </div>
-                )}
-            </div>
-            <div data-name='video' className='video'>
-                {arrTrailers.map(video =>
-                    <div key={video.key} style={{ background: `url('https://i.ytimg.com/vi/${video.key}/hqdefault.jpg')` }}>
+            <div ref={contentBlock} className='content'>
+                <div data-name='posters' className='posters active'>
+                    {images.posters.map((poster, index) => (index < 8) &&
+                        <div key={index + poster.file_path}>
+                            <img src={`https://www.themoviedb.org/t/p/w220_and_h330_face${poster.file_path}`} alt="poster" />
+                        </div>
+                    )}
+                </div>
+                <div data-name='backdrops' className='backdrops'>
+                    {images.posters.map((backdrop, index) => (index < 3) &&
+                        <div key={index + backdrop.file_path}>
+                            <img src={`https://www.themoviedb.org/t/p/w533_and_h300_bestv2/${backdrop.file_path}`} alt="backdrop" />
+                        </div>
+                    )}
+                </div>
+                <div data-name='video' className='video'>
+                    {arrTrailers.map(video =>
+                        <div key={video.key} style={{ background: `url('https://i.ytimg.com/vi/${video.key}/hqdefault.jpg')` }}>
 
-                    </div>)}
+                        </div>)}
+                </div>
             </div>
         </section>
     )

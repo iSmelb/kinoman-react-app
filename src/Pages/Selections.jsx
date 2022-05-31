@@ -2,9 +2,9 @@ import React from 'react';
 
 function Selections() {
     return (
-        <main className='main'>
+        <div>
             Тут будут подборки
-        </main>
+        </div>
     )
 }
 

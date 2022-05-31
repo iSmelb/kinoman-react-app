@@ -3,17 +3,18 @@ import { BrowserRouter } from "react-router-dom";
 import AppRouters from "./components/AppRouters";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Main from "./components/Main";
 import './style/app.scss';
 
 function App() {
   return (
-      <BrowserRouter>
+    <BrowserRouter>
       <div className="wrapper">
-        <Header/>
-        <AppRouters/>
-        <Footer/>
+        <Header />
+        <Main cildren={<AppRouters />}/>
+        <Footer />
       </div>
-      </BrowserRouter>
+    </BrowserRouter>
   );
 }
 

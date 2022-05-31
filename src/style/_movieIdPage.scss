@@ -2,35 +2,56 @@
     margin-bottom: 20px;
 }
 
-.gridConteiner{
-    display: grid; 
-    grid-template-columns: 1fr 1fr 1fr; 
-    grid-auto-rows: auto;
-    gap: 0px 0px; 
-    grid-template-areas: 
-      "cast cast reviewsCOnteiner"
-      "media media reviewsCOnteiner" 
-      "collections collections reviewsCOnteiner"
-      "similarMovies similarMovies reviewsCOnteiner";
-}
-.cast { grid-area: cast; }
-.media {grid-area: media;}
-.reviewsCOnteiner { grid-area: reviewsCOnteiner; }
-.collections { grid-area: collections; }
-.similarMovies { grid-area: similarMovies; }
-
 .movie_info {
-    display: flex;
+    display: grid;
     align-items: center;
     padding-top: 30px;
     padding-bottom: 30px;
     color: #fff;
+    grid-template-columns: 360px 1fr 1fr;
+    grid-auto-rows: auto;
+    grid-template-areas:
+        "mainPoster info info"
+        "mainPoster discriptions discriptions";
 
-    img {
+    @media (max-width: 900px) {
+        grid-template-columns: 310px 1fr 1fr;
+        grid-template-areas:
+            "mainPoster info info"
+            "discriptions discriptions discriptions" ;
+    }
+
+    @media (max-width: 600px) {
         display: block;
-        border-radius: 15px;
-        width: 350px;
-        height: 500px;
+    }
+
+    .mainPoster {
+        grid-area: mainPoster;
+
+        @media (max-width: 600px) {
+            margin-bottom: 20px;
+        }
+
+        img {
+            display: block;
+            border-radius: 15px;
+            width: 350px;
+            height: 500px;
+
+            @media (max-width: 900px) {
+                width: 300px;
+                height: 400px;
+            }
+
+            @media (max-width: 600px) {
+                margin: 0 auto;
+            }
+
+            @media (max-width: 376px) {
+                width: 250px;
+                height: 350px;
+            }
+        }
     }
 
     a {
@@ -42,11 +63,25 @@
     }
 
     .info {
-        padding: 5px 30px;
+        grid-area: info;
+        padding-left: 20px;
+        margin-bottom: 20px;
+
+        @media (max-width: 600px) {
+            text-align: center;
+        }
 
         h1 {
             font-size: 32px;
             font-weight: 700;
+
+            @media (max-width: 900px) {
+                font-size: 28px;
+            }
+
+            @media (max-width: 600px) {
+                font-size: 24px;
+            }
         }
 
         .original_title {
@@ -71,7 +106,12 @@
         .list_genres {
             list-style: none;
             display: flex;
+            flex-wrap: wrap;
             margin-bottom: 5px;
+
+            @media (max-width: 600px) {
+                justify-content: center;
+            }
 
             li {
                 margin-right: 10px;
@@ -83,25 +123,43 @@
     }
 
     .budget {
-        margin-bottom: 20px;
         p {
             margin: 0 0 5px 0;
         }
     }
 
     .discriptions {
+        grid-area: discriptions;
+        padding-left: 20px;
         font-size: 18px;
+
+        @media (max-width: 900px) {
+            margin-top: 20px;
+            padding: 0;
+        }
+
+        @media (max-width: 600px) {
+            font-size: 14px;
+        }
 
         .tagline {
             display: block;
             margin-bottom: 20px;
             opacity: 0.7;
             font-size: 18px;
+
+            @media (max-width: 900px) {
+                text-align: center;
+            }
         }
 
         h4 {
             font-size: 26px;
             margin-bottom: 8px;
+
+            @media (max-width: 600px) {
+                font-size: 20px;
+            }
         }
 
         p {
@@ -124,18 +182,35 @@
     }
 }
 
+.gridConteiner{
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-auto-rows: auto;
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "cast cast reviewsCOnteiner"
+      "media media reviewsCOnteiner" 
+      "collections collections reviewsCOnteiner"
+      "similarMovies similarMovies reviewsCOnteiner";
+
+      @media (max-width: 1024px) {
+        display: flex;
+        flex-direction: column;
+      }
+}
+
 .cast {
     margin-bottom: 30px;
+    grid-area: cast;
 
     h3 {
-        font-size: 24px;
+        @extend %h3-desktop;
         margin-bottom: 20px;
-        font-weight: 700;
     }
 
     .showAll {
         display: inline-block;
-        color: rgb(0, 102, 255);
+        color: $colorBlue;
         font-size: 14px;
 
         &:hover {
@@ -152,7 +227,7 @@
             display: inline-block;
             border-top: solid 2px;
             border-left: solid 2px;
-            border-color: rgb(0, 102, 255);
+            border-color: $colorBlue;
             transform: rotate(225deg);
             transition: transform 0.1s ease-in;
             height: 8px;
@@ -175,11 +250,12 @@
         padding-bottom: 5px;
         border-radius: 10px;
         overflow: hidden;
-        box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+        @extend %main-box-shadow;
     }
 
     .photo {
         background-color: rgb(128, 128, 128);
+
         img {
             display: block;
             width: 138px;
@@ -211,14 +287,22 @@
 }
 
 .media {
+    grid-area: media;
     margin-bottom: 30px;
     font-size: 18px;
+    padding-top: 20px;
+    border-top: 2px solid $colorBordef;
 
     .showAll {
         margin: 0 30px 0 auto;
         border-bottom: 3px solid transparent;
-        color: rgb(0, 102, 255);
+        color: $colorBlue;
         font-size: 14px;
+
+        @media (max-width: 650px) {
+            margin: 0;
+            font-size: 12px;
+        }
     }
 
     .media_nav {
@@ -226,11 +310,19 @@
         align-items: center;
         margin-bottom: 20px;
 
+        @media (max-width: 650px) {
+            display: block;
+            font-size: 14px;
+        }
+
         h3 {
+            @extend %h3-desktop;
             margin-right: 50px;
-            font-size: 24px;
-            font-weight: 700;
             border-bottom: 3px solid transparent;
+
+            @media (max-width: 650px) {
+                margin-bottom: 5px;
+            }
         }
     }
 
@@ -238,6 +330,10 @@
         display: flex;
         list-style: none;
 
+        @media (max-width: 650px) {
+            margin-bottom: 5px;
+        }
+        
         li {
             margin-right: 30px;
             cursor: pointer;
@@ -250,6 +346,17 @@
             &.active {
                 border-color:  #000;
             }
+
+            @media (max-width: 650px) {
+                margin-right: 15px;
+                border-bottom: 2px solid transparent;
+            }
+        }
+    }
+
+    .content {
+        @media (max-width: 650px) {
+            margin: 0 -20px 0 -20px;
         }
     }
 
@@ -289,10 +396,17 @@
 }
 
 .reviewsCOnteiner {
+    grid-area: reviewsCOnteiner;
     margin-left: 20px;
     padding: 20px 10px;
     position: relative;
     border: none;
+
+    @media (max-width: 1024px) {
+        margin: 0 0 10px;
+        padding: 20px 0;
+        border-top: 2px solid $colorBordef;
+    }
 
     &::after {
         content: '';
@@ -304,19 +418,22 @@
         -webkit-box-shadow: -44px 10px 48px 13px #e9fffc;
         -moz-box-shadow: -44px 10px 48px 13px #e9fffc;
         box-shadow: -44px 10px 48px 13px #e9fffc;
+
+        @media (max-width: 1024px) {
+            display: none;
+        }
     }
 
     h3 {
-        font-size: 24px;
+        @extend %h3-desktop;
         margin-bottom: 20px;
-        font-weight: 700;
     }
 }
 
 .reviewPreview {
     padding: 10px;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
     margin-bottom: 20px;
+    @extend %main-box-shadow;
     
     .info {
         display: flex;
@@ -381,8 +498,15 @@
 }
 
 .collections {
+    grid-area: collections;
     color: #fff;
     margin-bottom: 30px;
+    border-top: 2px solid $colorBordef;
+    padding-top: 20px;
+
+    @media (max-width: 650px) {
+        margin: 0 -20px 30px -20px ;
+    }
 
     .collections_poster {
         padding: 50px 20px;
@@ -390,9 +514,17 @@
         min-height: 195px;
         max-height: 240px;
 
+        @media (max-width: 650px) {
+            border-radius: 0;
+        }
+
         h2 {
             font-size: 32px;
             margin-bottom: 10px;
+
+            @media (max-width: 650px) {
+                font-size: 24px;
+            }
         }
 
         a {
@@ -410,17 +542,23 @@
             &:hover {
                 background-color: #0062ff9f;
             }
+
+            @media (max-width: 650px) {
+                
+            }
         }
     }
 }
 
 .movieIdPageInfo {
     .similarMovies {
+        grid-area: similarMovies;
+        border-top: 2px solid $colorBordef;
+        padding-top: 20px;
 
         h3 {
-            font-size: 24px;
+            @extend %h3-desktop;
             margin-bottom: 20px;
-            font-weight: 700;
         }
 
         .listMovies {

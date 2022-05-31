@@ -33,12 +33,12 @@ function HomePage() {
     }
 
     return (
-        <main className='main'>
+        <>
             {isLoading 
                 ? <Loader/>
                 : <MainHomePage movies={movies} page={page} changePage={changePage}/>
             }
-        </main>
+        </>
     )
 }
 
