@@ -1,13 +1,16 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react/cjs/react.development'
 
-function MediaBlock({ images, video }) {
+function MediaBlock() {
     const params = useParams()
-    let movieId = params.id
+    const movieId = params.id
     const navUl = useRef(null)
     const contentBlock = useRef(null)
-    const arrTrailers = video.filter(video => video.type === 'Trailer')
+    const images = useSelector(state => state.movie.movie.images)
+    const videos = useSelector(state => state.movie.movie.videos.results)
+    const arrTrailers = videos.filter(video => video.type === 'Trailer')
     const [linkToAllContent, setLinkToAllContent] = useState('')
 
     const changeActive = (e) => {

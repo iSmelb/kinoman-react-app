@@ -6,16 +6,16 @@ import MovieInfo from './UI/movie_info_reusable/MovieInfo'
 import ReviewsConteiner from './UI/movie_info_reusable/ReviewsConteiner'
 import SimilarMovies from './UI/movie_info_reusable/SimilarMovies'
 
-function MovieIdPageInfo({ movie, credits, reviews, similarMovies, images, video }) {
+function MovieIdPageInfo() {
   return (
     <div className='movieIdPageInfo'>
-      <MovieInfo movie={movie} />
+      <MovieInfo/>
       <div className='gridConteiner conteiner'>
-        {credits && <CastList objPersons={credits} />}
-        {reviews && <ReviewsConteiner reviews={reviews} />}
-        {(images && video) && <MediaBlock images={images} video={video} />}
-        {movie.belongs_to_collection && <CollectionsPoster collectionInfo={movie.belongs_to_collection} />}
-        {similarMovies && <SimilarMovies movies={similarMovies} />}
+        <CastList/>
+        <ReviewsConteiner/>
+        <MediaBlock />
+        <CollectionsPoster/>
+        <SimilarMovies/>
       </div>
     </div>
   )

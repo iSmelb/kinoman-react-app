@@ -1,9 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { useEffect, useRef } from 'react/cjs/react.development'
 import MoviePreview from '../PreviewReusable/MoviePreview'
 
-function SimilarMovies({ movies }) {
+function SimilarMovies() {
     let listMovies = useRef(null)
+    const movies = useSelector(state => state.movie.movie.similar.results)
     
     useEffect(()=> {
         listMovies.current.scrollTo(0,0)

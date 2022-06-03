@@ -1,7 +1,9 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import ReviewPreview from '../PreviewReusable/ReviewPreview'
 
-function ReviewsConteiner({ reviews }) {
+function ReviewsConteiner() {
+  const reviews = useSelector(state => state.movie.movie.reviews)
   const arrReviews = reviews.results
 
   return (

@@ -3,6 +3,11 @@ import axios from 'axios'
 export default class MovieService {
     static key = '0360c9c9a3fc78d9c7356748cda8f62d'
 
+    static getMovieFromId = async function(movieId) {
+        const respons = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.key}&append_to_response=credits,similar,reviews,images,videos`)
+        return respons
+    }
+
     static getPopular = async function(pageId = 1) {
         const respons = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.key}&language=ru&page=${pageId}`)
         return respons
@@ -13,10 +18,6 @@ export default class MovieService {
         return respons
      }
 
-    static getMovieFromId = async function(movieId) {
-        const respons = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.key}&language=ru`)
-        return respons
-    }
 
     static getSimilarMovie = async function (movieId) {
         const respons = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${this.key}&language=ru&page=1`)

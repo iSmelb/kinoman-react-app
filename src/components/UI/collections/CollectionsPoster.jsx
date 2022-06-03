@@ -1,13 +1,22 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-function CollectionsPoster({ collectionInfo }) {
+function CollectionsPoster() {
+  const collectionInfo = useSelector(state => state.movie.movie.belongs_to_collection)
+
+  if(!collectionInfo) {
+    return (
+      <>
+      </>
+    )
+  }
 
   return (
     <section className='collections'>
       <div
         style={{
-          background: `linear-gradient( to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ), url('http://image.tmdb.org/t/p/w1440_and_h320_multi_faces/${collectionInfo.backdrop_path}') no-repeat`,
+          backgroundImage: `linear-gradient( to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ), url('http://image.tmdb.org/t/p/w1440_and_h320_multi_faces/${collectionInfo.backdrop_path}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}

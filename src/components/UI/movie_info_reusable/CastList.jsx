@@ -1,9 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useEffect, useRef } from 'react/cjs/react.development'
 import PersonPreview from '../PreviewReusable/PersonPreview'
 
-function CastList({ objPersons }) {
+function CastList() {
+  const objPersons = useSelector(state => state.movie.movie.credits)
   const cast = objPersons.cast
   const crew = objPersons.crew
   const personToShow = 9

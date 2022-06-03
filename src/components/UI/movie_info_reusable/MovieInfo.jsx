@@ -1,15 +1,17 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import runtimeMovie from '../../../utils/runtimeMovie'
 import spaceForNumber from '../../../utils/spaceForNumber'
 
-function MovieInfo({ movie }) {
+function MovieInfo() {
+    const {movie} = useSelector(state => state.movie)
     let runtime = runtimeMovie(movie.runtime)
     let budget = spaceForNumber(movie.budget)
     let revenue = spaceForNumber(movie.revenue)
 
     return (
         <section style={{
-            background: `linear-gradient( to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('http://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${movie.backdrop_path}')`,
+            backgroundImage: `linear-gradient( to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('http://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${movie.backdrop_path}')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         }} className='movie_info_bg'>
