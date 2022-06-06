@@ -17,6 +17,11 @@ body {
     background: $mainBgColor;
 }
 
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -33,4 +38,26 @@ body {
     max-width:1360px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+.player {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.836);
+    z-index: 5;
+
+    &.active {
+        display: flex;
+    }
+
+    #ytplayer {
+        width: 80%;
+        height: 60%;
+    }
 }

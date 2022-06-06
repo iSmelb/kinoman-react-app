@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import MovieService from '../API/MovieService';
 import MovieIdPageInfo from '../components/MovieIdPageInfo';
 import Loader from '../components/UI/loader/Loader';
 import { getMovieFromId } from '../redux/reducers/movieSlice';

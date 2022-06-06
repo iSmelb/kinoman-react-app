@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import searchIcon from '../images/search.svg';
+import SearchPanel from './UI/search/SearchPanel';
 
 function Header() {
+    
     return (
         <header className='header'>
             <div className='header_flex conteiner'>
@@ -12,12 +14,7 @@ function Header() {
                         Kinoman
                     </Link>
                 </div>
-                <div className='block_for_search'>
-                    <div className='button_search'>
-                        <img src={searchIcon} />
-                    </div>
-                    <input type='search' disabled />
-                </div>
+                <SearchPanel/>
                 <nav className="header_nav">
                     <ul>
                         <li><Link to="/Movies">Фильмы</Link></li>

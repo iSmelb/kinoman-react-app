@@ -1,7 +1,8 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react/cjs/react.development'
+import { changeKeyForMovie } from '../../../redux/reducers/playerSlice'
 
 function MediaBlock() {
     const params = useParams()
@@ -12,18 +13,30 @@ function MediaBlock() {
     const videos = useSelector(state => state.movie.movie.videos.results)
     const arrTrailers = videos.filter(video => video.type === 'Trailer')
     const [linkToAllContent, setLinkToAllContent] = useState('')
+    const refPlayer = document.querySelector('#player')
+    const dispatch = useDispatch()
+
+    const openPlayer = (e) => {
+        if (e.target.dataset.name) return;
+
+        if (refPlayer) {
+            dispatch(changeKeyForMovie(e.target.dataset.keymovie))
+            refPlayer.classList.add('active')
+            document.body.classList.add('stop-scrolling')
+        }
+    }
 
     const changeActive = (e) => {
         if (e.target.tagName !== 'LI') return;
 
         let arrLi = [...navUl.current.children]
-        arrLi.forEach( domElem => domElem.classList.remove('active'))
+        arrLi.forEach(domElem => domElem.classList.remove('active'))
         e.target.classList.add('active')
         let dataName = e.target.dataset.name
         let arrDiv = [...contentBlock.current.children]
-        arrDiv.forEach( domElem => {
+        arrDiv.forEach(domElem => {
             domElem.classList.remove('active')
-            if(dataName === domElem.classList[0]) {
+            if (dataName === domElem.classList[0]) {
                 domElem.classList.add('active')
             }
         })
@@ -32,13 +45,12 @@ function MediaBlock() {
 
     useEffect(() => {
         let arrLi = [...navUl.current.children]
-        arrLi.forEach( domElem => domElem.classList.remove('active'))
+        arrLi.forEach(domElem => domElem.classList.remove('active'))
         arrLi[0].classList.add('active')
         let arrDiv = [...contentBlock.current.children]
-        arrDiv.forEach( domElem => domElem.classList.remove('active'))
+        arrDiv.forEach(domElem => domElem.classList.remove('active'))
         arrDiv[0].classList.add('active')
         setLinkToAllContent(navUl.current.children[0].dataset.name)
-        console.log(arrTrailers)
     }, [movieId])
 
     return (
@@ -71,11 +83,13 @@ function MediaBlock() {
                         </div>
                     )}
                 </div>
-                <div data-name='video' className='video'>
+                <div data-name='video' className='video' onClick={(e) => openPlayer(e)}>
                     {arrTrailers.map(video =>
-                        <div key={video.key} style={{ background: `url('https://i.ytimg.com/vi/${video.key}/hqdefault.jpg')` }}>
-
-                        </div>)}
+                        <div
+                            key={video.key}
+                            style={{ background: `url('https://i.ytimg.com/vi/${video.key}/hqdefault.jpg')` }}
+                            data-keymovie = {video.key}
+                        />)}
                 </div>
             </div>
         </section>

@@ -26,14 +26,21 @@
 .block_for_search {
 
     display: flex;
-    width: 500px;
-    padding: 5px;
+    width: 400px;
+    padding: 5px 5px 5px 0;
     border-radius: 120px;
     background-color: #fff;
 
     .button_search {
         padding: 0;
-        margin-right: 10px;
+        width: 38px;
+        margin-right: 5px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-right: solid 1px #000;
+        overflow: hidden;
     }
 
     img {
