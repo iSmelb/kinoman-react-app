@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import searchIcon from '../images/search.svg';
-import SearchPanel from './UI/search/SearchPanel';
+import SearchPanel from './search/SearchPanel';
+
 
 function Header() {
     

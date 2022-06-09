@@ -17,7 +17,6 @@ export const getMovieFromId = createAsyncThunk(
         } catch(e) {
             return thunkAPI.rejectWithValue('Не удалось загрузить фильм')
         }
-        
     }
 )
 

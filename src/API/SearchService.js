@@ -18,4 +18,9 @@ export default class SearchService {
         return response
     }
 
+    static multiSearch = async function(string) {
+        const response = await axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${this.key}&language=en-US&query=${string}&page=1&include_adult=false`)
+        return response
+    }
+
 }

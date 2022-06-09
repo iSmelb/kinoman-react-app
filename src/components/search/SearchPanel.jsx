@@ -1,23 +1,19 @@
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import SearchService from '../../../API/SearchService';
+import { useNavigate } from 'react-router-dom';
+
 
 function SearchPanel() {
     const [searchRequest, setSearchRequest] = useState('')
     let navigate = useNavigate();
-
+    
     const globalSearch = async () => {
-        console.log(searchRequest)
 
         if (searchRequest.trim() === '') return
 
-        const movieRespons = await SearchService.searchMovie(searchRequest)
-        const tvShowResult = await SearchService.searchTvShow(searchRequest)
-        const peopleResult = await SearchService.searchPeople(searchRequest)
-        console.log(movieRespons)
-        navigate('/search', { replace: true })
+        navigate('/search', {state: {searchRequest}, replace: true })
+        setSearchRequest('')
     }
 
     return (

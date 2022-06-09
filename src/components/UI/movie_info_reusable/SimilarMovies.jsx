@@ -16,7 +16,7 @@ function SimilarMovies() {
             <h3>Похожие фильмы</h3>
             <div ref={listMovies} className='listMovies'>
                 {movies
-                    ? movies.map(movie => <MoviePreview movie={movie} smallPoster={true} key={movie.id} />)
+                    ? movies.map(movie => <MoviePreview movie={movie} size250and141 key={movie.id}/>)
                     : <span>К сожелению ничего не найдено</span>
                 }
             </div>

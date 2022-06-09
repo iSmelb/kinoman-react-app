@@ -9,9 +9,9 @@ import Serials from "../Pages/Serials";
 export const routes = [
     {path: '/', component: HomePage},
     {path: '/movies', component: Movie},
-    {path: '/serials', component: Serials},
+    {path: '/tv', component: Serials},
     {path: '/selections', component: Selections},
     {path: '/movies/:id', component: MovieIdPage},
     {path: '/collections/:id', component: CollectionsIdPage},
-    {path: '/search', component: SearchPage}
+    {path: '/search/*', component: SearchPage}
 ]

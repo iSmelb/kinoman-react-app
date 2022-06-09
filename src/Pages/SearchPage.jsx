@@ -1,8 +1,10 @@
 import React from 'react'
+import SearchInfo from '../components/search/SearchInfo'
+
 
 function SearchPage() {
   return (
-    <div>SearchPage</div>
+    <SearchInfo/>
   )
 }
 
