@@ -1,79 +1,103 @@
-import React, { useEffect, useState } from 'react'
+import { Pagination } from '@mui/material';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useSearchParams } from 'react-router-dom';
-import { multiSearch } from '../../redux/reducers/searchSlice';
+import { useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { movieSearch, multiSearch, peopleSearch, tvSearch } from '../../redux/reducers/searchSlice';
+import Loader from '../UI/loader/Loader';
 import MoviePreview from '../UI/PreviewReusable/MoviePreview';
 import PersonPreview from '../UI/PreviewReusable/PersonPreview';
 import TvShowPreview from '../UI/PreviewReusable/TvShowPreview';
-import SearchResultPanel from './SearchResultPanel'
+import SearchResultPanel from './SearchResultPanel';
 
 function SearchInfo() {
+  const { type } = useParams()
   const location = useLocation()
-  const [searchRequest, setSearchRequest] = useState('')
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchQuery = searchParams.get('query') || ''
+  const searchQuery = Object.fromEntries([...searchParams]) || ''
   const dispatch = useDispatch()
-  const searchResult = useSelector(state => state.search.searchResult)
-  const arrToRender = {
-    type: '',
-    arrElements: []
+  const searchState = useSelector(state => state.search)
+  const {searchResult, isLoading} = searchState
+  const objToRender = {
+    multi: searchResult.multi,
+    movies: searchResult.movies,
+    tv: searchResult.tvShow,
+    people: searchResult.people
   }
-  //console.log(location)
+  const pages = {
+    currentPage: objToRender[type]?.page,
+    totalPages: objToRender[type]?.total_pages,
+  }
 
-  if (location.pathname === '/search' && searchResult.multi) {
-    arrToRender.type = 'multi'
-    arrToRender.arrElements = searchResult.multi.results
-  } else if (location.pathname === '/search/movie' && searchResult.movies) {
-    arrToRender.type = 'movies'
-    arrToRender.arrElements = searchResult.movies.results
-  } else if (location.pathname === '/search/tv' && searchResult.tvShow) {
-    arrToRender.type = 'tv'
-    arrToRender.arrElements = searchResult.tvShow.results
-  } else if (location.pathname === '/search/people' && searchResult.people) {
-    arrToRender.type = 'people'
-    arrToRender.arrElements = searchResult.people.results
+  const getCardToRender = (mediaFile) => {
+    // функция выбора карточки для рендера
+    if ((!type && mediaFile.media_type === 'movie') || type === 'movies')
+      return <MoviePreview key={mediaFile.id} movie={mediaFile} size94and141 discriptions />
+
+    if ((!type && mediaFile.media_type === 'tv') || type === 'tv')
+      return <TvShowPreview key={mediaFile.id} tvObj={mediaFile} size94and141 discriptions />
+
+    if ((!type && mediaFile.media_type === 'person') || type === 'people')
+      return <PersonPreview key={mediaFile.id} personInfo={mediaFile} size90and90 />
   }
+
+  const updatePage = (page) => {
+    setSearchParams({ query: searchQuery.query, page: page })
+  }
+
+  useEffect(() => {
+    // эффект для запросов при смене страницы или типа запроса
+    const params = searchQuery
+
+    if (type === 'movies') {
+      dispatch(movieSearch(params))
+    }
+    if (type === 'tv') {
+      dispatch(tvSearch(params))
+    }
+    if (type === 'people') {
+      dispatch(peopleSearch(params))
+    }
+
+    window.scrollTo(0, 0)
+  }, [searchQuery.page, type])
 
   useEffect(() => {
     // Проверяем, если ссылка была открыта сразу с параметрами, то делаем запрос по этим параментрам
     // Если ссылка пустая, проверяе прешл ли запрос с поисковой строки, устанавливаем запрос в параметры и отправляется запрос
-
-    if (searchQuery) {
+    if ('query' in searchQuery) {
       dispatch(multiSearch(searchQuery))
     } else if (location.state && 'searchRequest' in location.state) {
-      setSearchParams({ query: location.state.searchRequest })
+      setSearchParams({ query: location.state.searchRequest, page: location.state.page })
     }
-
-  }, [location.search])
+  }, [location.state])
 
   return (
-    <div className='searchMainCOnteiner conteiner'>
-
+    <section className='searchMainCOnteiner conteiner'>
       <div className='searchResult'>
         <SearchResultPanel />
         <div className='resultContent'>
-          {(arrToRender.type === 'multi' && arrToRender.arrElements) &&
-            arrToRender.arrElements.map(element => {
-              if (element.media_type === 'movie') {
-                return <MoviePreview key={element.id} movie={element} size94and141 discriptions />
-              } else if (element.media_type === 'tv') {
-                return <TvShowPreview key={element.id} tvObj={element} size94and141 discriptions />
-              } else return <PersonPreview key={element.id} personInfo={element} size90and90 />
-            })
+          {isLoading && <Loader/>}
+          {(!type && !!objToRender.multi?.results.length) &&
+            objToRender.multi.results.map(mediaFile => getCardToRender(mediaFile))
           }
-          {(arrToRender.type === 'movies' && arrToRender.arrElements) &&
-            arrToRender.arrElements.map(element => <MoviePreview key={element.id} movie={element} size94and141 discriptions />)
+          {(type && !!objToRender[type]?.results.length) &&
+            objToRender[type].results.map(mediaFile => getCardToRender(mediaFile))
           }
-          {(arrToRender.type === 'tv' && arrToRender.arrElements) &&
-            arrToRender.arrElements.map(element => <TvShowPreview key={element.id} tvObj={element} size94and141 discriptions />)
+          {((type && !objToRender[type]?.results.length) || (!objToRender.multi?.results.length)) &&
+            <p>There are no movies that matched your query.</p>
           }
-          {(arrToRender.type === 'people' && arrToRender.arrElements) &&
-            arrToRender.arrElements.map(element => <PersonPreview key={element.id} personInfo={element} size90and90 />)
-          }
-          {!arrToRender.arrElements.length && <p>There are no movies that matched your query.</p>}
         </div>
       </div>
-    </div>
+      <div className='paginatePages'>
+        {location.pathname !== '/search' &&
+          <Pagination
+            count={pages.totalPages}
+            page={pages.currentPage || 1}
+            onChange={(_, num) => updatePage(num)}
+          />
+        }
+      </div>
+    </section>
   )
 }
 

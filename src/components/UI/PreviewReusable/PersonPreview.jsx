@@ -14,7 +14,7 @@ function PersonPreview({ personInfo, size90and90 = false }) {
                     {!personInfo.profile_path &&
                         <img src={unkownImg} alt={personInfo.name} />
                     }
-                    {size90and90 &&
+                    {(personInfo.profile_path && size90and90) &&
                         <img src={pathImg90and90 + personInfo.profile_path} alt={personInfo.name} />
                     }
                     {(personInfo.profile_path && !size90and90) &&

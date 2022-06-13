@@ -9,7 +9,7 @@ export default class SearchService {
     }
 
     static searchTvShow = async function(string, page = 1) {
-        const response = await axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.key}&language=en-US&query=${string}&${page}&include_adult=false`)
+        const response = await axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.key}&language=en-US&query=${string}&page=${page}&include_adult=false`)
         return response
     }
 
@@ -18,9 +18,8 @@ export default class SearchService {
         return response
     }
 
-    static multiSearch = async function(string) {
-        const response = await axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${this.key}&language=en-US&query=${string}&page=1&include_adult=false`)
+    static multiSearch = async function(string, page = 1) {
+        const response = await axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${this.key}&language=en-US&query=${string}&page=${page}&include_adult=false`)
         return response
     }
-
 }

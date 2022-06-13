@@ -1,18 +1,18 @@
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
 function SearchPanel() {
     const [searchRequest, setSearchRequest] = useState('')
     let navigate = useNavigate();
-    
+
     const globalSearch = async () => {
 
         if (searchRequest.trim() === '') return
 
-        navigate('/search', {state: {searchRequest}, replace: true })
+        navigate('/search', {state: {searchRequest, page: 1}, replace: true })
         setSearchRequest('')
     }
 
