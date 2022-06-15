@@ -171,7 +171,7 @@
     flex-shrink: 0;
 
     @media(max-width: 700px) {
-        transform: translateX(calc(-100% + 20px));
+        transform: translateX(-100%);
         transition: all ease-in 0.3s;
         position: fixed;
         top: 0;
@@ -187,13 +187,18 @@
         &.show {
             transform: translateX(0);
             transition: transform ease-in 0.3s;
-            background: rgba(0, 0, 0, 0.89);
+
+            .toggleHidePanel {
+                transform: rotate(180deg);
+                right: 0;
+                top: calc(50% - 20px);
+            }
         }
     }
 }
 
 .resultPanel {
-    width: calc(100% - 20px);
+    width: 100%;
     border-radius: 12px;
     border: solid 1px rgb(227, 227, 227);
     position: relative;
@@ -203,27 +208,29 @@
         height: 100%;
         border-radius: 0;
         border: none;
-        //width: 400px;
     }
 
     .toggleHidePanel {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        right: -20px;
-        width: 20px;
+        right: -17px;
+        width: 17px;
         height: 40px;
         background: $mainColor;
         padding: 0;
         border-radius: 0 100% 100% 0 / 0 50% 50% 0;
         border: none;
-        outline: none;
-        display: flex;
+        display: none;
         align-items: center;
 
+        @media(max-width: 700px) {
+            display: flex;
+        }
+
         .arrow {
-            width: 12px;
-            height: 12px;
+            width: 9px;
+            height: 9px;
             border-top: 2px solid;
             border-right: 2px solid;
             border-color: #fff;
@@ -251,10 +258,13 @@
 
 
         li {
-            border-bottom: 1px solid #000;
 
+            @media(max-width: 700px) {
+                border-bottom: 2px solid $colorBordef;
+            }
+            
             &:hover {
-                background-color: rgb(227, 227, 227);
+                background-color: $hoverColor;
 
                 .count {
                     background-color: #fff;
@@ -271,7 +281,7 @@
             justify-content: space-between;
 
             &.active {
-                background-color: rgb(227, 227, 227);
+                background-color: $hoverColor;
 
                 .count {
                     background-color: #fff;
@@ -280,7 +290,7 @@
         }
 
         .count {
-            background-color: rgb(227, 227, 227);
+            background-color: $hoverColor;
             padding: 0px 10px;
             border-radius: 8px;
             font-weight: 300;

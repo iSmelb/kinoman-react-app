@@ -2,7 +2,7 @@ import React from 'react';
 import MyButon from './UI/Mybutton/MyButton';
 import MoviePreview from './UI/PreviewReusable/MoviePreview';
 
-function MainHomePage({ movies, page, changePage }) {
+function MainPopularMovies({ movies, page, changePage }) {
 
     return (
         <div className='banner_bg conteiner'>
@@ -15,4 +15,4 @@ function MainHomePage({ movies, page, changePage }) {
     );
 }
 
-export default MainHomePage;
+export default MainPopularMovies;

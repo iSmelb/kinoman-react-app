@@ -1,7 +1,74 @@
 .header {
     background: $mainColor;
     padding: 15px 0;
-    font-size: 18px;
+    position: relative;
+
+    .hamburgerConteiner {
+        cursor: pointer;
+        height: 23px;
+        display: flex;
+        align-items: center;
+        display: none;
+        position: relative;
+        z-index: 1; 
+
+        @media(max-width: 900px) {
+            display: flex;
+        }
+    }
+
+    .hamburger {
+        width: 30px;
+        height: 2px;
+        background: #fff;
+        display: block;
+        -webkit-transform-origin: center;
+        transform-origin: center;
+        -webkit-transition: .5s ease-in-out;
+        transition: .5s ease-in-out;
+        position: relative;
+
+        &::after,
+        &::before {
+            -webkit-transition: .5s ease-in-out;
+            transition: .5s ease-in-out;
+            content: "";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+        }
+
+        &::after {
+            top: -10px;
+        }
+
+        &::before {
+            bottom: -10px;
+        }
+
+        &.active {
+            background: #000;
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        &.active::after {
+            background: #000;
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+            bottom: -7px;
+            top: 0;
+        }
+
+        &.active::before {
+            background: #000;
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+            top: 0;
+        }
+    }
 }
 
 .header_flex {
@@ -11,9 +78,10 @@
 }
 
 .block_for_logo {
-    // img {
-    //     width: 80px;
-    // }
+
+    @media(max-width: 900px) {
+        flex-grow: 1;
+    }
 
     a {
         font-size: 32px;
@@ -31,16 +99,49 @@
     border-radius: 120px;
     background-color: #fff;
 
+    @media(max-width: 900px) {
+        width: auto;
+        padding: 0;
+        background: transparent;
+        margin-right: 13px;
+    }
+
+    &.showInput {
+
+        input {
+            
+            @media(max-width: 900px) {
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                display: block;
+                border-bottom: 1px solid $colorBordef;
+                padding: 6px 20px;
+            }
+        }
+    }
+
     .button_search {
         padding: 0;
         width: 38px;
-        margin-right: 5px;
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-right: solid 1px #000;
         overflow: hidden;
+
+        @media(max-width: 900px) {
+            width: auto;
+        }
+
+        svg {
+            @media(max-width: 900px) {
+                width: 25px;
+                height: 25px;
+                color: #01b4e4;
+            }
+        }
     }
 
     img {
@@ -51,21 +152,156 @@
         border: none;
         outline: none;
         width: 100%;
+
+        @media(max-width: 900px) {
+            display: none;
+        }
     }
 }
 
 .header_nav {
-    ul {
+    
+    @media(max-width: 900px) {
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        right: 0;
+        top: 0;
+        background-color: #eeeff1;
+        z-index: 1;
+        display: none;
+        overflow: hidden;
+    }
+
+    &.active {
+        display: block;
+    }
+
+    .navList {
         list-style: none;
         display: flex;
-        li {
-            margin-left: 10px;
+
+        @media(max-width: 900px) {
+            padding: 0 20px;
+            margin-top: 75px;
+            display: block;
+            overflow-y: auto;
+            height: 90%;
         }
     }
 
-    a {
+    .menuItem {
+        margin-left: 20px;
         font-weight: 600;
         color: #fff;
-        text-decoration: none;
+        position: relative;
+        cursor: pointer;
+
+        @media(max-width: 900px) {
+            margin: 0 0 15px;
+            background-color: #fff;
+            border-radius: 12px;
+            color: $colorBlue;
+        }
+
+        &::after {
+            @media(max-width: 900px) {
+                content: '';
+                position: absolute;
+                top: 20px;
+                right: 16px;
+                width: 9px;
+                height: 9px;
+                border-top: 2px solid;
+                border-right: 2px solid;
+                border-color: $colorBlue;
+                transform: rotate(135deg);
+            }
+        }
+
+        &.dropActive {
+            ul {
+                opacity: 1;
+                visibility: visible;
+
+                @media(max-width: 900px) {
+                    max-height: 300px;
+                    transition: all ease-in-out 0.3s;
+                }
+                
+            }
+
+            &::after {
+                transform: rotate(315deg);
+            }   
+        }
+
+        .cardHeader {
+            @media(max-width: 900px) {
+                padding: 15px;
+            }
+        }
+
+        ul {
+            opacity: 0;
+            visibility: hidden;
+            transition: all ease-in-out 0.3s;
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            padding: 5px 0;
+            min-width: 130px;
+            border-radius: 12px;
+            border: 1px solid $colorBordef;
+            overflow: hidden;
+            z-index: 1;
+            white-space: nowrap;
+
+            &.linksPeople {
+                left: auto;
+                right: 0;
+            }
+
+            @media(max-width: 900px) {
+                position: initial;
+                padding: 0;
+                max-height: 0;
+                background: none;
+                border: none;
+                min-width: auto;
+                opacity: 1;
+                visibility: visible;
+                font-size: 14px;
+                border-radius: 0;
+            }
+
+            li {
+                @media(max-width: 900px) {
+                    border-top: 1px solid $colorBordef;
+                } 
+            }
+
+            a {
+                display: block;
+                padding: 5px 20px;
+                color: #000;
+                text-decoration: none;
+
+                @media(max-width: 900px) {
+                    padding: 15px;
+                }
+    
+                &:hover {
+                    background-color: $hoverColor;
+    
+                    @media(max-width: 900px) {
+                        background-color: transparent;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
     }
 }
