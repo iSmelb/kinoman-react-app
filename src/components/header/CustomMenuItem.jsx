@@ -10,6 +10,9 @@ function CustomMenuItem({ name, dropItems, swichBurger }) {
     const onMouseLeave = () => {
         window.innerWidth > 900 && setDropdown(false)
     }
+    const checkAndSwitch = () => {
+        window.innerWidth < 901 && swichBurger()
+    }
 
     return (
         <li className={`menuItem ${dropdown ? 'dropActive' : ''}`} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
@@ -22,7 +25,7 @@ function CustomMenuItem({ name, dropItems, swichBurger }) {
                         <Link
                             key={link.name}
                             to={link.path}
-                            onClick={swichBurger}
+                            onClick={checkAndSwitch}
                         >
                             {link.name}
                         </Link>

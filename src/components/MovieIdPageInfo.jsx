@@ -15,7 +15,7 @@ function MovieIdPageInfo() {
         <ReviewsConteiner/>
         <MediaBlock />
         <CollectionsPoster/>
-        <SimilarMovies/>
+        <SimilarMovies sizeImg='size250and141'/>
       </div>
     </div>
   )

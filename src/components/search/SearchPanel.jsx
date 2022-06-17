@@ -20,7 +20,7 @@ function SearchPanel() {
 
         if (searchRequest.trim() === '') return
 
-        navigate('/search', {state: {searchRequest, page: 1}, replace: true })
+        navigate(`/search?query=${searchRequest}&page=1`, {state: {searchRequest, page: 1}, replace: true })
         setSearchRequest('')
         if (!hideInput) {
             setHideInput(prev => !prev)

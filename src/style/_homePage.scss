@@ -1,45 +1,128 @@
-.main {
-    padding: 30px 0;
+.banner_bg_home_page {
+    background-color: rgba(6, 17, 26, 0.808);
+    min-height: 300px;
+    height: calc(100vh / 2.5);
+    max-height: 460px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: -30px;
+    margin-bottom: 20px;
+}
 
-    a {
-        text-decoration: none;
+.banner_home_page {
+    padding: 30px 20px;
+    color: #fff;
+    //width: 90%;
+
+    h1 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 45px;
+        font-style: italic;
+    }
+
+    .block_for_search {
+        display: flex;
+        width: 100%;
+        padding: 10px 20px 10px 10px;
+        border-radius: 120px;
+        background-color: #fff;
+    }
+
+    .button_search {
+        padding: 0;
+        width: 38px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+
+        svg {
+            color: #000;
+        }
+    }
+
+    input {
+        border: none;
+        outline: none;
+        width: 100%;
+    }
+}
+.TabsUnstyled-root {
+
+    .TabsListUnstyled-root {
+        border-radius: 30px;
+        border: 1px groove #032541;
+        display: inline-block;
+        overflow: hidden;
+
+        .TabUnstyled-root{
+            font-weight: 700;
+            border: none;
+            border-radius: 30px;
+            margin-right: 5px;
+            padding: 4px 20px;
+            background-color: transparent;
+            color: #032541;
+            cursor: pointer;
+            outline: none;
+
+            // &:first-of-type {
+
+            // }
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+
+            &.Mui-selected {
+                color: #41deb1;
+                background-color: #032541
+            }
+        }
     }
 }
 
-.banner_bg {
-    display: flex;
-    flex-wrap: wrap;
+.popular_home_page {
+    line-height: 1.2;
+    padding-top: 20px;
 
-    h1 {
-        width: 100%;
-        font-size: 32px;
+    h3 {
+        font-size: 24px;
+        font-weight: 700;
         margin-bottom: 20px;
     }
 
-    .movie_preview {
-        width: 24%;
-        margin: 0 auto 20px;
-        padding-bottom: 5px;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 0 10px #000;
-        background: #fff;
+    .list_movies,
+    .list_tvShow {
+        display: flex;
+        overflow-x: auto;
+        min-height: 340px;
+
+        .movie_preview,
+        .tvPreview {
+            flex-shrink: 0;
+            margin-right: 15px;
+            width: 150px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
 
         img {
             display: block;
-            width: 100%;
-            height: 400px;
+            border-radius: 12px;
         }
 
         .title_date {
-            padding: 5px 10px 0;
+            padding: 5px;
             word-wrap: break-word;
             
             a {
                 display: inline-block;
-                margin-bottom: 10px;
+                margin-bottom: 5px;
                 color: #000;
-                font-size: 17px;
                 font-weight: 700;
 
                 &:hover {
@@ -51,11 +134,8 @@
         time {
             display: block;
             font-size: 14px;
+            font-style: italic;
+            color: #6e6e6e;
         }
     }
-}
-
-.load_more_div {
-    width: 100%;
-    margin-top: 20px;
 }

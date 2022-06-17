@@ -2,12 +2,16 @@ import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import movieReducer from './reducers/movieSlice'
 import playerReducer from './reducers/playerSlice'
 import searchReduce from './reducers/searchSlice'
+import moviesReducer from './reducers/moviesSlice'
+import tvShowReducer from './reducers/tvShowSlice'
 
 export default configureStore({
     reducer: {
         movie: movieReducer,
         player: playerReducer,
         search: searchReduce,
+        movies: moviesReducer,
+        tvShow: tvShowReducer
     }
 })
 

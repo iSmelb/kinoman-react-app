@@ -1,6 +1,6 @@
 ::-webkit-scrollbar {
     width: 5px;
-    height: 10px;
+    height: 7px;
     background: #a1a1a1;
     border-radius: 10px;
 }
@@ -32,6 +32,12 @@ body {
 
   .main {
     flex-grow: 1;
+    padding: 30px 0;
+
+    a {
+        text-decoration: none;
+    }
+    
 }
 
 .conteiner {

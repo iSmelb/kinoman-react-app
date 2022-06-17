@@ -5,7 +5,15 @@ const unkownImg = 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyph
 const pathImg138and175 = 'https://www.themoviedb.org/t/p/w138_and_h175_face/'
 const pathImg90and90 = 'https://www.themoviedb.org/t/p/w90_and_h90_face/'
 
-function PersonPreview({ personInfo, size90and90 = false }) {
+/**
+    * size img can be: size90and90, size138and175(default)
+    */
+
+function PersonPreview({ personInfo, sizeImg = 'size138and175' }) {
+    const allSize = {
+        size138and175: pathImg138and175,
+        size90and90: pathImg90and90,
+    }
 
     return (
         <div className='personPreview'>
@@ -14,11 +22,8 @@ function PersonPreview({ personInfo, size90and90 = false }) {
                     {!personInfo.profile_path &&
                         <img src={unkownImg} alt={personInfo.name} />
                     }
-                    {(personInfo.profile_path && size90and90) &&
-                        <img src={pathImg90and90 + personInfo.profile_path} alt={personInfo.name} />
-                    }
-                    {(personInfo.profile_path && !size90and90) &&
-                        <img src={pathImg138and175 + personInfo.profile_path} alt={personInfo.name} />
+                    {(personInfo.profile_path && sizeImg) &&
+                        <img src={allSize[sizeImg] + personInfo.profile_path} alt={personInfo.name} />
                     }
                 </Link>
             </div>

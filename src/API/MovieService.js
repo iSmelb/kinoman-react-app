@@ -9,14 +9,14 @@ export default class MovieService {
     }
 
     static getPopular = async function(pageId = 1) {
-        const respons = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.key}&language=ru&page=${pageId}`)
+        const respons = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.key}&language=en-US&page=${pageId}`)
         return respons
     }
 
-    static gettop = async function () {
-        const respons = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.key}&language=en-US&page=1`)
-        return respons
-     }
+    // static gettop = async function () {
+    //     const respons = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.key}&language=en-US&page=1`)
+    //     return respons
+    //  }
 
 
     static getSimilarMovie = async function (movieId) {

@@ -31,13 +31,13 @@ function SearchInfo() {
   const getCardToRender = (mediaFile) => {
     // функция выбора карточки для рендера
     if ((!type && mediaFile.media_type === 'movie') || type === 'movies')
-      return <MoviePreview key={mediaFile.id} movie={mediaFile} size94and141 discriptions />
+      return <MoviePreview key={mediaFile.id} movie={mediaFile} sizeImg='size94and141' discriptions />
 
     if ((!type && mediaFile.media_type === 'tv') || type === 'tv')
-      return <TvShowPreview key={mediaFile.id} tvObj={mediaFile} size94and141 discriptions />
+      return <TvShowPreview key={mediaFile.id} tvObj={mediaFile} sizeImg='size94and141' discriptions />
 
     if ((!type && mediaFile.media_type === 'person') || type === 'people')
-      return <PersonPreview key={mediaFile.id} personInfo={mediaFile} size90and90 />
+      return <PersonPreview key={mediaFile.id} personInfo={mediaFile} sizeImg='size90and90' />
   }
 
   const updatePage = (page) => {

@@ -75,6 +75,72 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .block_for_search {
+        display: flex;
+        width: 400px;
+        padding: 5px 5px 5px 0;
+        border-radius: 120px;
+        background-color: #fff;
+    
+        @media(max-width: 900px) {
+            width: auto;
+            padding: 0;
+            background: transparent;
+            margin-right: 13px;
+        }
+    
+        &.showInput {
+            input {
+        
+                @media(max-width: 900px) {
+                    width: 100%;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    display: block;
+                    border-bottom: 1px solid $colorBordef;
+                    padding: 6px 20px;
+                }
+            }
+        }
+    
+        .button_search {
+            padding: 0;
+            width: 38px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+    
+            @media(max-width: 900px) {
+                width: auto;
+            }
+    
+            svg {
+                @media(max-width: 900px) {
+                    width: 25px;
+                    height: 25px;
+                    color: #01b4e4;
+                }
+            }
+        }
+    
+        img {
+            display: block
+        };
+    
+        input {
+            border: none;
+            outline: none;
+            width: 100%;
+    
+            @media(max-width: 900px) {
+                display: none;
+            }
+        }
+    }
 }
 
 .block_for_logo {
@@ -84,80 +150,14 @@
     }
 
     a {
-        font-size: 32px;
+        font-size: 28px;
         font-weight: 700;
         color: #fff;
         text-decoration: none;
     }
 }
 
-.block_for_search {
 
-    display: flex;
-    width: 400px;
-    padding: 5px 5px 5px 0;
-    border-radius: 120px;
-    background-color: #fff;
-
-    @media(max-width: 900px) {
-        width: auto;
-        padding: 0;
-        background: transparent;
-        margin-right: 13px;
-    }
-
-    &.showInput {
-
-        input {
-            
-            @media(max-width: 900px) {
-                width: 100%;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                display: block;
-                border-bottom: 1px solid $colorBordef;
-                padding: 6px 20px;
-            }
-        }
-    }
-
-    .button_search {
-        padding: 0;
-        width: 38px;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-
-        @media(max-width: 900px) {
-            width: auto;
-        }
-
-        svg {
-            @media(max-width: 900px) {
-                width: 25px;
-                height: 25px;
-                color: #01b4e4;
-            }
-        }
-    }
-
-    img {
-        display: block
-    };
-
-    input {
-        border: none;
-        outline: none;
-        width: 100%;
-
-        @media(max-width: 900px) {
-            display: none;
-        }
-    }
-}
 
 .header_nav {
     
@@ -194,29 +194,14 @@
         margin-left: 20px;
         font-weight: 600;
         color: #fff;
-        position: relative;
         cursor: pointer;
+        position: relative;
 
         @media(max-width: 900px) {
             margin: 0 0 15px;
             background-color: #fff;
             border-radius: 12px;
             color: $colorBlue;
-        }
-
-        &::after {
-            @media(max-width: 900px) {
-                content: '';
-                position: absolute;
-                top: 20px;
-                right: 16px;
-                width: 9px;
-                height: 9px;
-                border-top: 2px solid;
-                border-right: 2px solid;
-                border-color: $colorBlue;
-                transform: rotate(135deg);
-            }
         }
 
         &.dropActive {
@@ -231,14 +216,31 @@
                 
             }
 
-            &::after {
+            .cardHeader::after {
                 transform: rotate(315deg);
-            }   
+            } 
         }
 
         .cardHeader {
+            position: relative;
+
             @media(max-width: 900px) {
                 padding: 15px;
+            }
+
+            &::after {
+                @media(max-width: 900px) {
+                    content: '';
+                    position: absolute;
+                    top: 20px;
+                    right: 16px;
+                    width: 9px;
+                    height: 9px;
+                    border-top: 2px solid;
+                    border-right: 2px solid;
+                    border-color: $colorBlue;
+                    transform: rotate(135deg);
+                }
             }
         }
 
