@@ -26,7 +26,6 @@ const tvShowSlice = createSlice({
     extraReducers: {
         [getPopularTvShow.fulfilled]: (state, action) =>{
             state.populars = action.payload
-            console.log(action.payload)
         }
     }
 })

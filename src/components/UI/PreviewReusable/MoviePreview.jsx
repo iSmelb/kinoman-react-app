@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const unkownImg = `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg`
-const pathImg250and141 = 'https://www.themoviedb.org/t/p/w250_and_h141_face/'
-const pathImg220and330 = 'https://www.themoviedb.org/t/p/w220_and_h330_face/'
-const pathImg94and141 = 'https://www.themoviedb.org/t/p/w94_and_h141_face/'
+const pathImg250and141 = 'https://www.themoviedb.org/t/p/w250_and_h141_face'
+const pathImg220and330 = 'https://www.themoviedb.org/t/p/w220_and_h330_face'
+const pathImg94and141 = 'https://www.themoviedb.org/t/p/w94_and_h141_face'
 const pathImg500and750 = 'http://image.tmdb.org/t/p/w500'
 
 /**

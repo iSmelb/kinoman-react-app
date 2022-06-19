@@ -20,6 +20,11 @@
         font-weight: 700;
         margin-bottom: 45px;
         font-style: italic;
+
+        @media(max-width: 550px) {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
     }
 
     .block_for_search {
@@ -50,6 +55,7 @@
         width: 100%;
     }
 }
+
 .TabsUnstyled-root {
 
     .TabsListUnstyled-root {
@@ -69,9 +75,9 @@
             cursor: pointer;
             outline: none;
 
-            // &:first-of-type {
-
-            // }
+            @media(max-width: 550px) {
+                padding: 2px 15px;
+            }
 
             &:last-of-type {
                 margin-right: 0;
@@ -81,6 +87,21 @@
                 color: #41deb1;
                 background-color: #032541
             }
+        }
+    }
+
+    .TabPanelUnstyled-root {
+        position: relative;
+        //background: linear-gradient( to right, rgba(6, 17, 26, 0.8) 0%, rgba(6, 17, 26, 0.8) 100%);
+
+        &::after {
+            content: '';
+            width: 40px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: -3px;
+            background-image: linear-gradient(to right, rgba(255,255,255,0), $mainBgColor);
         }
     }
 }
@@ -113,6 +134,7 @@
         img {
             display: block;
             border-radius: 12px;
+            min-height: 225px;
         }
 
         .title_date {

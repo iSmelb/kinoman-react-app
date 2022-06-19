@@ -26,7 +26,6 @@ const moviesSlice = createSlice({
     extraReducers: {
         [getPopularMovies.fulfilled]: (state, action) =>{
             state.populars = action.payload
-            console.log(action.payload)
         }
     }
 })
