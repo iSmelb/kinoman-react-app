@@ -294,79 +294,122 @@
     padding-top: 20px;
     border-top: 2px solid $colorBordef;
 
-    .showAll {
-        margin: 0 30px 0 auto;
-        border-bottom: 3px solid transparent;
-        color: $colorBlue;
-        font-size: 14px;
-
-        @media (max-width: 650px) {
-            margin: 0;
-            font-size: 12px;
-        }
-    }
-
-    .media_nav {
+    .TabsUnstyled-root {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        margin-bottom: 20px;
-
-        @media (max-width: 650px) {
-            display: block;
-            font-size: 14px;
-        }
 
         h3 {
             @extend %h3-desktop;
             margin-right: 50px;
             border-bottom: 3px solid transparent;
-
-            @media (max-width: 650px) {
-                margin-bottom: 5px;
-            }
-        }
-    }
-
-    .media_nav_list {
-        display: flex;
-        list-style: none;
-
-        @media (max-width: 650px) {
-            margin-bottom: 5px;
-        }
         
-        li {
-            margin-right: 30px;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-
-            &:last-of-type {
-                margin-right: 0;
-            }
-
-            &.active {
-                border-color:  #000;
-            }
-
             @media (max-width: 650px) {
-                margin-right: 15px;
-                border-bottom: 2px solid transparent;
+                margin: 0 20px 0 0;
+            }
+        }
+
+        .TabsListUnstyled-root {
+            .TabUnstyled-root {
+                border: none;
+                background: transparent;
+                padding: 0;
+                margin-right: 30px;
+                cursor: pointer;
+                border-bottom: 3px solid transparent;
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
+
+                &.Mui-selected {
+                    border-color: #000;
+                }
+
+                @media (max-width: 650px) {
+                    margin-right: 15px;
+                    border-width: 1px;
+                }
+            }
+        }
+
+        .content {
+            margin-top: 20px;
+            padding-bottom: 15px;
+            overflow-x: scroll;
+    
+            @media (max-width: 650px) {
+                margin: 5px -20px 0 -20px;
+            }
+        }
+
+        .showAll {
+            margin: 0 30px 0 auto;
+            border-bottom: 3px solid transparent;
+            color: $colorBlue;
+            font-size: 14px;
+    
+            @media (max-width: 650px) {
+                margin: 5px 0 0;
+                width: 100%;
+                font-size: 12px;
             }
         }
     }
 
-    .content {
-        @media (max-width: 650px) {
-            margin: 0 -20px 0 -20px;
-        }
-    }
+    // .media_nav {
+    //     display: flex;
+    //     align-items: center;
+    //     margin-bottom: 20px;
+
+    //     @media (max-width: 650px) {
+    //         display: block;
+    //         font-size: 14px;
+    //     }
+
+    //     h3 {
+    //         @extend %h3-desktop;
+    //         margin-right: 50px;
+    //         border-bottom: 3px solid transparent;
+
+    //         @media (max-width: 650px) {
+    //             margin-bottom: 5px;
+    //         }
+    //     }
+    // }
+
+    // .media_nav_list {
+    //     display: flex;
+    //     list-style: none;
+
+    //     @media (max-width: 650px) {
+    //         margin-bottom: 5px;
+    //     }
+        
+    //     li {
+    //         margin-right: 30px;
+    //         cursor: pointer;
+    //         border-bottom: 3px solid transparent;
+
+    //         &:last-of-type {
+    //             margin-right: 0;
+    //         }
+
+    //         &.active {
+    //             border-color:  #000;
+    //         }
+
+    //         @media (max-width: 650px) {
+    //             margin-right: 15px;
+    //             border-bottom: 2px solid transparent;
+    //         }
+    //     }
+    // }
 
     .posters,
     .backdrops,
     .video {
-        display: none;
-        overflow-x: scroll;
-        padding-bottom: 15px;
+        display: flex;
         
         div {
             flex-shrink: 0;
@@ -415,15 +458,15 @@
         }
     }
 
-    .posters.active,
-    .backdrops.active,
-    .video.active {
-        display: flex;
+    // .posters.active,
+    // .backdrops.active,
+    // .video.active {
+    //     display: flex;
 
-        a {
-            width: 100%;
-        }
-    }
+    //     a {
+    //         width: 100%;
+    //     }
+    // }
 }
 
 .reviewsCOnteiner {

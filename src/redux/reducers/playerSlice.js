@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     keyForMovie: '',
-    refLink: null
+    active: false
 }
 
 const playerSlice = createSlice({
@@ -12,14 +12,13 @@ const playerSlice = createSlice({
         changeKeyForMovie(state, action) {
             state.keyForMovie = action.payload
         },
-
-        // addRef(state, action) {
-        //     state.refLink =  action.payload
-        // }
+        togglePlayer(state) {
+            state.active = !state.active
+        }
     }
 })
 
-export const {changeKeyForMovie, addRef} = playerSlice.actions
+export const {changeKeyForMovie, togglePlayer} = playerSlice.actions
 
 
 export default playerSlice.reducer

@@ -56,55 +56,58 @@
     }
 }
 
-.TabsUnstyled-root {
+.popular_home_page {
+    .TabsUnstyled-root {
 
-    .TabsListUnstyled-root {
-        border-radius: 30px;
-        border: 1px groove #032541;
-        display: inline-block;
-        overflow: hidden;
-
-        .TabUnstyled-root{
-            font-weight: 700;
-            border: none;
+        .TabsListUnstyled-root {
             border-radius: 30px;
-            margin-right: 5px;
-            padding: 4px 20px;
-            background-color: transparent;
-            color: #032541;
-            cursor: pointer;
-            outline: none;
-
-            @media(max-width: 550px) {
-                padding: 2px 15px;
-            }
-
-            &:last-of-type {
-                margin-right: 0;
-            }
-
-            &.Mui-selected {
-                color: #41deb1;
-                background-color: #032541
+            border: 1px groove #032541;
+            display: inline-block;
+            overflow: hidden;
+    
+            .TabUnstyled-root {
+                font-weight: 700;
+                border: none;
+                border-radius: 30px;
+                margin-right: 5px;
+                padding: 4px 20px;
+                background-color: transparent;
+                color: #032541;
+                cursor: pointer;
+                outline: none;
+    
+                @media(max-width: 550px) {
+                    padding: 2px 15px;
+                }
+    
+                &:last-of-type {
+                    margin-right: 0;
+                }
+    
+                &.Mui-selected {
+                    color: #41deb1;
+                    background-color: #032541
+                }
             }
         }
-    }
-
-    .TabPanelUnstyled-root {
-        position: relative;
-        //background: linear-gradient( to right, rgba(6, 17, 26, 0.8) 0%, rgba(6, 17, 26, 0.8) 100%);
-
-        &::after {
-            content: '';
-            width: 40px;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            right: -3px;
-            background-image: linear-gradient(to right, rgba(255,255,255,0), $mainBgColor);
+    
+        .TabPanelUnstyled-root {
+            position: relative;
+            //background: linear-gradient( to right, rgba(6, 17, 26, 0.8) 0%, rgba(6, 17, 26, 0.8) 100%);
+    
+            &::after {
+                content: '';
+                width: 40px;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                right: -3px;
+                background-image: linear-gradient(to right, rgba(255,255,255,0), $mainBgColor);
+            }
         }
     }
 }
+
 
 .popular_home_page {
     line-height: 1.2;

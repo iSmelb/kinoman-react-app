@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { createRef, useRef } from 'react/cjs/react.development'
+import { togglePlayer } from '../redux/reducers/playerSlice'
 
 function Player() {
     const key = useSelector(state => state.player.keyForMovie)
-    const refPlayer = useRef(null)
+    const state = useSelector(state => state.player.active)
+    const dispatch = useDispatch()
 
     const closePlayer = () => {
-        refPlayer.current.classList.remove('active')
+        dispatch(togglePlayer())
         document.body.classList.remove('stop-scrolling')
     }
 
     return (
-        <div ref={refPlayer} className="player" id='player' onClick={closePlayer}>
+        <div className={`player ${state ? 'active' : ''}`} id='player' onClick={closePlayer}>
             <iframe
                 id="ytplayer"
                 type="text/html"
