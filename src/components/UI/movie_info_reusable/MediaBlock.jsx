@@ -52,7 +52,7 @@ function MediaBlock() {
                         )}
                     </TabPanelUnstyled>
                     <TabPanelUnstyled className='backdrops' value={1}>
-                        {images.posters.map((backdrop, index) => (index < 3) &&
+                        {images.backdrops.map((backdrop, index) => (index < 3) &&
                             <div key={index + backdrop.file_path}>
                                 <img src={`https://www.themoviedb.org/t/p/w533_and_h300_bestv2/${backdrop.file_path}`} alt="backdrop" />
                             </div>

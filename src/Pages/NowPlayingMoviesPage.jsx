@@ -1,32 +1,32 @@
+import React from 'react'
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MoviesPageContent from '../components/UI/movie_info_reusable/MoviesPageContent';
 import Loader from '../components/UI/loader/Loader';
-import { getPopularMovies } from '../redux/reducers/moviesSlice';
+import { getPlayingNowMovies } from '../redux/reducers/moviesSlice';
 
-function PopularMoviesPage() {
-    const {populars, isLoading, error}  = useSelector(state => state.movies)
-    const movies = populars?.results
+
+function NowPlayingMoviesPage() {
+    const {playingNow, isLoading, error} = useSelector(state => state.movies)
+    const movies = playingNow?.results
     const dispatch = useDispatch()
     const [page, setPage] = useState(1)
 
-    const nextPage = () => {
+    const changePage = () => {
         setPage(page + 1)
     }
 
     useEffect(() => {
-        dispatch(getPopularMovies(page))
+        dispatch(getPlayingNowMovies(page))
     }, [page])
-
-    useEffect(()=> {document.title = 'kinoman'},[])
 
     return (
         <>
             {isLoading && <Loader/>}
             {error && <div>{error}</div>}
-            {movies && <MoviesPageContent movies={movies} changePage={nextPage} type='popular'/>}
+            {movies && <MoviesPageContent movies={movies} changePage={changePage} type='playingNow'/>}
         </>
     )
 }
 
-export default PopularMoviesPage
+export default NowPlayingMoviesPage

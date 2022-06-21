@@ -9,7 +9,7 @@ function PopularMovies() {
     <section className='popular_movies'>
       <h3>What's Popular</h3>
       <div className='list_movies'>
-        {movies?.results.map(movie => <MoviePreview key={movie.id} movie={movie} discriptions={false} sizeImg='size220and330'/>)}
+        {movies?.results.map(movie => <MoviePreview key={movie.id} movie={movie} sizeImg='size220and330'/>)}
       </div>
     </section>
   )

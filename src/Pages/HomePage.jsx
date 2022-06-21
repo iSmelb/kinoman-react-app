@@ -19,6 +19,8 @@ function HomePage() {
         dispatch(getPopularTvShow(page))
     },[])
 
+    useEffect(()=> {document.title = 'kinoman'},[])
+
     return (
         <>
             <MainBanner/>

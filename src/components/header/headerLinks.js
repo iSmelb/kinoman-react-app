@@ -4,15 +4,15 @@ export const movieLinks = [
         name: 'Popular'
     },
     {
-        path: '#',
+        path: '/movies/playing-now',
         name: 'Now Plaing'
     },
     {
-        path: '#',
+        path: '/movies/up-coming',
         name: 'Upcoming'
     },
     {
-        path: '#',
+        path: '/movies/top-rated',
         name: 'Top Rated'
     }
 ]
