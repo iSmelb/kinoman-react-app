@@ -4,6 +4,7 @@ import playerReducer from './reducers/playerSlice'
 import searchReduce from './reducers/searchSlice'
 import moviesReducer from './reducers/moviesSlice'
 import tvShowReducer from './reducers/tvShowSlice'
+import peopleReducer from './reducers/peopleSlice'
 
 export default configureStore({
     reducer: {
@@ -11,7 +12,8 @@ export default configureStore({
         player: playerReducer,
         search: searchReduce,
         movies: moviesReducer,
-        tvShow: tvShowReducer
+        tvShow: tvShowReducer,
+        people: peopleReducer,
     }
 })
 

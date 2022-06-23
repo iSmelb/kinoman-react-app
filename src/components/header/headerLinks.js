@@ -19,26 +19,26 @@ export const movieLinks = [
 
 export const tvShowLinks = [
     {
-        path: '#',
+        path: '/tv/popular',
         name: 'Popular'
     },
     {
-        path: '#',
-        name: 'Airing Todey'
+        path: '/tv/airing-today',
+        name: 'Airing Today'
     },
     {
-        path: '#',
+        path: '/tv/on-the-air',
         name: 'On Tv'
     },
     {
-        path: '#',
+        path: '/tv/top-rated',
         name: 'Top Rated'
     }
 ]
 
 export const peopleLinks = [
     {
-        path: '#',
+        path: '/people/popular',
         name: 'Popular People'
     },
 ]

@@ -27,7 +27,7 @@ const movieSlice = createSlice({
 
     },
     extraReducers: {
-        [getMovieFromId.pending]: (state, action) => {
+        [getMovieFromId.pending]: (state) => {
             state.isLoading = true  
         },
         [getMovieFromId.fulfilled]: (state, action) => {

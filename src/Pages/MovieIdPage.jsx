@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import MovieIdPageInfo from '../components/MovieIdPageInfo';
 import Loader from '../components/UI/loader/Loader';
+import { useUpdateTitle } from '../hooks/useUpdateTitle';
 import { getMovieFromId } from '../redux/reducers/movieSlice';
 
 function MovieIdPage() {
@@ -16,19 +17,13 @@ function MovieIdPage() {
         window.scrollTo(0, 0)
     }, [movieId])
 
-    useEffect(() => {
-        if (movie) {
-            document.title = movie.title
-        }
-    }, [movie])
+    useUpdateTitle(movie?.title, [movie])
 
     return (
         <>
-            {(isLoading || !movie) 
-                ? <div><Loader/></div>
-                : <MovieIdPageInfo/>
-            }
+            {isLoading && <div><Loader/></div>}
             {error && <h1>{error}</h1>}
+            {movie && <MovieIdPageInfo/>}
         </>
     )
 }

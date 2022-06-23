@@ -32,7 +32,7 @@ function MoviesPageContent({ movies, changePage, type = 'popular' }) {
                 {titles[type].title}
             </h1>
             {movies.map(movie => <MoviePreview key={movie.id} movie={movie} sizeImg={'size500and750'} />)}
-            {movies &&
+            {!!movies.length &&
                 <div className='load_more_div'>
                 <MyButon onClick={changePage}>Load more</MyButon>
             </div> 

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import MoviesPageContent from '../components/UI/movie_info_reusable/MoviesPageContent';
 import Loader from '../components/UI/loader/Loader';
 import { getPopularMovies } from '../redux/reducers/moviesSlice';
+import { useUpdateTitle } from '../hooks/useUpdateTitle';
 
 function PopularMoviesPage() {
     const {populars, isLoading, error}  = useSelector(state => state.movies)
@@ -18,7 +19,7 @@ function PopularMoviesPage() {
         dispatch(getPopularMovies(page))
     }, [page])
 
-    useEffect(()=> {document.title = 'kinoman'},[])
+    useUpdateTitle('movies-popular')
 
     return (
         <>

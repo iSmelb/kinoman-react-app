@@ -28,13 +28,13 @@ function TvShowPreview({ tvObj, discriptions = false, sizeImg = 'size500and750' 
                         <img src={unkownImg} alt={tvObj.original_name + " Poster"} />
                     }
                     {(tvObj.poster_path && sizeImg) &&
-                        <img src={allSize[sizeImg] + tvObj.poster_path} alt={tvObj.original_name + " Poster"} />
+                        <img src={allSize[sizeImg] + tvObj.poster_path} alt={tvObj.name + " Poster"} />
                     }
                 </Link>
             </div>
             <div className='title_date'>
-                <Link to={`/tv/${tvObj.id}`} title={tvObj.original_name}>
-                    {tvObj.original_name}
+                <Link to={`/tv/${tvObj.id}`} title={tvObj.name}>
+                    {tvObj.name}
                 </Link>
                 <time dateTime={tvObj.first_air_date}>
                     <span>First show in: </span>

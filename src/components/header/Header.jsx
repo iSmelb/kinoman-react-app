@@ -25,9 +25,9 @@ function Header() {
                 <SearchPanel />
                 <nav className={`header_nav ${burgerMenu ? 'active' : ''}`}>
                     <ul className='navList'>
-                        <CustomMenuItem name='Movies' dropItems={movieLinks} swichBurger={swichBurger}/>
-                        <CustomMenuItem name='TV Show' dropItems={tvShowLinks} swichBurger={swichBurger}/>
-                        <CustomMenuItem name='People' dropItems={peopleLinks} swichBurger={swichBurger}/>
+                        <CustomMenuItem  name='Movies' dropItems={movieLinks} swichBurger={swichBurger}/>
+                        <CustomMenuItem  name='TV Show' dropItems={tvShowLinks} swichBurger={swichBurger}/>
+                        <CustomMenuItem  name='People' dropItems={peopleLinks} swichBurger={swichBurger}/>
                     </ul>
                 </nav>
                 <div className='hamburgerConteiner' onClick={swichBurger}>

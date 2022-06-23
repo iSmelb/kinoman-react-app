@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUpComingMovies } from '../redux/reducers/moviesSlice'
-import MoviesPageContent from '../components/UI/movie_info_reusable/MoviesPageContent';
 import Loader from '../components/UI/loader/Loader';
+import TvShowPageContent from '../components/UI/tvShow_info_reusable/TvShowPageContent';
 import { useUpdateTitle } from '../hooks/useUpdateTitle';
+import { getPopularTvShow } from '../redux/reducers/tvShowSlice';
 
-function UpComingMoviesPage() {
-    const {upComing, isLoading, error} = useSelector(state => state.movies)
-    const movies = upComing?.results
+function PopularTvShowPage() {
+    const {populars, isLoading, error} = useSelector(state => state.tvShow)
+    const tvShow = populars?.results
     const dispatch = useDispatch()
     const [page, setPage] = useState(1)
 
@@ -16,18 +16,18 @@ function UpComingMoviesPage() {
     }
 
     useEffect(() => {
-        dispatch(getUpComingMovies(page))
+        dispatch(getPopularTvShow(page))
     }, [page])
 
-    useUpdateTitle('movies-upcoming')
+    useUpdateTitle('tv-popular')
 
     return (
         <>
             {isLoading && <Loader/>}
             {error && <div>{error}</div>}
-            {movies && <MoviesPageContent movies={movies} changePage={changePage} type='upComing'/>}
+            {tvShow && <TvShowPageContent tvShowList={tvShow} changePage={changePage} type='popular'/>}
         </>
     )
 }
 
-export default UpComingMoviesPage
+export default PopularTvShowPage

@@ -6,6 +6,11 @@ import SearchPage from "../Pages/SearchPage";
 import NowPlayingMoviesPage from "../Pages/NowPlayingMoviesPage";
 import UpComingMoviesPage from "../Pages/UpComingMoviesPage";
 import TopRatedMoviesPage from "../Pages/TopRatedMoviesPage";
+import PopularTvShowPage from "../Pages/PopularTvShowPage";
+import AiringTodayTvShowPage from "../Pages/AiringTodayTvShowPage";
+import OnTheAirTvShowPage from '../Pages/OnTheAirTvShowPage'
+import TopRatedTvShowPage from "../Pages/TopRatedTvShowPage";
+import PopularPeoplePage from "../Pages/PopularPeoplePage";
 
 export const routes = [
     {path: '/', component: HomePage},
@@ -14,6 +19,11 @@ export const routes = [
     {path: '/movies/up-coming', component: UpComingMoviesPage},
     {path: '/movies/top-rated', component: TopRatedMoviesPage},
     {path: '/movies/:id', component: MovieIdPage},
+    {path: '/tv/popular', component: PopularTvShowPage},
+    {path: '/tv/airing-today', component: AiringTodayTvShowPage},
+    {path: '/tv/on-the-air', component: OnTheAirTvShowPage},
+    {path: '/tv/top-rated', component: TopRatedTvShowPage},
+    {path: '/people/popular', component: PopularPeoplePage},
     {path: '/collections/:id', component: CollectionsIdPage},
     {path: '/search/:type', component: SearchPage},
     {path: '/search', component: SearchPage}

@@ -1,7 +1,7 @@
-.popular_movies_page,
-.playingNow_movies_page,
-.upComing_movies_page,
-.topRated_movies_page {
+.popular_tvShow_page,
+.airingToday_tvShow_page,
+.onTheAir_tvShow_page,
+.topRated_tvShow_page {
     display: grid;
     grid-template-columns: repeat(4, minmax(150px, 1fr));
     grid-gap: 20px 20px;
@@ -33,7 +33,7 @@
         }
     }
 
-    .movie_preview {
+    .tvPreview {
         padding-bottom: 5px;
         border-radius: 12px;
         overflow: hidden;
@@ -73,6 +73,7 @@
         .title_date {
             padding: 5px 10px 0;
             word-wrap: break-word;
+            min-height: 75;
             
             a {
                 display: inline-block;
@@ -98,6 +99,7 @@
                 font-size: 12px;
             }
         }
+
     }
 
     .load_more_div {
@@ -117,4 +119,3 @@
         }
     }
 }
-

@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import MainBanner from '../components/homePage/MainBanner';
 import PopularMovies from '../components/UI/movie_info_reusable/PopularMovies';
 import PopularTvShow from '../components/UI/tvShow_info_reusable/PopularTvShow';
+import { useUpdateTitle } from '../hooks/useUpdateTitle';
 import { getPopularMovies } from '../redux/reducers/moviesSlice';
 import { getPopularTvShow } from '../redux/reducers/tvShowSlice';
 
@@ -19,7 +20,7 @@ function HomePage() {
         dispatch(getPopularTvShow(page))
     },[])
 
-    useEffect(()=> {document.title = 'kinoman'},[])
+    useUpdateTitle('kinoman')
 
     return (
         <>

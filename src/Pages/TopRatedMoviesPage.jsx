@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getTopRatedMovies } from '../redux/reducers/moviesSlice'
 import MoviesPageContent from '../components/UI/movie_info_reusable/MoviesPageContent';
 import Loader from '../components/UI/loader/Loader';
+import { useUpdateTitle } from '../hooks/useUpdateTitle';
 
 function TopRatedMoviesPage() {
     const {topRated, isLoading, error} = useSelector(state => state.movies)
@@ -17,6 +18,8 @@ function TopRatedMoviesPage() {
     useEffect(() => {
         dispatch(getTopRatedMovies(page))
     }, [page])
+
+    useUpdateTitle('movies-top rated')
 
     return (
         <>

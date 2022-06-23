@@ -13,7 +13,7 @@ function CastList() {
 
   useEffect(() => {
     castList.current.scrollTo(0, 0)
-  }, [objPersons]) //можно сделать через локал стор, чтобы избавиться от еффекта в этом компоненте
+  }, [objPersons])
 
   return (
     <section className='cast'>

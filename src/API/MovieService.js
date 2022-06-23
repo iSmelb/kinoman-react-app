@@ -8,23 +8,23 @@ export default class MovieService {
         return response
     }
 
-    static getPopular = async function(pageId = 1) {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.key}&language=en-US&page=${pageId}`)
+    static getPopular = async function(page = 1) {
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.key}&language=en-US&page=${page}`)
         return response
     }
 
-    static getPlayingNow = async function(pageId = 1) {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.key}&language=en-US&page=${pageId}`)
+    static getPlayingNow = async function(page = 1) {
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.key}&language=en-US&page=${page}`)
         return response
     }
 
-    static getUpComing = async function(pageId = 1) {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.key}&language=en-US&page=${pageId}`)
+    static getUpComing = async function(page = 1) {
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.key}&language=en-US&page=${page}&region=US`)
         return response
     }
 
-    static getTopRated = async function (pageId = 1) {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.key}&language=en-US&page=${pageId}`)
+    static getTopRated = async function (page = 1) {
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.key}&language=en-US&page=${page}`)
         return response
      }
 
@@ -44,8 +44,8 @@ export default class MovieService {
         return response
     }
 
-    static getReviewsForMovie = async function (movieId, pageId = 1) {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${this.key}&language=en-US&page=${pageId}`)
+    static getReviewsForMovie = async function (movieId, page = 1) {
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${this.key}&language=en-US&page=${page}`)
         return response
     }
 

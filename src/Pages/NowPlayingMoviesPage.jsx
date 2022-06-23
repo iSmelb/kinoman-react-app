@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import MoviesPageContent from '../components/UI/movie_info_reusable/MoviesPageContent';
 import Loader from '../components/UI/loader/Loader';
 import { getPlayingNowMovies } from '../redux/reducers/moviesSlice';
+import { useUpdateTitle } from '../hooks/useUpdateTitle';
 
 
 function NowPlayingMoviesPage() {
@@ -19,6 +20,8 @@ function NowPlayingMoviesPage() {
     useEffect(() => {
         dispatch(getPlayingNowMovies(page))
     }, [page])
+
+    useUpdateTitle('movies-playing now')
 
     return (
         <>

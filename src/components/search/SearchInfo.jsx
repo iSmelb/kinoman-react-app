@@ -2,6 +2,7 @@ import { Pagination } from '@mui/material';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { useUpdateTitle } from '../../hooks/useUpdateTitle';
 import { movieSearch, multiSearch, peopleSearch, tvSearch } from '../../redux/reducers/searchSlice';
 import Loader from '../UI/loader/Loader';
 import MoviePreview from '../UI/PreviewReusable/MoviePreview';
@@ -70,6 +71,8 @@ function SearchInfo() {
       setSearchParams({ query: location.state.searchRequest, page: location.state.page })
     }
   }, [location.state])
+
+  useUpdateTitle(`search/${searchQuery.query}`, [searchQuery.query])
 
   return (
     <section className='searchMainCOnteiner conteiner'>

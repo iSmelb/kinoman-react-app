@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import MovieService from "../../API/MovieService"
+import { errorLoad, pending, requestFulfilled } from "../stateHandler"
 
 const initialState = {
     isLoading: false,
@@ -9,6 +10,7 @@ const initialState = {
     upComing: null,
     topRated: null,
 }
+
 
 export const getPopularMovies = createAsyncThunk(
     'movies/getPopularMovies',
@@ -73,30 +75,6 @@ export const getTopRatedMovies = createAsyncThunk(
         }
     }
 )
-
-const pending = (state) => {
-    state.isLoading = true
-}
-
-const errorLoad = (state, action) => {
-    state.isLoading = false
-    state.error = action.payload
-}
-
-const requestFulfilled = (state, action) => {
-    // функция принимает результат асинк санка, в котором поле тайп = полю в начальном состоянии и в зависимости от тайп, меняет конкретнный стейт
-    console.log(action.payload)
-    const type = action.payload.type
-
-    if (action.payload.response.page === 1) {
-        state[type] = action.payload.response
-    } else {
-        state[type].results = [...state[type].results, ...action.payload.response.results]
-    }
-
-    state.isLoading = false
-    state.error = ''
-}
 
 const moviesSlice = createSlice({
     name: 'movies',

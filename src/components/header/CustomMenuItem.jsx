@@ -21,9 +21,8 @@ function CustomMenuItem({ name, dropItems, swichBurger }) {
             </div>
             <ul className={`links${name}`}>
                 {dropItems.map(link =>
-                    <li>
+                    <li key={link.path}>
                         <Link
-                            key={link.name}
                             to={link.path}
                             onClick={checkAndSwitch}
                         >
