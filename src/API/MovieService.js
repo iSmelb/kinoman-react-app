@@ -4,7 +4,7 @@ export default class MovieService {
     static key = '0360c9c9a3fc78d9c7356748cda8f62d'
 
     static getMovieFromId = async function(movieId) {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.key}&append_to_response=credits,similar,reviews,images,videos`)
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.key}&append_to_response=credits,reviews,images,videos,recommendations`)
         return response
     }
 
@@ -14,7 +14,7 @@ export default class MovieService {
     }
 
     static getPlayingNow = async function(page = 1) {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.key}&language=en-US&page=${page}`)
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.key}&language=en-US&page=${page}&region=US`)
         return response
     }
 

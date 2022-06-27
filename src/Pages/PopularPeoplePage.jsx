@@ -8,11 +8,17 @@ import { getPopularPeople } from '../redux/reducers/peopleSlice';
 function PopularPeoplePage() {
     const {populars, isLoading, error}  = useSelector(state => state.people)
     const people = populars?.results
-    const dispatch = useDispatch()
     const [page, setPage] = useState(1)
+    const total_pages = populars?.total_pages
+    const dispatch = useDispatch()
 
-    const nextPage = () => {
-        setPage(page + 1)
+    const pages = {
+        current_page: page,
+        total_pages: total_pages,
+
+        changePage: () => {
+            setPage(page + 1)
+        }
     }
     
     useEffect(() => {
@@ -25,7 +31,7 @@ function PopularPeoplePage() {
         <>
             {isLoading && <Loader/>}
             {error && <div>{error}</div>}
-            {people && <PeoplePageContent peopleList={people} changePage={nextPage} type='popular'/>}
+            {people && <PeoplePageContent peopleList={people} pages={pages} type='popular'/>}
         </>
     )
 }

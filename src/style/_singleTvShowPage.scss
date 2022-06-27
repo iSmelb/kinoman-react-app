@@ -2,30 +2,52 @@
 @import "./reusable/reviewsConteiner";
 @import "./reusable/mediaBlock";
 @import "./reusable/recommendationsBlock";
+@import "./reusable//seasonBlock";
 
-.movie_info_bg {
+.tvShow_info_bg {
     margin-bottom: 20px;
 }
 
-.movie_info {
+.singleTvShowInfo{
+    .gridConteiner{
+        display: grid; 
+        grid-template-columns: 1fr 1fr 1fr; 
+        grid-auto-rows: auto;
+        gap: 0px 0px; 
+        grid-template-areas: 
+          "cast cast reviewsCOnteiner"
+          "season_single_section season_single_section reviewsCOnteiner" 
+          "media media reviewsCOnteiner"
+          "recommendationsMovies recommendationsMovies reviewsCOnteiner";
+    
+          @media (max-width: 1024px) {
+            display: flex;
+            flex-direction: column;
+          }
+    }
+}
+
+.tvShow_info {
+    color: #fff;
     display: grid;
     align-items: center;
     padding-top: 30px;
-    padding-bottom: 30px;
-    color: #fff;
+    padding-bottom: 30px;;
     grid-template-columns: 360px 1fr;
     grid-auto-rows: auto;
     grid-template-areas:
         "mainPoster info"
-        "mainPoster discriptions";
+        "mainPoster discriptions"
+        "mainPoster created_by";
 
     @media (max-width: 900px) {
         grid-template-columns: 310px 1fr;
         grid-template-areas:
             "mainPoster info"
-            "discriptions discriptions" ;
+            "discriptions discriptions"
+            "created_by created_by";
     }
-
+    
     @media (max-width: 600px) {
         display: block;
     }
@@ -41,7 +63,7 @@
             display: block;
             border-radius: 15px;
             width: 350px;
-            height: 500px;
+            height: 450px;
 
             @media (max-width: 900px) {
                 width: 300px;
@@ -127,16 +149,11 @@
         }
     }
 
-    .budget {
-        p {
-            margin: 0 0 5px 0;
-        }
-    }
-
     .discriptions {
         grid-area: discriptions;
         padding-left: 20px;
         font-size: 18px;
+        margin-bottom: 20px;
 
         @media (max-width: 900px) {
             margin-top: 20px;
@@ -172,90 +189,21 @@
         }
     }
 
-    .imdb_tmdb {
+    .created_by {
+        grid-area: created_by;
         display: flex;
-        align-items: baseline;
-        opacity: 0.8;
+        padding-left: 20px;
 
-        h4 {
-            font-size: 20px;
-            margin-right: 10px;
+        @media (max-width: 900px) {
+            padding: 0;
         }
 
-        a {
-            margin-right: 10px;
-        }
-    }
-}
+        .creator {
+            margin-right: 30px;
 
-.collections {
-    grid-area: collections;
-    color: #fff;
-    margin-bottom: 30px;
-    border-top: 2px solid $colorBordef;
-    padding-top: 20px;
-
-    @media (max-width: 1024px) {
-        margin: 0 -20px 30px -20px ;
-    }
-
-    .collections_poster {
-        padding: 50px 20px;
-        border-radius: 12px;
-        min-height: 195px;
-        max-height: 240px;
-
-        @media (max-width: 1024px) {
-            border-radius: 0;
-        }
-
-        h2 {
-            font-size: 32px;
-            margin-bottom: 10px;
-
-            @media (max-width: 650px) {
-                font-size: 24px;
+            h4 {
+                font-weight: 700;
             }
         }
-
-        a {
-            display: block;
-            width: 200px;
-            padding: 10px 5px;
-            border-radius: 12px;
-            color: inherit;
-            border: none;
-            background-color: #0062ff42;
-            text-align: center;
-            font-weight: 500;
-            cursor: pointer;
-
-            &:hover {
-                background-color: #0062ff9f;
-            }
-
-            @media (max-width: 650px) {
-                
-            }
-        }
-    }
-}
-
-.movieIdPageInfo {
-    .gridConteiner{
-        display: grid; 
-        grid-template-columns: 1fr 1fr 1fr; 
-        grid-auto-rows: auto;
-        gap: 0px 0px; 
-        grid-template-areas: 
-          "cast cast reviewsCOnteiner"
-          "media media reviewsCOnteiner" 
-          "collections collections reviewsCOnteiner"
-          "recommendationsMovies recommendationsMovies reviewsCOnteiner";
-    
-          @media (max-width: 1024px) {
-            display: flex;
-            flex-direction: column;
-          }
     }
 }

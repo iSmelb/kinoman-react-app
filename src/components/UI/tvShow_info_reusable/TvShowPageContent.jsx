@@ -6,7 +6,9 @@ import MyButon from '../Mybutton/MyButton'
   * type can be: popular(default), airingToday, onTheAir, topRated
   */
 
-function TvShowPageContent({ tvShowList, changePage, type = 'popular' }) {
+function TvShowPageContent({ tvShowList, type = 'popular', pages }) {
+    const {current_page, total_pages, changePage} = pages
+
     const titles = {
         popular: {
             class: 'popular_tvShow_page',
@@ -31,11 +33,16 @@ function TvShowPageContent({ tvShowList, changePage, type = 'popular' }) {
             <h1>
                 {titles[type].title}
             </h1>
-            {tvShowList.map(tvObj => <TvShowPreview key={tvObj.id} tvObj={tvObj} sizeImg='size500and750'/>)}
+            {tvShowList.map(tvObj => <TvShowPreview key={tvObj.id} tvObj={tvObj} sizeImg='size300and450' />)}
             {tvShowList &&
                 <div className='load_more_div'>
-                <MyButon onClick={changePage}>Load more</MyButon>
-            </div> 
+                    <MyButon
+                        disabled={current_page === total_pages ? true : false}
+                        onClick={() => changePage()}
+                    >
+                        Load more
+                    </MyButon>
+                </div>
             }
         </div>
     );

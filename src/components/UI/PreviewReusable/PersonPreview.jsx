@@ -17,6 +17,12 @@ function PersonPreview({ personInfo, sizeImg = 'size138and175' }) {
         size235and235: pathImg235and235
     }
 
+    let character = personInfo?.character
+
+    if ('roles' in personInfo) {
+        character = personInfo.roles[0].character
+    }
+
     return (
         <div className='personPreview'>
             <div className='photo'>
@@ -35,9 +41,9 @@ function PersonPreview({ personInfo, sizeImg = 'size138and175' }) {
                         {personInfo.name}
                     </Link>
                 </h5>
-                {'character' in personInfo &&
+                {character &&
                     <p>
-                        {personInfo.character}
+                        {character}
                     </p>
                 }
                 {'known_for' in personInfo &&

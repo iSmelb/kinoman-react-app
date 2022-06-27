@@ -6,7 +6,9 @@ import MoviePreview from '../PreviewReusable/MoviePreview';
   * type can be: popular(default), playingNow, upComing, topRated
   */
 
-function MoviesPageContent({ movies, changePage, type = 'popular' }) {
+function MoviesPageContent({ movies, type = 'popular', pages }) {
+    const {current_page, total_pages, changePage} = pages
+
     const titles = {
         popular: {
             class: 'popular_movies_page',
@@ -34,8 +36,13 @@ function MoviesPageContent({ movies, changePage, type = 'popular' }) {
             {movies.map(movie => <MoviePreview key={movie.id} movie={movie} sizeImg={'size500and750'} />)}
             {!!movies.length &&
                 <div className='load_more_div'>
-                <MyButon onClick={changePage}>Load more</MyButon>
-            </div> 
+                    <MyButon
+                        disabled={current_page === total_pages ? true : false}
+                        onClick={() => changePage()}
+                    >
+                        Load more
+                    </MyButon>
+                </div>
             }
         </div>
     );

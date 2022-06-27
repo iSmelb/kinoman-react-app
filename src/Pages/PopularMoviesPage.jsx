@@ -8,11 +8,17 @@ import { useUpdateTitle } from '../hooks/useUpdateTitle';
 function PopularMoviesPage() {
     const {populars, isLoading, error}  = useSelector(state => state.movies)
     const movies = populars?.results
-    const dispatch = useDispatch()
     const [page, setPage] = useState(1)
+    const total_pages = populars?.total_pages
+    const dispatch = useDispatch()
 
-    const nextPage = () => {
-        setPage(page + 1)
+    const pages = {
+        current_page: page,
+        total_pages: total_pages,
+
+        changePage: () => {
+            setPage(page + 1)
+        }
     }
 
     useEffect(() => {
@@ -25,7 +31,7 @@ function PopularMoviesPage() {
         <>
             {isLoading && <Loader/>}
             {error && <div>{error}</div>}
-            {movies && <MoviesPageContent movies={movies} changePage={nextPage} type='popular'/>}
+            {movies && <MoviesPageContent movies={movies} pages={pages} type='popular'/>}
         </>
     )
 }

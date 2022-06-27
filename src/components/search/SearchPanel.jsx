@@ -16,11 +16,11 @@ function SearchPanel() {
         setTimeout(() => inputRef.current.focus(), 0)
     }
 
-    const globalSearch = async () => {
-
+    const globalSearch = async (e) => {
+        e.preventDefault()
         if (searchRequest.trim() === '') return
 
-        navigate(`/search?query=${searchRequest}&page=1`, {state: {searchRequest, page: 1}, replace: true })
+        navigate(`/search?query=${searchRequest}&page=1`, {state: {searchRequest, page: 1}})
         setSearchRequest('')
         if (!hideInput) {
             setHideInput(prev => !prev)
@@ -28,16 +28,12 @@ function SearchPanel() {
     }
 
     return (
-        <div className={`block_for_search ${!hideInput ? 'showInput' : ''}`}>
+        <form className={`block_for_search ${!hideInput ? 'showInput' : ''}`} onSubmit={globalSearch}>
             <div className='button_search' onClick={showInput}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
             </div>
-            <input ref={inputRef} type='search' placeholder='Search' value={searchRequest} onChange={e => setSearchRequest(e.target.value)} onKeyPress={e => {
-                if (e.key === 'Enter') {
-                    globalSearch()
-                }
-            }} />
-        </div>
+            <input ref={inputRef} type='search' placeholder='Search' value={searchRequest} onChange={e => setSearchRequest(e.target.value)}/>
+        </form>
     )
 }
 

@@ -8,11 +8,17 @@ import { getOnTheAirTvShow } from '../redux/reducers/tvShowSlice';
 function OnTheAirTvShowPage() {
     const {onTheAir, isLoading, error} = useSelector(state => state.tvShow)
     const tvShow = onTheAir?.results
-    const dispatch = useDispatch()
     const [page, setPage] = useState(1)
+    const total_pages = onTheAir?.total_pages
+    const dispatch = useDispatch()
 
-    const changePage = () => {
-        setPage(page + 1)
+    const pages = {
+        current_page: page,
+        total_pages: total_pages,
+
+        changePage: () => {
+            setPage(page + 1)
+        }
     }
 
     useEffect(() => {
@@ -25,7 +31,7 @@ function OnTheAirTvShowPage() {
         <>
             {isLoading && <Loader/>}
             {error && <div>{error}</div>}
-            {tvShow && <TvShowPageContent tvShowList={tvShow} changePage={changePage} type='onTheAir'/>}
+            {tvShow && <TvShowPageContent tvShowList={tvShow} type='onTheAir' pages={pages}/>}
         </>
     )
 }

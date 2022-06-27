@@ -67,3 +67,9 @@ body {
         height: 60%;
     }
 }
+
+.load_more_div {
+    button:disabled {
+        display: none;
+    }
+}

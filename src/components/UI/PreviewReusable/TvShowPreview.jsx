@@ -5,18 +5,18 @@ const unkownImg = `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyph
 const pathImg250and141 = 'https://www.themoviedb.org/t/p/w250_and_h141_face'
 const pathImg94and141 = 'https://www.themoviedb.org/t/p/w94_and_h141_face'
 const pathImg220and330 = 'https://www.themoviedb.org/t/p/w220_and_h330_face'
-const pathImg500and750 = 'http://image.tmdb.org/t/p/w500'
+const pathImg300and450 = 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2'
 
 /**
-    * size img can be: size250and141, size94and141, size220and330, size500and750(default)
+    * size img can be: size250and141, size94and141, size220and330, size300and450(default)
     */
 
-function TvShowPreview({ tvObj, discriptions = false, sizeImg = 'size500and750' }) {
+function TvShowPreview({ tvObj, discriptions = false, sizeImg = 'size300and450' }) {
 
     const allSize = {
         size250and141: pathImg250and141,
         size94and141: pathImg94and141,
-        size500and750: pathImg500and750,
+        size300and450: pathImg300and450,
         size220and330: pathImg220and330,
     }
 

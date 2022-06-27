@@ -1,14 +1,12 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
 import ReviewPreview from '../PreviewReusable/ReviewPreview'
 
-function ReviewsConteiner() {
-  const reviews = useSelector(state => state.movie.movie.reviews)
+function ReviewsConteiner({reviews}) {
+  const totalCount = reviews.total_results
   const arrReviews = reviews.results
 
   return (
     <section className='reviewsCOnteiner'>
-      <h3>Обсуждения {`(${reviews.total_results})`}</h3>
+      <h3>Reviews {`(${totalCount})`}</h3>
       {arrReviews.map((review, index) => (index < 3) && <ReviewPreview reviewInfo={review} key={review.id} />)}
     </section>
   )

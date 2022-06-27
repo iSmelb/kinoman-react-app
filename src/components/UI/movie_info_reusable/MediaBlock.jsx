@@ -7,9 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { changeKeyForMovie, togglePlayer } from '../../../redux/reducers/playerSlice'
 
-function MediaBlock() {
-    const images = useSelector(state => state.movie.movie.images)
-    const videos = useSelector(state => state.movie.movie.videos.results)
+function MediaBlock({images, videos}) {
     const arrTrailers = videos.filter(video => video.type === 'Trailer')
     const [linkToAllContent, setLinkToAllContent] = useState('')
     const refPlayer = document.querySelector('#player')
@@ -42,7 +40,9 @@ function MediaBlock() {
                         Video {arrTrailers.length}
                     </TabUnstyled>
                 </TabsListUnstyled>
-                <Link className='showAll' to={linkToAllContent}>Show All</Link>
+                <div className='showAll'>
+                    <Link className='showAll_link' to={linkToAllContent}>Show All</Link>
+                </div>
                 <div className='content'>
                     <TabPanelUnstyled className='posters' value={0}>
                         {images.posters.map((poster, index) => (index < 8) &&

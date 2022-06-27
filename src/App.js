@@ -12,7 +12,7 @@ function App() {
       <div className="wrapper">
         <Header />
         <main className="main">
-          <AppRouters />
+          <AppRouters/>
         </main>
         <Footer />
       </div>

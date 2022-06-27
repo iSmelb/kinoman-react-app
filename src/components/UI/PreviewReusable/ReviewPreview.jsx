@@ -27,11 +27,11 @@ function ReviewPreview({ reviewInfo }) {
                 <div className='name_and_date'>
                     <h5>
                         <Link to='#'>
-                            Обзор от {reviewInfo.author}
+                            Review by {reviewInfo.author}
                         </Link>
                     </h5>
                     <span>
-                        написано {reviewInfo.created_at.slice(0, 10)}
+                        written {reviewInfo.created_at.slice(0, 10)}
                     </span>
                 </div>
             </div>
@@ -40,7 +40,7 @@ function ReviewPreview({ reviewInfo }) {
                     ? <p>
                         {shortContent}
                         ...
-                        <Link to={'#'}>читать полностью</Link>
+                        <Link to={'#'}>full review</Link>
                     </p>
                     : <p>
                         {reviewInfo.content}

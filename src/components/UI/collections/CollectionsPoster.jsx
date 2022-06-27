@@ -22,8 +22,8 @@ function CollectionsPoster() {
         }}
         className='collections_poster'
       >
-        <h2>Входит в "{collectionInfo.name}"</h2>
-        <Link to={`/collections/${collectionInfo.id}`}>Смотреть коллекцию</Link>
+        <h2>Part of the "{collectionInfo.name}"</h2>
+        <Link to={`/collections/${collectionInfo.id}`}>View the collection</Link>
       </div>
     </section>
   )

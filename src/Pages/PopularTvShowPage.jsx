@@ -8,11 +8,17 @@ import { getPopularTvShow } from '../redux/reducers/tvShowSlice';
 function PopularTvShowPage() {
     const {populars, isLoading, error} = useSelector(state => state.tvShow)
     const tvShow = populars?.results
-    const dispatch = useDispatch()
     const [page, setPage] = useState(1)
+    const total_pages = populars?.total_pages
+    const dispatch = useDispatch()
 
-    const changePage = () => {
-        setPage(page + 1)
+    const pages = {
+        current_page: page,
+        total_pages: total_pages,
+
+        changePage: () => {
+            setPage(page + 1)
+        }
     }
 
     useEffect(() => {
@@ -25,7 +31,7 @@ function PopularTvShowPage() {
         <>
             {isLoading && <Loader/>}
             {error && <div>{error}</div>}
-            {tvShow && <TvShowPageContent tvShowList={tvShow} changePage={changePage} type='popular'/>}
+            {tvShow && <TvShowPageContent tvShowList={tvShow} pages={pages} type='popular'/>}
         </>
     )
 }

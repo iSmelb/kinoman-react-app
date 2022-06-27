@@ -7,24 +7,14 @@ function CollectionsIdPage() {
     const params = useParams()
     let collectionId = params.id
 
-    const getCollectionForId = async () => {
-        MovieService.getCollectionForId(
-            collectionId,
-            (data) => {
-                const collectionResult = JSON.parse(data)
-                console.log(collectionResult)
-                setCollection(collectionResult)
-
-            },
-            (error) => {
-                const unParseError = JSON.parse(error)
-            }
-        )
+    const getCol = async () => {
+        const response = await MovieService.getCollectionForId(collectionId)
+        setCollection(response.data)
     }
-
+    
     useEffect(() => {
-        getCollectionForId()
-    }, [])
+        getCol()
+    }, [collectionId])
 
 
     return (

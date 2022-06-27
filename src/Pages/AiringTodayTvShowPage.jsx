@@ -8,11 +8,17 @@ import { getAiringTodayTvShow } from '../redux/reducers/tvShowSlice';
 function AiringTodayTvShowPage() {
     const {airingToday, isLoading, error} = useSelector(state => state.tvShow)
     const tvShow = airingToday?.results
-    const dispatch = useDispatch()
     const [page, setPage] = useState(1)
+    const total_pages = airingToday?.total_pages
+    const dispatch = useDispatch()
 
-    const changePage = () => {
-        setPage(page + 1)
+    const pages = {
+        current_page: page,
+        total_pages: total_pages,
+
+        changePage: () => {
+            setPage(page + 1)
+        }
     }
 
     useEffect(() => {
@@ -25,7 +31,7 @@ function AiringTodayTvShowPage() {
         <>
             {isLoading && <Loader/>}
             {error && <div>{error}</div>}
-            {tvShow && <TvShowPageContent tvShowList={tvShow} changePage={changePage} type='airingToday'/>}
+            {tvShow && <TvShowPageContent tvShowList={tvShow} type='airingToday' pages={pages}/>}
         </>
     )
 }

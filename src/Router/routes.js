@@ -11,6 +11,7 @@ import AiringTodayTvShowPage from "../Pages/AiringTodayTvShowPage";
 import OnTheAirTvShowPage from '../Pages/OnTheAirTvShowPage'
 import TopRatedTvShowPage from "../Pages/TopRatedTvShowPage";
 import PopularPeoplePage from "../Pages/PopularPeoplePage";
+import SingleTvShowPage from "../Pages/SingleTvShowPage";
 
 export const routes = [
     {path: '/', component: HomePage},
@@ -23,6 +24,7 @@ export const routes = [
     {path: '/tv/airing-today', component: AiringTodayTvShowPage},
     {path: '/tv/on-the-air', component: OnTheAirTvShowPage},
     {path: '/tv/top-rated', component: TopRatedTvShowPage},
+    {path: '/tv/:id', component: SingleTvShowPage},
     {path: '/people/popular', component: PopularPeoplePage},
     {path: '/collections/:id', component: CollectionsIdPage},
     {path: '/search/:type', component: SearchPage},
