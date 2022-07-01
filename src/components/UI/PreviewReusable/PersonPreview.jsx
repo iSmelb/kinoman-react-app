@@ -26,7 +26,7 @@ function PersonPreview({ personInfo, sizeImg = 'size138and175' }) {
     return (
         <div className='personPreview'>
             <div className='photo'>
-                <Link to='#'>
+                <Link to={`/people/${personInfo.id}`}>
                     {!personInfo.profile_path &&
                         <img src={unkownImg} alt={personInfo.name} />
                     }
@@ -37,7 +37,7 @@ function PersonPreview({ personInfo, sizeImg = 'size138and175' }) {
             </div>
             <div className='name'>
                 <h5>
-                    <Link to="#">
+                    <Link to={`/people/${personInfo.id}`}>
                         {personInfo.name}
                     </Link>
                 </h5>

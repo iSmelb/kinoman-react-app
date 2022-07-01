@@ -7,4 +7,9 @@ export default class PeopleService{
         const response = await axios.get(`https://api.themoviedb.org/3/person/popular?api_key=${this.key}&language=en-US&page=${page}`)
         return response
     }
+
+    static getPersonFromId = async function (personId) {
+        const response = await axios.get(`https://api.themoviedb.org/3/person/${personId}?api_key=${this.key}&language=en-US&append_to_response=combined_credits,external_ids`)
+        return response
+    }
 }

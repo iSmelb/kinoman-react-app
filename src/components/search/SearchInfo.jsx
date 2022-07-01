@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { useUpdateTitle } from '../../hooks/useUpdateTitle';
-import { movieSearch, multiSearch, peopleSearch, tvSearch } from '../../redux/reducers/searchSlice';
+import { clearState, movieSearch, multiSearch, peopleSearch, tvSearch } from '../../redux/reducers/searchSlice';
 import Loader from '../UI/loader/Loader';
 import MoviePreview from '../UI/PreviewReusable/MoviePreview';
 import PersonPreview from '../UI/PreviewReusable/PersonPreview';
@@ -16,8 +16,7 @@ function SearchInfo() {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = Object.fromEntries([...searchParams]) || ''
   const dispatch = useDispatch()
-  const searchState = useSelector(state => state.search)
-  const {searchResult, isLoading} = searchState
+  const { searchResult, isLoading } = useSelector(state => state.search)
   const objToRender = {
     multi: searchResult.multi,
     movies: searchResult.movies,
@@ -46,6 +45,10 @@ function SearchInfo() {
   }
 
   useEffect(() => {
+    return () => {dispatch(clearState())}
+  }, [])
+
+  useEffect(() => {
     // эффект для запросов при смене страницы или типа запроса
     const params = searchQuery
 
@@ -65,9 +68,10 @@ function SearchInfo() {
   useEffect(() => {
     // Проверяем, если ссылка была открыта сразу с параметрами, то делаем запрос по этим параментрам
     // Если ссылка пустая, проверяе прешл ли запрос с поисковой строки, устанавливаем запрос в параметры и отправляется запрос
+
     if ('query' in searchQuery) {
       dispatch(multiSearch(searchQuery))
-    } else if (location.state && 'searchRequest' in location.state) {
+    } else if (location.state?.searchRequest) {
       setSearchParams({ query: location.state.searchRequest, page: location.state.page })
     }
   }, [location.state])
@@ -79,7 +83,7 @@ function SearchInfo() {
       <div className='searchResult'>
         <SearchResultPanel />
         <div className='resultContent'>
-          {isLoading && <Loader/>}
+          {isLoading && <Loader />}
           {(!type && !!objToRender.multi?.results.length) &&
             objToRender.multi.results.map(mediaFile => getCardToRender(mediaFile))
           }

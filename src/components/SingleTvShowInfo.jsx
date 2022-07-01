@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux'
 import CastList from './UI/reusable/CastList'
 import TvShowInfo from './UI/tvShow_info_reusable/TvShowInfo'
 import ReviewsConteiner from './UI/reusable/ReviewsConteiner'
-import MediaBlock from './UI/movie_info_reusable/MediaBlock'
-import RecommendationsBlock from './UI/movie_info_reusable/RecommendationsBlock'
+import MediaBlock from './UI/reusable/MediaBlock'
+import RecommendationsBlock from './UI/reusable/RecommendationsBlock'
 import SeasonSection from './UI/tvShow_info_reusable/SeasonSection'
 
 function SingleTvShowInfo() {

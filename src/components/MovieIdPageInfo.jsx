@@ -2,10 +2,10 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import CollectionsPoster from './UI/collections/CollectionsPoster'
 import CastList from './UI/reusable/CastList'
-import MediaBlock from './UI/movie_info_reusable/MediaBlock'
+import MediaBlock from './UI/reusable/MediaBlock'
 import MovieInfo from './UI/movie_info_reusable/MovieInfo'
 import ReviewsConteiner from './UI/reusable/ReviewsConteiner'
-import RecommendationsBlock from './UI/movie_info_reusable/RecommendationsBlock'
+import RecommendationsBlock from './UI/reusable/RecommendationsBlock'
 
 function MovieIdPageInfo() {
   const cast = useSelector(state => state.movie.movie?.credits.cast)

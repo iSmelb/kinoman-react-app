@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Loader from '../components/UI/loader/Loader';
-import { getTvShowFromId } from '../redux/reducers/singleTvShowSlice';
+import { getTvShowFromId, clearState } from '../redux/reducers/singleTvShowSlice';
 import { useUpdateTitle } from '../hooks/useUpdateTitle';
 import SingleTvShowInfo from '../components/SingleTvShowInfo'
 
@@ -16,6 +16,10 @@ function SingleTvShowPage() {
         dispatch(getTvShowFromId(tvShowId))
         window.scrollTo(0, 0)
     }, [tvShowId])
+
+    useEffect(() => {
+        return () => {dispatch(clearState())}
+    },[])
 
     useUpdateTitle(singleTvShow?.name, [singleTvShow])
 

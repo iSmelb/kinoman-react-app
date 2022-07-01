@@ -1,35 +1,36 @@
-import React, { useEffect } from 'react';
+import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import MovieIdPageInfo from '../components/MovieIdPageInfo';
+import PersonIdPageInfo from '../components/PersonIdPageInfo';
 import Loader from '../components/UI/loader/Loader';
 import { useUpdateTitle } from '../hooks/useUpdateTitle';
-import { getMovieFromId, clearState } from '../redux/reducers/movieSlice';
+import { clearState, getPersonFromId } from '../redux/reducers/personSlice';
 
-function MovieIdPage() {
+
+function PersonIdPage() {
     const params = useParams()
-    let movieId = params.id
+    const personId = params.id
     const dispatch = useDispatch()
-    const { movie, isLoading, error } = useSelector(state => state.movie)
+    const { person, isLoading, error } = useSelector(state => state.person)
 
     useEffect(() => {
-        dispatch(getMovieFromId(movieId))
-        window.scrollTo(0, 0)   
-    }, [movieId])
+        dispatch(getPersonFromId(personId))
+        window.scrollTo(0, 0)
+    }, [personId])
 
     useEffect(() => {
         return () => {dispatch(clearState())}
     },[])
 
-    useUpdateTitle(movie?.title, [movie])
+    useUpdateTitle(person?.name, [person])
 
     return (
         <>
             {isLoading && <div><Loader/></div>}
             {error && <h1>{error}</h1>}
-            {movie && <MovieIdPageInfo/>}
+            {person && <PersonIdPageInfo/>}
         </>
     )
 }
 
-export default MovieIdPage;
+export default PersonIdPage

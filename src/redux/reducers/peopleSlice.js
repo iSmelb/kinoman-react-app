@@ -20,7 +20,7 @@ export const getPopularPeople = createAsyncThunk(
             }
             return responseObj
         } catch(e) {
-            return thunkAPI.rejectWithValue('Не удалось загрузить фильм')
+            return thunkAPI.rejectWithValue('Error during server request')
         }
     }
 )

@@ -91,13 +91,10 @@ const searchSlice = createSlice({
     name: 'search',
     initialState,
     reducers: {
-        clearState(state) {
-            state.searchResult = initialState.searchResult
-        }
+        clearState:() => initialState
     },
     extraReducers: {
         [multiSearch.pending]: (state) => {
-            // state.searchResult = initialState.searchResult
             state.isLoading = true
         },
         [multiSearch.fulfilled]: (state, action) => {

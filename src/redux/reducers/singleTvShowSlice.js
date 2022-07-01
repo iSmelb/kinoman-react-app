@@ -15,7 +15,7 @@ export const getTvShowFromId = createAsyncThunk(
             console.log(response.data)
             return response.data
         } catch(e) {
-            return thunkAPI.rejectWithValue('Не удалось загрузить фильм')
+            return thunkAPI.rejectWithValue('Error during server request')
         }
     }
 )
@@ -23,6 +23,9 @@ export const getTvShowFromId = createAsyncThunk(
 const singleTvShow = createSlice({
     name: 'singleTvShow',
     initialState,
+    reducers: {
+        clearState:() => initialState
+    },
     extraReducers: {
         [getTvShowFromId.pending]: (state) => {
             state.isLoading = true  
@@ -39,5 +42,6 @@ const singleTvShow = createSlice({
     }
 
 })
+export const { clearState } = singleTvShow.actions
 
 export default singleTvShow.reducer

@@ -15,7 +15,7 @@ export const getMovieFromId = createAsyncThunk(
             console.log(response)
             return response.data
         } catch(e) {
-            return thunkAPI.rejectWithValue('Не удалось загрузить фильм')
+            return thunkAPI.rejectWithValue('Error during server request')
         }
     }
 )
@@ -24,7 +24,7 @@ const movieSlice = createSlice({
     name: 'movie',
     initialState,
     reducers: {
-
+        clearState:() => initialState
     },
     extraReducers: {
         [getMovieFromId.pending]: (state) => {
@@ -43,6 +43,6 @@ const movieSlice = createSlice({
 
 })
 
-export const {} = movieSlice.actions
+export const { clearState } = movieSlice.actions
 
 export default movieSlice.reducer
