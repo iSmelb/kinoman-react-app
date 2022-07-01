@@ -1,27 +1,84 @@
 .personId_page_info {
     display: flex;
 
+    @media(max-width: 840px) {
+        display: block;
+    }
+
     .person_info {
         width: 300px;
         flex-shrink: 0;
 
+        @media(max-width: 930px) {
+            width: 225px;
+        }
+
+        @media(max-width: 840px) {
+            width: auto;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        @media(max-width: 600px) {
+            width: auto;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            text-align: center;
+            margin: 0 -20px 0 -20px;
+            background: rgb(0 0 0 / 10%);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
         img {
             display: block;
+            width: 100%;
+            background-color: #454545;
         }
 
         .photo {
-            margin-bottom: 30px;
-            background-color: #454545;
+            margin-bottom: 20px;
             border-radius: 8px;
             overflow: hidden;
+            max-width: 300px;
+
+            span {
+                display: block;
+                text-align: center;
+            }
+
+            @media(max-width: 840px) {
+                max-width: 225px;
+                margin: 0 20px 10px 0;
+            }
+
+            @media(max-width: 600px) {
+                margin: 0 0 10px;
+            }
         }
 
         .social_links {
             display: flex;
             margin-bottom: 20px;
 
+            @media(max-width: 840px) {
+                order: 1;
+                width: 100%;
+            }
+
+            @media(max-width: 600px) {
+                order: 0;
+                margin-bottom: 5px;
+                justify-content: center;
+            }
+
             div {
                 margin-right: 15px;
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
             }
 
             svg {
@@ -37,9 +94,18 @@
     }
 
     .info {
+
+        @media(max-width: 840px) {
+
+            p {
+                margin-bottom: 5px
+            }
+        }
+
         h3 {
             @extend %h3-desktop;
             margin-bottom: 10px;
+            width: 100%;
         }
 
         p {
@@ -53,20 +119,41 @@
         .name_list {
             margin-top: -5px;
             list-style: none;
+
+            @media(max-width: 840px) {
+                display: none;
+            }
         }
     }
     
     .content {
         padding-left: 30px;
+
+        @media(max-width: 840px) {
+            padding-left: 0;
+        }
     }
 
     .biography {
         margin-bottom: 40px;
+        
+        @media(max-width: 840px) {
+            margin-bottom: 20px;
+        }
 
         h1 {
             font-weight: 700;
             font-size: 32px;
             margin-bottom: 30px;
+
+            @media(max-width: 840px) {
+                font-size: 26px;
+                margin-bottom: 10px;
+            }
+
+            @media(max-width: 600px) {
+                text-align: center;
+            }
         }
 
         h3 {
@@ -165,7 +252,9 @@
         }
 
         .title_date {
+            //пофиксить єту проьлему.
             text-align: center;
+            display: none;
 
             a {
                 color: inherit;

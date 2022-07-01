@@ -20,6 +20,7 @@ function PersonInfo({personObj}) {
                     ? <img src={pathToImg + personObj.profile_path} alt="Person poster" />
                     : <img src={unkownImg} alt="Person poster" />
                 }
+                <span>{personObj.name}</span>
             </div>
             <div className='social_links'>
                 {facebook_id && 
