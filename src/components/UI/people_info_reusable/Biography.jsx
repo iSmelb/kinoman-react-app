@@ -12,6 +12,8 @@ function Biography({ personObj }) {
         }
     },[])
 
+    console.log(arrParagraphs)
+
     return (
         <section className='biography'>
             <h1>{personObj.name}</h1>
@@ -23,6 +25,7 @@ function Biography({ personObj }) {
                         Read more
                     </span>
                 </div>
+                {!arrParagraphs[0] && <p>Unfortunately, we have no information about this person</p>}
             </div>
         </section>
     )

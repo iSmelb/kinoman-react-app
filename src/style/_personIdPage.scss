@@ -7,11 +7,13 @@
 
         img {
             display: block;
-            border-radius: 8px;
         }
 
         .photo {
             margin-bottom: 30px;
+            background-color: #454545;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
         .social_links {
@@ -181,6 +183,10 @@
 }
 
 .credits_full_list {
+
+    .MuiFormControl-root {
+        margin-bottom: 15px;
+    }
     
     h4 {
         font-size: 24px;

@@ -1,4 +1,5 @@
-import React from 'react'
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function CreditsFullList({ credits }) {
@@ -6,7 +7,8 @@ function CreditsFullList({ credits }) {
     const arrListCrew = Object.entries(objListCrew)
     const arrListCrewSorted = arrListCrew.map(outsideArr => [outsideArr[0], [...outsideArr[1]].sort((a, b) => sortByRealese(a, b))])
     const arrListActingSorted = [['Acting', [...credits.cast].sort((a, b) => sortByRealese(a, b))]]
-    const arrToRender = [...arrListCrewSorted, ...arrListActingSorted].sort((a,b) => a[1].length > b[1].length ? -1 : 1)
+    const arrToRender = [...arrListCrewSorted, ...arrListActingSorted].sort((a, b) => a[1].length > b[1].length ? -1 : 1)
+    const [filterRender, setFilterRender] = useState('All')
 
     function filterJobs(crew) {
         const obj = {}
@@ -35,11 +37,11 @@ function CreditsFullList({ credits }) {
     }
     const renderCell = (elem) => {
         if (elem.media_type === 'tv') {
-            return <div key={elem.id} className='cellElem'>
+            return <div key={elem.id + Math.random()} className='cellElem'>
                 <div className='year'>
                     {elem.first_air_date ? elem.first_air_date.slice(0, 4) : '-'}
                 </div>
-                {('character' in elem)  &&
+                {('character' in elem) &&
                     <div className='title'>
                         <p>
                             <Link to={`/tv/${elem.id}`}>{elem.original_name}</Link> ({elem.episode_count} episodes) as {elem.character || '-'}
@@ -55,7 +57,7 @@ function CreditsFullList({ credits }) {
                 }
             </div>
         }
-        return <div key={elem.id} className='cellElem'>
+        return <div key={elem.id + Math.random()} className='cellElem'>
             <div className='year'>
                 {elem.release_date ? elem.release_date.slice(0, 4) : '-'}
             </div>
@@ -76,18 +78,42 @@ function CreditsFullList({ credits }) {
         </div>
     }
 
-    console.log(arrToRender)
-
     return (
         <section className='credits_full_list'>
-            {arrToRender && arrToRender.map(e =>
-                <div key={e[0]} className={'list_' + e[0]}>
-                    <h4>{e[0]}</h4>
-                    <div className='list_cells'>
-                        {e[1].map(elem => renderCell(elem))}
-                    </div>
-                </div>
-            )}
+            <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Departament</InputLabel>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={filterRender}
+                    label="Departament"
+                    onChange={e => setFilterRender(e.target.value)}
+                >
+                    <MenuItem value='All'>All</MenuItem>
+                    {arrToRender.map(e => 
+                        <MenuItem key={e[0]} value={e[0]}>
+                            {e[0]}({e[1].length})
+                        </MenuItem>)
+                    }
+                </Select>
+            </FormControl>
+            {arrToRender && arrToRender.map(e => {
+                if (filterRender === 'All') {
+                    return <div key={e[0]} className={'list_' + e[0]}>
+                                <h4>{e[0]}</h4>
+                                <div className='list_cells'>
+                                    {e[1].map(elem => renderCell(elem))}
+                                </div>
+                            </div>
+                } else if (e[0] === filterRender) {
+                    return <div key={e[0]} className={'list_' + e[0]}>
+                                <h4>{e[0]}</h4>
+                                <div className='list_cells'>
+                                    {e[1].map(elem => renderCell(elem))}
+                                </div>
+                            </div>
+                }   
+            })}
         </section>
     )
 }
