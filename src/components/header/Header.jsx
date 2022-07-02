@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useLayoutEffect, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SearchPanel from '../search/SearchPanel';
 import CustomMenuItem from './CustomMenuItem';
@@ -6,16 +6,37 @@ import { movieLinks, peopleLinks, tvShowLinks } from './headerLinks';
 
 function Header() {
     const [burgerMenu, setBurgerMenu] = useState(false)
+    const headerRef = useRef(null)
+    const [hideHeader, setHideHeader] = useState(false)
+    const lastScroll = useRef(0)
 
     const swichBurger = () => {
         setBurgerMenu(prev => !prev)
         document.body.classList.toggle('stop-scrolling')
     }
 
-    //Нужно решить проблему с кей, когда заполню все ссылки 
+    useEffect(() => {
+        const defaultOffset = headerRef.current?.offsetHeight
+
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY
+
+            if(currentScrollY > lastScroll.current && !hideHeader && currentScrollY > defaultOffset) {
+                setHideHeader(true)
+            } else if(currentScrollY < lastScroll.current && hideHeader) {
+                setHideHeader(false)
+            }
+
+            lastScroll.current = currentScrollY
+        }
+
+        window.addEventListener('scroll', handleScroll)
+        
+        return () => window.removeEventListener('scroll', handleScroll)
+    },[hideHeader])
 
     return (
-        <header className='header'>
+        <header ref={headerRef} className={`header ${!hideHeader ? '' : 'hide'}`}>
             <div className='header_flex conteiner'>
                 <div className='block_for_logo'>
                     <Link to='/'>
