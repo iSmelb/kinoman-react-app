@@ -1,48 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import MovieService from '../API/MovieService'
+import CollectionPageInfo from '../components/CollectionPageInfo'
+import Loader from '../components/UI/loader/Loader'
+import { clearState, getCollectionForId } from '../redux/reducers/collectionSlice'
 
 function CollectionsIdPage() {
-    const [collection, setCollection] = useState('')
     const params = useParams()
-    let collectionId = params.id
-
-    const getCol = async () => {
-        const response = await MovieService.getCollectionForId(collectionId)
-        setCollection(response.data)
-    }
+    const collectionId = params.id
+    const {error, isLoading, collectionInfo} = useSelector(state => state.collection)
+    const dispatch = useDispatch()
     
     useEffect(() => {
-        getCol()
+        dispatch(getCollectionForId(collectionId))
+        window.scrollTo(0, 0)
     }, [collectionId])
 
+    useEffect(() => {
+        return () => dispatch(clearState())
+    },[])
 
     return (
         <>
-            {collection &&
-                <div
-                    style={{
-                        background: `linear-gradient( to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ), url('http://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${collection.backdrop_path}')`,
-                        backgroundSize: 'cover'
-                    }}
-                    className='collection_info_bg'
-                >
-                    <div className='collection_info conteiner'>
-                        <img src={"http://image.tmdb.org/t/p/w500" + collection.poster_path} alt={collection.name} />
-                        <div className='info'>
-                            <h1 className='title'>
-                                <a target='_blank' href={"https://www.themoviedb.org/collection/" + collection.id}>
-                                    {collection.name}
-                                </a>
-                            </h1>
-                            {collection.overview &&
-                                <div className='discriptions'>
-                                    <h4>Обзор</h4>
-                                    <p>{collection.overview}</p>
-                                </div>}
-                        </div>
-                    </div>
-                </div>}
+            {isLoading && <Loader/>}
+            {error && <div>{error}</div>}
+            {collectionInfo && <CollectionPageInfo/>}
         </>
     )
 }

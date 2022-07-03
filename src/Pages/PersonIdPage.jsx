@@ -19,7 +19,7 @@ function PersonIdPage() {
     }, [personId])
 
     useEffect(() => {
-        return () => {dispatch(clearState())}
+        return () => dispatch(clearState())
     },[])
 
     useUpdateTitle(person?.name, [person])

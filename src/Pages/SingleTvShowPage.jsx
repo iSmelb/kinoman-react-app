@@ -18,7 +18,7 @@ function SingleTvShowPage() {
     }, [tvShowId])
 
     useEffect(() => {
-        return () => {dispatch(clearState())}
+        return () => dispatch(clearState())
     },[])
 
     useUpdateTitle(singleTvShow?.name, [singleTvShow])

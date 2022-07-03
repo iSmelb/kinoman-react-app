@@ -18,7 +18,7 @@ function MovieIdPage() {
     }, [movieId])
 
     useEffect(() => {
-        return () => {dispatch(clearState())}
+        return () => dispatch(clearState())
     },[])
 
     useUpdateTitle(movie?.title, [movie])

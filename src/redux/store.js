@@ -7,6 +7,7 @@ import tvShowReducer from './reducers/tvShowSlice'
 import peopleReducer from './reducers/peopleSlice'
 import singleTvShowReducer from './reducers/singleTvShowSlice'
 import personReducer from './reducers/personSlice'
+import collectionReducer from './reducers/collectionSlice'
 
 export default configureStore({
     reducer: {
@@ -17,7 +18,8 @@ export default configureStore({
         tvShow: tvShowReducer,
         people: peopleReducer,
         singleTvShow: singleTvShowReducer,
-        person: personReducer
+        person: personReducer,
+        collection: collectionReducer
     }
 })
 
