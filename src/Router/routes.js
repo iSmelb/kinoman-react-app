@@ -14,6 +14,7 @@ import PopularPeoplePage from "../Pages/PopularPeoplePage";
 import SingleTvShowPage from "../Pages/SingleTvShowPage";
 import PersonIdPage from "../Pages/PersonIdPage"
 import NotFoundPage from "../Pages/NotFoundPage";
+import CastPage from "../Pages/CastPage"
 
 export const routes = [
     // {path: '/', component: HomePage},
@@ -22,11 +23,13 @@ export const routes = [
     {path: '/movies/up-coming', component: UpComingMoviesPage},
     {path: '/movies/top-rated', component: TopRatedMoviesPage},
     {path: '/movies/:id', component: MovieIdPage},
+    {path: '/movies/:id/cast', component: CastPage},
     {path: '/tv/popular', component: PopularTvShowPage},
     {path: '/tv/airing-today', component: AiringTodayTvShowPage},
     {path: '/tv/on-the-air', component: OnTheAirTvShowPage},
     {path: '/tv/top-rated', component: TopRatedTvShowPage},
     {path: '/tv/:id', component: SingleTvShowPage},
+    {path: '/tv/:id/cast', component: CastPage},
     {path: '/people/popular', component: PopularPeoplePage},
     {path: '/people/:id', component: PersonIdPage},
     {path: '/collections/:id', component: CollectionsIdPage},

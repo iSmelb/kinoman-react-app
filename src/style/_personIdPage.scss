@@ -128,6 +128,7 @@
     
     .content {
         padding-left: 30px;
+        width: 100%;
 
         @media(max-width: 840px) {
             padding-left: 0;
@@ -255,7 +256,7 @@
         .title_date {
             //пофиксить єту проьлему.
             text-align: center;
-            //display: none;
+            display: none;
 
             a {
                 color: inherit;

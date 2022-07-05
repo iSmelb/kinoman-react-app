@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { errorLoad, pending, } from "../stateHandler";
 import MovieService from "../../API/MovieService";
 
 const initialState = {
@@ -28,7 +29,7 @@ const movieSlice = createSlice({
     },
     extraReducers: {
         [getMovieFromId.pending]: (state) => {
-            state.isLoading = true  
+            pending(state) 
         },
         [getMovieFromId.fulfilled]: (state, action) => {
             state.movie = action.payload;
@@ -36,9 +37,8 @@ const movieSlice = createSlice({
             state.isLoading = false
         },
         [getMovieFromId.rejected]: (state, action) => {
-            state.error = action.payload
-            state.isLoading = false
-        }
+            errorLoad(state, action)
+        },
     }
 
 })

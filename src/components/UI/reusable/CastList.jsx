@@ -18,7 +18,7 @@ function CastList({ cast }) {
   return (
     <section className='cast'>
       {!!cast.length && 
-        <Link to="#" className='showAll'>Full Cast and Crew<span /></Link>
+        <Link to="cast" className='showAll'>Full Cast and Crew<span /></Link>
       }
       <h3>Cast</h3>
       {!!cast.length

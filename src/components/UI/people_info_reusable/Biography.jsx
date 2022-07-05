@@ -12,8 +12,6 @@ function Biography({ personObj }) {
         }
     },[])
 
-    console.log(arrParagraphs)
-
     return (
         <section className='biography'>
             <h1>{personObj.name}</h1>

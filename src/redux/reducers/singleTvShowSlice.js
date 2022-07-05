@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { errorLoad, pending, } from "../stateHandler";
 import TvShowService from "../../API/TvShowService";
 
 const initialState = {
@@ -8,7 +9,7 @@ const initialState = {
 }
 
 export const getTvShowFromId = createAsyncThunk(
-    'movie/getTvShowFromId',
+    'singleTvShow/getTvShowFromId',
     async function(tvShowId, thunkAPI) {
         try {
             const response = await TvShowService.getTvShowFromId(tvShowId)
@@ -28,7 +29,7 @@ const singleTvShow = createSlice({
     },
     extraReducers: {
         [getTvShowFromId.pending]: (state) => {
-            state.isLoading = true  
+            pending(state)  
         },
         [getTvShowFromId.fulfilled]: (state, action) => {
             state.singleTvShow = action.payload;
@@ -36,9 +37,8 @@ const singleTvShow = createSlice({
             state.isLoading = false
         },
         [getTvShowFromId.rejected]: (state, action) => {
-            state.error = action.payload
-            state.isLoading = false
-        }
+            errorLoad(state, action)
+        },
     }
 
 })

@@ -49,7 +49,7 @@ function PersonInfo({personObj}) {
                 <h3>Personal Info</h3>
                 <p>
                     <strong>Known For</strong>
-                    {personObj.known_for_department}
+                    {personObj.known_for_department ? personObj.known_for_department : '-'}
                 </p>
                 <p>
                     <strong>Known Credits</strong>
@@ -57,11 +57,13 @@ function PersonInfo({personObj}) {
                 </p>
                 <p>
                     <strong>Gender</strong>
-                    {personObj.gender === 1 ? 'Female' : 'Male'}
+                    {personObj.gender === 1 && 'Female'}
+                    {personObj.gender === 2 && 'Male'}
+                    {!personObj.gender && '-'}
                 </p>
                 <p>
                     <strong>Birthday</strong>
-                    {personObj.birthday}
+                    {personObj.birthday ? personObj.birthday : '-'}
                 </p>
                 {personObj.deathday && 
                     <p>
@@ -71,11 +73,11 @@ function PersonInfo({personObj}) {
                 }
                 <p>
                     <strong>Place of Birth</strong>
-                    {personObj.place_of_birth}
+                    {personObj.place_of_birth ? personObj.place_of_birth : '-'}
                 </p>
                 <p>
                     <strong>Also Known As</strong>
-                    {personObj.also_known_as[0]}
+                    {!!personObj.also_known_as.length ? personObj.also_known_as[0] : '-'}
                 </p>
                 <ul className='name_list'>
                     {personObj.also_known_as.map((namePeson, index) => (index > 0) && 

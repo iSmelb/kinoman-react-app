@@ -27,4 +27,9 @@ export default class TvShowService {
         const response = await axios.get(`https://api.themoviedb.org/3/tv/${tvShowId}?api_key=${this.key}&append_to_response=credits,reviews,images,videos,recommendations,aggregate_credits`)
         return response
     }
+
+    static getCreditsForShow = async function (tvShowId) {
+        const response = await axios.get(`https://api.themoviedb.org/3/tv/${tvShowId}/aggregate_credits?api_key=${this.key}&language=en-US`)
+        return response
+    }
 }

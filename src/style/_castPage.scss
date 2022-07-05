@@ -1,0 +1,61 @@
+.cast_crew_list {
+    display: flex;
+
+    @media(max-width: 600px) {
+        display: block;
+    }
+
+    .cast_list,
+    .crew_list {
+        width: 50%;
+
+        @media(max-width: 600px) {
+            width: 100%;
+        }
+
+        h2 {
+            font-weight: 700;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .personPreview {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+
+        p {
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+
+            &:hover {
+                opacity: 0.85;
+            }
+        }
+
+        h5 {
+            font-weight: 700;
+        }
+
+        img {
+            height: 66px;
+            width: 66px;
+            display: block;
+            background: #454545;;
+        }
+
+        .photo {
+            border-radius: 5px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .name {
+            margin: 5px 20px;
+        }
+    }
+}
