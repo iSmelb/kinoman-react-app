@@ -17,7 +17,7 @@ function ReviewPreview({ reviewInfo }) {
         <div className='reviewPreview'>
             <div className='info'>
                 <div className='photo'>
-                    <Link to='#'>
+                    <Link to='review'>
                         {!reviewInfo.author_details.avatar_path
                             ? reviewInfo.author.slice(0, 1).toUpperCase()
                             : <img src={pathToPhoto} alt={'sdc'} />

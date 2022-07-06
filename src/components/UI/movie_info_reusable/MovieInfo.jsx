@@ -7,9 +7,9 @@ const unkownImg = `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyph
 
 function MovieInfo() {
     const {movie} = useSelector(state => state.movie)
-    let runtime = runtimeMovie(movie.runtime)
-    let budget = spaceForNumber(movie.budget)
-    let revenue = spaceForNumber(movie.revenue)
+    const runtime = runtimeMovie(movie.runtime)
+    const budget = spaceForNumber(movie.budget)
+    const revenue = spaceForNumber(movie.revenue)
 
     return (
         <section 
@@ -41,7 +41,9 @@ function MovieInfo() {
                         </span>
                     </div>
                     <div className='date_genres'>
-                        <time dateTime={movie.release_date}>Release date: {movie.release_date}</time>
+                        {movie.release_date && 
+                            <time dateTime={movie.release_date}>Release date: {movie.release_date}</time>
+                        }
                         <ul className='list_genres'>
                             <li>Genres:</li>
                             {movie.genres.map((genr, index) =>
@@ -50,11 +52,11 @@ function MovieInfo() {
                                 </li>)
                             }
                         </ul>
-                        <span>Duration: {runtime.hours}h {runtime.minutes}m</span>
+                        {!!movie.runtime && <span>Duration: {runtime.hours}h {runtime.minutes}m</span>}
                     </div>
                     <div className='budget'>
-                        <p>Budget: {budget} $</p>
-                        <p>Revenue: {revenue} $</p>
+                        {budget && <p>Budget: {budget} $</p>}
+                        {revenue && <p>Revenue: {revenue} $</p>}
                     </div>
                 </div>
                 <div className='discriptions'>

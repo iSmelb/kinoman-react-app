@@ -1,5 +1,3 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useEffect, useRef } from 'react/cjs/react.development'
 import PersonPreview from '../PreviewReusable/PersonPreview'
@@ -8,6 +6,7 @@ import PersonPreview from '../PreviewReusable/PersonPreview'
 function CastList({ cast }) {
   const personToShow = 9
   const castList = useRef(null)
+  
 
   useEffect(() => {
     if(castList.current) {

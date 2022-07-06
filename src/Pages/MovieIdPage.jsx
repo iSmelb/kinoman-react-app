@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import MovieIdPageInfo from '../components/MovieIdPageInfo';
 import Loader from '../components/UI/loader/Loader';
 import { useUpdateTitle } from '../hooks/useUpdateTitle';
-import { getMovieFromId, clearState } from '../redux/reducers/movieSlice';
+import { clearState, getMovieFromId } from '../redux/reducers/movieSlice';
 
 function MovieIdPage() {
     const params = useParams()
-    let movieId = params.id
+    const movieId = params.id
     const dispatch = useDispatch()
     const { movie, isLoading, error } = useSelector(state => state.movie)
 

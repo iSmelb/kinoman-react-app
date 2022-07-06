@@ -20,17 +20,17 @@ function MainBanner() {
 
     return (
         <div className='banner_bg_home_page' style={bgPath 
-            ? {
+            && {
             backgroundImage: `linear-gradient( to right, rgba(6, 17, 26, 0.8) 0%, rgba(6, 17, 26, 0.8) 100%), url('http://image.tmdb.org/t/p/w1920_and_h800_multi_faces${bgPath}')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
             } 
-            : {
-                backgroundImage: `linear-gradient( to right, rgba(6, 17, 26, 0.8) 0%, rgba(6, 17, 26, 0.8) 100%), url('${defaultPoster}')`,
-                backgroundSize: 'contain',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat'
-            }
+            // : {
+            //     backgroundImage: `linear-gradient( to right, rgba(6, 17, 26, 0.8) 0%, rgba(6, 17, 26, 0.8) 100%), url('${defaultPoster}')`,
+            //     backgroundSize: 'contain',
+            //     backgroundPosition: 'center',
+            //     backgroundRepeat: 'no-repeat'
+            // }
         }>
             <div className='banner_home_page conteiner'>
                 <h1>
