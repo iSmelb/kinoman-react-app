@@ -1,3 +1,5 @@
+# You can look at screenshots of the application in the screenshots folder if you don't want to run it.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
