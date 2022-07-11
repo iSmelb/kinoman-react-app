@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function NotFoundPage() {
+
   return (
-    <div className='conteiner' style={{textAlign: 'center'}}>We are sorry, page not found or not made</div>
+    <div className='conteiner' style={{ textAlign: 'center' }}>
+      We are sorry, page not found or not made
+    </div>
   )
 }
 

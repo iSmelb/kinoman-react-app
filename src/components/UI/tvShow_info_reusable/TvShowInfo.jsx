@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-const unkownImg = `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg`
+const unknownImg = `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg`
 
 function TvShowInfo() {
     const { singleTvShow } = useSelector(state => state.singleTvShow)
@@ -19,7 +19,7 @@ function TvShowInfo() {
             <div className='tvShow_info conteiner'>
                 <div className='mainPoster'>
                     {singleTvShow.poster_path && <img src={'https://www.themoviedb.org/t/p/w300_and_h450_bestv2' + singleTvShow.poster_path} alt={'poster' + singleTvShow.name} />}
-                    {!singleTvShow.poster_path && <img src={unkownImg} alt={singleTvShow.name} />}
+                    {!singleTvShow.poster_path && <img src={unknownImg} alt={singleTvShow.name} />}
                 </div>
                 <div className='info'>
                     <h1 className='title'>

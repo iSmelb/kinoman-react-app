@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const unkownImg = 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg'
+const unknownImg = 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg'
 const pathImg66and66 = 'https://www.themoviedb.org/t/p/w66_and_h66_face'
 const pathImg90and90 = 'https://www.themoviedb.org/t/p/w90_and_h90_face'
 const pathImg138and175 = 'https://www.themoviedb.org/t/p/w138_and_h175_face/'
@@ -30,7 +30,7 @@ function PersonPreview({ personInfo, sizeImg = 'size138and175' }) {
             <div className='photo'>
                 <Link to={`/people/${personInfo.id}`}>
                     {!personInfo.profile_path &&
-                        <img src={unkownImg} alt={personInfo.name} />
+                        <img src={unknownImg} alt={personInfo.name} />
                     }
                     {(personInfo.profile_path && sizeImg) &&
                         <img loading='lazy' src={allSize[sizeImg] + personInfo.profile_path} alt={personInfo.name} />

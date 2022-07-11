@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const unkownImg = `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg`
+const unknownImg = `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg`
 const pathImg250and141 = 'https://www.themoviedb.org/t/p/w250_and_h141_face'
 const pathImg220and330 = 'https://www.themoviedb.org/t/p/w220_and_h330_face'
 const pathImg94and141 = 'https://www.themoviedb.org/t/p/w94_and_h141_face'
@@ -26,10 +26,10 @@ function MoviePreview({ movie, discriptions = false, sizeImg = 'size500and750' }
       <div className='poster'>
         <Link to={`/movies/${movie.id}`}>
           {!movie.poster_path &&
-            <img src={unkownImg} alt={movie.original_name + " Poster"} />
+            <img src={unknownImg} alt={movie.original_name + " Poster"} />
           }
           {(movie.poster_path && sizeImg) &&
-            <img src={allSize[sizeImg] + movie.poster_path} alt={movie.title + " Poster"} />
+            <img loading='lazy' src={allSize[sizeImg] + movie.poster_path} alt={movie.title + " Poster"} />
           }
         </Link>
       </div>

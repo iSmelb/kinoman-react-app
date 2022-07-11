@@ -25,7 +25,7 @@ const singleTvShow = createSlice({
     name: 'singleTvShow',
     initialState,
     reducers: {
-        clearState:() => initialState
+        clearState:() => initialState,
     },
     extraReducers: {
         [getTvShowFromId.pending]: (state) => {

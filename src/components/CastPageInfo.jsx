@@ -1,28 +1,16 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
-import filterDepartaments from '../utils/filterDepartaments'
 import PersonPreview from '../components/UI/PreviewReusable/PersonPreview'
-import { Link, useLocation } from 'react-router-dom'
-import MoviePreview from './UI/PreviewReusable/MoviePreview'
-import TvShowPreview from './UI/PreviewReusable/TvShowPreview'
+import filterDepartaments from '../utils/filterDepartaments'
+import CastAndCrewBanner from './UI/reusable/CastAndCrewBanner'
 
 function CastPageInfo({mediaFile, credits}) {
     const {cast, crew} = credits
-    const uniqueListCrew = filterDepartaments(crew)
-    const arrListCrew = Object.entries(uniqueListCrew).sort((a,b) => a[0] > b[0] ? 1 : -1)
-    const {pathname} = useLocation()
-    const isMovie = pathname.search(/movies/) === -1 ? false : true
+    const departamentsList = filterDepartaments(crew)
+    const arrListCrew = Object.entries(departamentsList).sort((a,b) => a[0] > b[0] ? 1 : -1)
     
     return (
         <>
-            <div className='cast_crew_banner'>
-                <div className='goBack conteiner'>
-                    {isMovie 
-                        ? <MoviePreview movie={mediaFile} sizeImg = 'size58and87'/>
-                        : <TvShowPreview tvObj={mediaFile} sizeImg = 'size58and87'/>
-                    }
-                </div>
-            </div>
+            <CastAndCrewBanner mediaFile={mediaFile}/>
             <div className='cast_crew_list conteiner'>
                 <div className='cast_list'>
                     <h2>Cast <span>{cast.length}</span></h2>
