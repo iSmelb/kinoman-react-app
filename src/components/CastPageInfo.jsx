@@ -1,7 +1,7 @@
 import React from 'react'
 import PersonPreview from '../components/UI/PreviewReusable/PersonPreview'
 import filterDepartaments from '../utils/filterDepartaments'
-import CastAndCrewBanner from './UI/reusable/CastAndCrewBanner'
+import MiniMediaBanner from './UI/reusable/MiniMediaBanner'
 
 function CastPageInfo({mediaFile, credits}) {
     const {cast, crew} = credits
@@ -10,7 +10,7 @@ function CastPageInfo({mediaFile, credits}) {
     
     return (
         <>
-            <CastAndCrewBanner mediaFile={mediaFile}/>
+            <MiniMediaBanner mediaFile={mediaFile}/>
             <div className='cast_crew_list conteiner'>
                 <div className='cast_list'>
                     <h2>Cast <span>{cast.length}</span></h2>

@@ -23,7 +23,7 @@ function TvShowInfo() {
                 </div>
                 <div className='info'>
                     <h1 className='title'>
-                        <a target='_blank' href={"https://www.themoviedb.org/tv/" + singleTvShow.id}>
+                        <a target='_blank' rel="noreferrer" href={"https://www.themoviedb.org/tv/" + singleTvShow.id}>
                             {singleTvShow.name}
                         </a>
                     </h1>

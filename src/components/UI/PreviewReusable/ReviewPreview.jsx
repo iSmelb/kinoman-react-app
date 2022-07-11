@@ -12,7 +12,6 @@ function ReviewPreview({ reviewInfo }) {
         shortContent = cutText(reviewInfo.content, maxSymbols)
     }
 
-
     return (
         <div className='reviewPreview'>
             <div className='info'>

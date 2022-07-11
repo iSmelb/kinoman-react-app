@@ -14,7 +14,7 @@ function SeasonSection({tvShowObj}) {
                 </h3>
                 <span className='status'>(Status: {tvShowObj.status})</span>
             </div>
-            <SeasonPreview tvShowObj={lastSeason}/>
+            <SeasonPreview seasonObj={lastSeason}/>
         </section>
     )
 }
