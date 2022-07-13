@@ -4,6 +4,7 @@ import TvShowService from "../../API/TvShowService";
 
 const initialState = {
     singleTvShow: null,
+    season: null,
     isLoading: false,
     error: '',
 }
@@ -13,6 +14,20 @@ export const getTvShowFromId = createAsyncThunk(
     async function(tvShowId, thunkAPI) {
         try {
             const response = await TvShowService.getTvShowFromId(tvShowId)
+            console.log(response.data)
+            return response.data
+        } catch(e) {
+            return thunkAPI.rejectWithValue('Error during server request')
+        }
+    }
+)
+
+export const getSeasonDetails = createAsyncThunk(
+    'singleTvShow/getSeasonDetails',
+    async function(queryParams, thunkAPI) {
+        try {
+            const {id, number} = queryParams
+            const response = await TvShowService.getSeasonDetails(id, number)
             console.log(response.data)
             return response.data
         } catch(e) {
@@ -37,6 +52,18 @@ const singleTvShow = createSlice({
             state.isLoading = false
         },
         [getTvShowFromId.rejected]: (state, action) => {
+            errorLoad(state, action)
+        },
+
+        [getSeasonDetails.pending]: (state) => {
+            pending(state)  
+        },
+        [getSeasonDetails.fulfilled]: (state, action) => {
+            state.season = action.payload;
+            state.error = ''
+            state.isLoading = false
+        },
+        [getSeasonDetails.rejected]: (state, action) => {
             errorLoad(state, action)
         },
     }

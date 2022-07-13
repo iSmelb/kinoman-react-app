@@ -96,7 +96,7 @@ function SearchInfo() {
         </div>
       </div>
       <div className='paginatePages'>
-        {location.pathname !== '/search' &&
+        {(location.pathname !== '/search' && pages.totalPages > 1) &&
           <Pagination
             count={pages.totalPages}
             page={pages.currentPage || 1}

@@ -15,6 +15,10 @@
         &:last-of-type {
             border-color: transparent;
         }
+
+        &:only-of-type {
+            border-color: $colorBordef;
+        }
     }
 
     .poster {

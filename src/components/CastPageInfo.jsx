@@ -9,7 +9,7 @@ function CastPageInfo({mediaFile, credits}) {
     const arrListCrew = Object.entries(departamentsList).sort((a,b) => a[0] > b[0] ? 1 : -1)
     
     return (
-        <>
+        <div className='castPageInfo'>
             <MiniMediaBanner mediaFile={mediaFile}/>
             <div className='cast_crew_list conteiner'>
                 <div className='cast_list'>
@@ -25,7 +25,7 @@ function CastPageInfo({mediaFile, credits}) {
                     }
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

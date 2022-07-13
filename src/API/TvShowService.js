@@ -32,4 +32,9 @@ export default class TvShowService {
         const response = await axios.get(`https://api.themoviedb.org/3/tv/${tvShowId}/aggregate_credits?api_key=${this.key}&language=en-US`)
         return response
     }
+
+    static getSeasonDetails = async function(tvShowId, numberSeason = 1) {
+        const response = await axios.get(`https://api.themoviedb.org/3/tv/${tvShowId}/season/${numberSeason}?api_key=${this.key}&language=en-US`)
+        return response
+    }
 }

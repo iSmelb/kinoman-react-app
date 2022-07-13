@@ -16,6 +16,7 @@ import PersonIdPage from "../Pages/PersonIdPage"
 import NotFoundPage from "../Pages/NotFoundPage";
 import CastPage from "../Pages/CastPage"
 import SeasonsPage from "../Pages/SeasonsPage"
+import SeasonPage from "../Pages/SeasonPage";
 
 export const routes = [
     // {path: '/', component: HomePage},
@@ -32,6 +33,7 @@ export const routes = [
     {path: '/tv/:id', component: SingleTvShowPage},
     {path: '/tv/:id/cast', component: CastPage},
     {path: '/tv/:id/seasons', component: SeasonsPage},
+    {path: '/tv/:id/seasons/:number', component: SeasonPage},
     {path: '/people/popular', component: PopularPeoplePage},
     {path: '/people/:id', component: PersonIdPage},
     {path: '/collections/:id', component: CollectionsIdPage},

@@ -1,8 +1,10 @@
-.cast_crew_list {
-    display: flex;
-
-    @media(max-width: 600px) {
-        display: block;
+.castPageInfo {
+    .cast_crew_list {
+        display: flex;
+    
+        @media(max-width: 600px) {
+            display: block;
+        }
     }
 
     .cast_list,

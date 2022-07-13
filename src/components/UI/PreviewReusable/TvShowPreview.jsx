@@ -26,11 +26,9 @@ function TvShowPreview({ tvObj, discriptions = false, sizeImg = 'size300and450' 
         <div className='tvPreview'>
             <div className='poster'>
                 <Link to={`/tv/${tvObj.id}`}>
-                    {!tvObj.poster_path &&
-                        <img src={unknownImg} alt={tvObj.original_name + " Poster"} />
-                    }
-                    {(tvObj.poster_path && sizeImg) &&
-                        <img loading='lazy' src={allSize[sizeImg] + tvObj.poster_path} alt={tvObj.name + " Poster"} />
+                    {!tvObj.poster_path 
+                        ? <img src={unknownImg} alt={tvObj.name + " Poster"} />
+                        : <img loading='lazy' src={allSize[sizeImg] + tvObj.poster_path} alt={tvObj.name + " Poster"} />
                     }
                 </Link>
             </div>
@@ -38,10 +36,22 @@ function TvShowPreview({ tvObj, discriptions = false, sizeImg = 'size300and450' 
                 <Link to={`/tv/${tvObj.id}`} title={tvObj.name}>
                     {tvObj.name}
                 </Link>
-                <time dateTime={tvObj.first_air_date}>
-                    <span>First show in: </span>
-                    {tvObj.first_air_date}
-                </time>
+                {tvObj.first_air_date &&
+                    <time dateTime={tvObj.first_air_date}>
+                        <span>First show in: </span>
+                        {tvObj.first_air_date}
+                    </time>
+                }
+                {tvObj.air_date &&
+                    <time dateTime={tvObj.air_date}>
+                        ({tvObj.air_date.slice(0,4)})
+                    </time>
+                }
+                {'season_number' in tvObj && 
+                    <div className='back_to_seasons'>
+                        <Link to={`/tv/${tvObj.tvId}/seasons`}>&#10510; Back to season list</Link>
+                    </div>
+                }
                 {discriptions && <p>{tvObj.overview}</p>}
             </div>
         </div>

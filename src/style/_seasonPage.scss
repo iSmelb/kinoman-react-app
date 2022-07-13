@@ -1,0 +1,137 @@
+.mini_media_banner.season_page {
+    margin-bottom: 10px;
+    .title_date {
+        >a {
+            display: inline-block;
+            pointer-events: none;
+        }
+
+        time {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 24px;
+        }
+    }
+
+    .back_to_seasons {
+        a {
+            display: inline-block;
+            opacity: 0.9;
+            font-size: 14px;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+.seasonPageInfo {
+    .season_pagination {
+        display: flex;
+        justify-content: space-between;
+
+        a {
+            color: inherit;
+            font-weight: 700;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            &.hide {
+                display: none;
+            }
+            
+            &.next {
+                margin-left: auto;
+            }
+        }
+    }
+}
+
+.episodes_list {
+    padding-top: 10px;
+    h2 {
+        font-weight: 700;
+        font-size: 20px;
+        margin-bottom: 15px;
+
+        span {
+            font-weight: 400;
+        }
+    }
+
+    .episodePreview {
+        display: flex;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgb(227, 227, 227);
+        @extend %main-box-shadow;
+
+        @media(max-width: 600px) {
+            display: block;
+        }
+
+        .poster {
+            flex-shrink: 0;
+            width: 227px;
+            height: 127px;
+
+            @media(max-width: 600px) {
+                margin: 0 auto;
+                max-width: 600px;
+                width: 100%;
+                height: calc((100vw - 20px) * 0.55);
+                max-height: 319px;
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .title_date {
+            padding: 10px 10px 10px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-content: space-around;
+            align-items: center;
+
+            @media(max-width: 600px) {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            h4 {
+                font-weight: 700;
+
+                @media(max-width: 600px) {
+                    margin: 0 5px 5px 0;
+                }
+
+                span {
+                    font-weight: 400;
+                    font-size: 14px;
+                }
+            }
+
+            time {
+                font-size: 14px;
+
+                @media(max-width: 600px) {
+                    margin-bottom: 5px;
+                }
+            }
+
+            p {
+                margin: 0;
+                width: 100%;
+            }
+        }
+    }
+}

@@ -20,16 +20,16 @@ function SeasonPreview({seasonObj, sizeImg = 'size260and390'}) {
     return (
         <div className='seasonPreview'>
                 <div className='poster'>
-                    <Link to={`seasons/${seasonObj.season_number}`}>
-                    {!posterPath &&
-                        <img src={unknownImg} alt={seasonObj.name}/>
+                    <Link to={`${seasonObj.season_number}`}>
+                    {!posterPath 
+                        ? <img src={unknownImg} alt={seasonObj.name}/>
+                        : <img loading='lazy' src={allSize[sizeImg] + seasonObj.poster_path} alt={seasonObj.name}/>
                     }
-                        <img loading='lazy' src={allSize[sizeImg] + seasonObj.poster_path} alt={seasonObj.name}/>
                     </Link>
                 </div>
                 <div className='content'>
                     <div className='content_head'>
-                        <Link to={`seasons/${seasonObj.season_number}`}>
+                        <Link to={`${seasonObj.season_number}`}>
                             {seasonObj.name}
                         </Link>
                         <span>
