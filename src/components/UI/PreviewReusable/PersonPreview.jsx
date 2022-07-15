@@ -29,11 +29,9 @@ function PersonPreview({ personInfo, sizeImg = 'size138and175' }) {
         <div className='personPreview'>
             <div className='photo'>
                 <Link to={`/people/${personInfo.id}`}>
-                    {!personInfo.profile_path &&
-                        <img src={unknownImg} alt={personInfo.name} />
-                    }
-                    {(personInfo.profile_path && sizeImg) &&
-                        <img loading='lazy' src={allSize[sizeImg] + personInfo.profile_path} alt={personInfo.name} />
+                    {!personInfo.profile_path
+                        ? <img src={unknownImg} alt={personInfo.name} />
+                        : <img loading='lazy' src={allSize[sizeImg] + personInfo.profile_path} alt={personInfo.name} />
                     }
                 </Link>
             </div>

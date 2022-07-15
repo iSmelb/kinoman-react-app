@@ -25,11 +25,9 @@ function MoviePreview({ movie, discriptions = false, sizeImg = 'size500and750' }
     <div className='movie_preview'>
       <div className='poster'>
         <Link to={`/movies/${movie.id}`}>
-          {!movie.poster_path &&
-            <img src={unknownImg} alt={movie.original_name + " Poster"} />
-          }
-          {(movie.poster_path && sizeImg) &&
-            <img loading='lazy' src={allSize[sizeImg] + movie.poster_path} alt={movie.title + " Poster"} />
+          {!movie.poster_path
+            ? <img src={unknownImg} alt={movie.original_name + " Poster"} />
+            : <img loading='lazy' src={allSize[sizeImg] + movie.poster_path} alt={movie.title + " Poster"} />
           }
         </Link>
       </div>

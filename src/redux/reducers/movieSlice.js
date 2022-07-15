@@ -4,6 +4,7 @@ import MovieService from "../../API/MovieService";
 
 const initialState = {
     movie: null,
+    reviews: null,
     isLoading: false,
     error: '',
 }
@@ -14,6 +15,20 @@ export const getMovieFromId = createAsyncThunk(
         try {
             const response = await MovieService.getMovieFromId(movieId)
             console.log(response)
+            return response.data
+        } catch(e) {
+            return thunkAPI.rejectWithValue('Error during server request')
+        }
+    }
+)
+
+export const getReviewsForMovie = createAsyncThunk(
+    'movie/getReviewsForMovie',
+    async function(queryParams, thunkAPI) {
+        try {
+            const {mediaId, page} = queryParams
+            const response = await MovieService.getReviewsForMovie(mediaId, page)
+            console.log(response.data)
             return response.data
         } catch(e) {
             return thunkAPI.rejectWithValue('Error during server request')
@@ -37,6 +52,18 @@ const movieSlice = createSlice({
             state.isLoading = false
         },
         [getMovieFromId.rejected]: (state, action) => {
+            errorLoad(state, action)
+        },
+
+        [getReviewsForMovie.pending]: (state) => {
+            pending(state)  
+        },
+        [getReviewsForMovie.fulfilled]: (state, action) => {
+            state.reviews = action.payload
+            state.error = ''
+            state.isLoading = false
+        },
+        [getReviewsForMovie.rejected]: (state, action) => {
             errorLoad(state, action)
         },
     }

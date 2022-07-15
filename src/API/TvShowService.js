@@ -37,4 +37,9 @@ export default class TvShowService {
         const response = await axios.get(`https://api.themoviedb.org/3/tv/${tvShowId}/season/${numberSeason}?api_key=${this.key}&language=en-US`)
         return response
     }
+
+    static getReviewsForTv = async function(tvShowId, page = 1) {
+        const response = await axios.get(`https://api.themoviedb.org/3/tv/${tvShowId}/reviews?api_key=${this.key}&language=en-US&page=${page}`)
+        return response
+    }
 }

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import ReviewPreview from '../PreviewReusable/ReviewPreview'
 
 function ReviewsConteiner({reviews}) {
@@ -6,7 +7,9 @@ function ReviewsConteiner({reviews}) {
 
   return (
     <section className='reviewsCOnteiner'>
-      <h3>Reviews {`(${totalCount})`}</h3>
+      <h3>
+        <Link to='reviews?page=1'>Reviews ({totalCount})</Link>
+      </h3>
       {arrReviews.map((review, index) => (index < 3) && <ReviewPreview reviewInfo={review} key={review.id} />)}
     </section>
   )

@@ -1,5 +1,9 @@
 .mini_media_banner.season_page {
     margin-bottom: 10px;
+    .poster {
+        pointer-events: none;
+    }
+
     .title_date {
         >a {
             display: inline-block;

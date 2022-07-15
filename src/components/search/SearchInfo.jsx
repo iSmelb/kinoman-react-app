@@ -1,10 +1,6 @@
 import { Pagination } from '@mui/material';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useParams, useSearchParams } from 'react-router-dom';
-import { useUpdateTitle } from '../../hooks/useUpdateTitle';
-import { clearState, movieSearch, multiSearch, peopleSearch, tvSearch } from '../../redux/reducers/searchSlice';
-import Loader from '../UI/loader/Loader';
+import { useSelector } from 'react-redux';
+import { useParams, useSearchParams } from 'react-router-dom';
 import MoviePreview from '../UI/PreviewReusable/MoviePreview';
 import PersonPreview from '../UI/PreviewReusable/PersonPreview';
 import TvShowPreview from '../UI/PreviewReusable/TvShowPreview';
@@ -12,11 +8,10 @@ import SearchResultPanel from './SearchResultPanel';
 
 function SearchInfo() {
   const { type } = useParams()
-  const location = useLocation()
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = Object.fromEntries([...searchParams]) || ''
-  const dispatch = useDispatch()
-  const { searchResult, isLoading } = useSelector(state => state.search)
+  const { searchResult } = useSelector(state => state.search)
+
   const objToRender = {
     multi: searchResult.multi,
     movies: searchResult.movies,
@@ -44,46 +39,11 @@ function SearchInfo() {
     setSearchParams({ query: searchQuery.query, page: page })
   }
 
-  useEffect(() => {
-    return () => {dispatch(clearState())}
-  }, [])
-
-  useEffect(() => {
-    // эффект для запросов при смене страницы или типа запроса
-    const params = searchQuery
-
-    if (type === 'movies') {
-      dispatch(movieSearch(params))
-    }
-    if (type === 'tv') {
-      dispatch(tvSearch(params))
-    }
-    if (type === 'people') {
-      dispatch(peopleSearch(params))
-    }
-
-    window.scrollTo(0, 0)
-  }, [searchQuery.page, type])
-
-  useEffect(() => {
-    // Проверяем, если ссылка была открыта сразу с параметрами, то делаем запрос по этим параментрам
-    // Если ссылка пустая, проверяе прешл ли запрос с поисковой строки, устанавливаем запрос в параметры и отправляется запрос
-
-    if ('query' in searchQuery) {
-      dispatch(multiSearch(searchQuery))
-    } else if (location.state?.searchRequest) {
-      setSearchParams({ query: location.state.searchRequest, page: location.state.page })
-    }
-  }, [location.state])
-
-  useUpdateTitle(`search/${searchQuery.query}`, [searchQuery.query])
-
   return (
     <section className='searchMainCOnteiner conteiner'>
       <div className='searchResult'>
         <SearchResultPanel />
         <div className='resultContent'>
-          {isLoading && <Loader />}
           {(!type && !!objToRender.multi?.results.length) &&
             objToRender.multi.results.map(mediaFile => getCardToRender(mediaFile))
           }
@@ -96,7 +56,7 @@ function SearchInfo() {
         </div>
       </div>
       <div className='paginatePages'>
-        {(location.pathname !== '/search' && pages.totalPages > 1) &&
+        {pages.totalPages > 1 &&
           <Pagination
             count={pages.totalPages}
             page={pages.currentPage || 1}

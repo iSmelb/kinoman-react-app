@@ -85,7 +85,21 @@
                 color: #000;
                 width: 31px;
                 height: 31px;
+            }
 
+            .facebook {
+                &:hover {
+                    color: #284486;
+                }
+            }
+
+            .instagram {
+                &:hover {
+                    color: #f33460;
+                }
+            }
+
+            .twitter {
                 &:hover {
                     color: $colorBlue;
                 }

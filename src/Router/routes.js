@@ -17,6 +17,7 @@ import NotFoundPage from "../Pages/NotFoundPage";
 import CastPage from "../Pages/CastPage"
 import SeasonsPage from "../Pages/SeasonsPage"
 import SeasonPage from "../Pages/SeasonPage";
+import ReviewsPage from "../Pages/ReviewsPage";
 
 export const routes = [
     // {path: '/', component: HomePage},
@@ -26,12 +27,14 @@ export const routes = [
     {path: '/movies/top-rated', component: TopRatedMoviesPage},
     {path: '/movies/:id', component: MovieIdPage},
     {path: '/movies/:id/cast', component: CastPage},
+    {path: '/movies/:id/reviews', component: ReviewsPage},
     {path: '/tv/popular', component: PopularTvShowPage},
     {path: '/tv/airing-today', component: AiringTodayTvShowPage},
     {path: '/tv/on-the-air', component: OnTheAirTvShowPage},
     {path: '/tv/top-rated', component: TopRatedTvShowPage},
     {path: '/tv/:id', component: SingleTvShowPage},
     {path: '/tv/:id/cast', component: CastPage},
+    {path: '/tv/:id/reviews', component: ReviewsPage},
     {path: '/tv/:id/seasons', component: SeasonsPage},
     {path: '/tv/:id/seasons/:number', component: SeasonPage},
     {path: '/people/popular', component: PopularPeoplePage},
@@ -39,6 +42,5 @@ export const routes = [
     {path: '/collections/:id', component: CollectionsIdPage},
     {path: '/search/:type', component: SearchPage},
     {path: '/search', component: SearchPage},
-    {path: '*', component: NotFoundPage},
-    
+    {path: '*', component: NotFoundPage}, 
 ]

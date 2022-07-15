@@ -20,7 +20,7 @@ function SeasonPage() {
         dispatch(getSeasonDetails(params))
     }, [params.number])
 
-    useUpdateTitle(`${title}/seasons/${season?.name}`, [params.number])
+    useUpdateTitle(`${title}/seasons/${season?.name}`, [season?.name])
 
     useEffect(() => {
         return ()=> dispatch(clearState())
@@ -29,7 +29,7 @@ function SeasonPage() {
     return (
         <>
             {isLoading && <div><Loader /></div>}
-            {error && <h1>{error}</h1>}
+            {error && <div style={{textAlign: 'center'}}>{error}</div>}
             {!error && season && <SeasonPageInfo />}
         </>
     )

@@ -26,21 +26,21 @@ function PersonInfo({personObj}) {
                 {facebook_id && 
                     <div>
                         <a target='_blank' rel="noreferrer" href={'https://www.facebook.com/' + facebook_id}>
-                            <FontAwesomeIcon icon={faFacebook}/>
+                            <FontAwesomeIcon className='facebook' icon={faFacebook}/>
                         </a>
                     </div>
                 }
                 {instagram_id && 
                     <div>
                         <a target='_blank' rel="noreferrer" href={'https://www.instagram.com/' + instagram_id}>
-                            <FontAwesomeIcon icon={faInstagram}/>
+                            <FontAwesomeIcon className='instagram' icon={faInstagram}/>
                         </a>
                     </div>
                 }
                 {twitter_id && 
                     <div>
                         <a target='_blank' rel="noreferrer" href={'https://twitter.com/' + twitter_id}>
-                            <FontAwesomeIcon icon={faTwitter}/>
+                            <FontAwesomeIcon className='twitter' icon={faTwitter}/>
                         </a>
                     </div>
                 }

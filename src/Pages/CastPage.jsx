@@ -1,11 +1,11 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import CastPageInfo from '../components/CastPageInfo';
 import Loader from '../components/UI/loader/Loader';
 import { useUpdateTitle } from '../hooks/useUpdateTitle';
-import { getMovieFromId, clearState as clearStateMovie} from '../redux/reducers/movieSlice';
-import { getTvShowFromId, clearState} from '../redux/reducers/singleTvShowSlice';
+import { clearState as clearStateMovie, getMovieFromId } from '../redux/reducers/movieSlice';
+import { clearState, getTvShowFromId } from '../redux/reducers/singleTvShowSlice';
 
 function CastPage() {
     const {id} = useParams()
@@ -15,7 +15,7 @@ function CastPage() {
     const type = pathname.search(/movies/) === -1 ? 'singleTvShow' : 'movie'
     const {error, isLoading} = useSelector(state => state[type])
     const credits = useSelector(state => type === 'movie' ?  state[type][type]?.credits : state[type][type]?.aggregate_credits)
-    const mediaFile = useSelector(state => type === 'movie' ?  state[type][type] : state[type][type])
+    const mediaFile = useSelector(state => state[type][type])
     const title = mediaFile?.title || mediaFile?.name || 'kinoman'
     
     useEffect(() => {
@@ -26,7 +26,7 @@ function CastPage() {
         }
     },[id])
 
-    useUpdateTitle(title + '/cast', [mediaFile])
+    useUpdateTitle(title + '/cast', [id])
     
     useEffect(() => {
         // флаг который не даёт отображать стейт, пока он не очистится при размонтировании прошлого компонента

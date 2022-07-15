@@ -1,20 +1,17 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 function SearchResultPanel() {
     const search = useSelector(state => state.search)
     const [switchPanel, setSwithPanel] = useState(false)
     const searchRequest = search.searchRequest
     const searchResult = search.searchResult
-    //console.log(searchRequest)
 
     const showResPanel = () => {
         setSwithPanel(!switchPanel)
         document.body.classList.toggle('stop-scrolling')
     }
-
-    //сделать линки на вложенніе роуты, во вложеных роутах сделать контейнер и промапится по результатам, и возможно ещё раз повторный запрос на данные 
 
     return (
         <div className={`wrapperResultPanel ${switchPanel ? 'show' : ''}`}>

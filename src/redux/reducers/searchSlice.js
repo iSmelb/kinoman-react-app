@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { useDispatch } from "react-redux"
 import SearchService from "../../API/SearchService"
 
 const initialState = {
@@ -20,6 +19,7 @@ export const multiSearch = createAsyncThunk(
         console.log(searchParams, 'запрос на всё')
         const { query, page } = searchParams
 
+        // 4 запроса делаются для того чтобы узнать тотал резулт для каждой из категории
         try {
             const multiResult = await SearchService.multiSearch(query, page)
             const movieResult = await SearchService.searchMovie(query, page)
