@@ -5,10 +5,11 @@
     top: 0;
     left: 0;
     right: 0;
-    transition: top 0.2s linear;
-    z-index: 10;
-
+    z-index: 4;
+    transition: none;
+    
     &.hide {
+        transition: top 0.2s linear;
         top: -69px;
     }
 

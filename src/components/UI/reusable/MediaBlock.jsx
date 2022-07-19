@@ -9,7 +9,7 @@ import { changeKeyForMovie, togglePlayer } from '../../../redux/reducers/playerS
 
 function MediaBlock({images, videos}) {
     const arrTrailers = videos.filter(video => video.type === 'Trailer')
-    const [linkToAllContent, setLinkToAllContent] = useState('')
+    const [linkToAllContent, setLinkToAllContent] = useState('media/posters?language=noLang')
     const refPlayer = document.querySelector('#player')
     const dispatch = useDispatch()
 
@@ -22,7 +22,7 @@ function MediaBlock({images, videos}) {
     }
 
     const changeLinkToShowAll = (e) => {
-        setLinkToAllContent(e.target.dataset.name)
+        setLinkToAllContent('media/' + e.target.dataset.name + '?language=noLang')
     }
 
     return (

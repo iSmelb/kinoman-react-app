@@ -26,7 +26,10 @@ function EpisodePreview({ episode, sizeImg = 'size227and127' }) {
                 }
             </div>
             <div className='title_date'>
-                <h4>{episode.episode_number}.{episode.name} <span>({episode.runtime}m)</span></h4>
+                <h4>
+                    {episode.episode_number}.{episode.name}
+                    {episode.runtime && <span> ({episode.runtime}m)</span>}
+                </h4>
                 {episode.air_date &&
                     <time dateTime={episode.air_date}>
                         {episode.air_date}

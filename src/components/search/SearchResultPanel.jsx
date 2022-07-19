@@ -28,7 +28,6 @@ function SearchResultPanel() {
                                 }
                             </span>
                         </NavLink>
-
                     </li>
                     <li>
                         <NavLink className='link' to={`/search/tv?query=${searchRequest}&page=1`}>

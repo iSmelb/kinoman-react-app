@@ -1,0 +1,133 @@
+.wrapperResultPanel {
+    width: 260px;
+    margin-right: 20px;
+    flex-shrink: 0;
+
+    @media(max-width: 700px) {
+        transform: translateX(-100%);
+        transition: all ease-in 0.3s;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        z-index: 1;
+        
+        &.show {
+            z-index: 5;
+            transform: translateX(0);
+            transition: transform ease-in 0.3s;
+
+            .toggleHidePanel {
+                transform: rotate(180deg);
+                right: 0;
+                top: calc(50% - 20px);
+            }
+        }
+    }
+}
+
+.resultPanel {
+    width: 100%;
+    border-radius: 12px;
+    border: solid 1px rgb(227, 227, 227);
+    position: relative;
+    background: $mainBgColor;
+
+    @media(max-width: 700px) {
+        height: 100%;
+        border-radius: 0;
+        border: none;
+    }
+
+    .toggleHidePanel {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: -17px;
+        width: 17px;
+        height: 40px;
+        background: $mainColor;
+        padding: 0;
+        border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+        border: none;
+        display: none;
+        z-index: 1;
+        align-items: center;
+
+        @media(max-width: 700px) {
+            display: flex;
+        }
+
+        .arrow {
+            width: 9px;
+            height: 9px;
+            border-top: 2px solid;
+            border-right: 2px solid;
+            border-color: #fff;
+            transform: rotate(45deg);
+        }
+    }
+
+    h1 {
+        padding: 20px;
+        font-size: 20px;
+        color: #fff;
+        background-color: $mainColor;
+        font-weight: 600;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+
+        @media(max-width: 700px) {
+            border-radius: 0;
+        }
+    }
+
+    .resultList {
+        list-style: none;
+        padding: 10px 0;
+
+
+        li {
+            @media(max-width: 700px) {
+                border-bottom: 2px solid $colorBordef;
+            }
+            
+            &:hover {
+                background-color: $hoverColor;
+
+                .count {
+                    background-color: #fff;
+                }
+            }
+        }
+
+        .link {
+            color: inherit;
+            font-weight: 600;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+
+            &.active {
+                background-color: $hoverColor;
+
+                .count {
+                    background-color: #fff;
+                }
+            }
+        }
+
+        .count {
+            background-color: $hoverColor;
+            padding: 0px 10px;
+            border-radius: 8px;
+            font-weight: 300;
+            font-size: 14px;
+        }
+    }
+}

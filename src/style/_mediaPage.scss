@@ -1,0 +1,134 @@
+.MediaImagesPageInfo {
+    .resultPanel {
+        li {
+            cursor: pointer;
+        }
+    }
+    .images_result {
+        display: flex;
+    }
+
+    .images_list {
+        width: 100%;
+        display: grid;
+        grid-gap: 20px;
+        justify-content: center;
+
+        .imagesPreview {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgb(189, 189, 189);
+            @extend %main-box-shadow;
+            max-height: 407px;
+
+            .poster {
+                a {
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            img {
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+            }
+
+            .info {
+                padding: 10px;
+
+                a {
+                    color: inherit;
+                    font-weight: 700;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                p {
+                    margin: 10px 0 0;
+                }
+            }
+        }
+
+        &.posters {
+            grid-template-columns: repeat(4, minmax(150px, 220px));
+
+            @media(max-width: 1250px) {
+                grid-template-columns: repeat(3, minmax(150px, 220px));
+            }
+
+            @media(max-width: 900px) {
+                grid-template-columns: repeat(2, minmax(150px, 220px));
+            }
+
+            @media(max-width: 500px) {
+                grid-template-columns: minmax(150px, 220px)
+            }
+
+            .poster {
+                --discoverColumnPadding: 20px;
+                --numberOfDiscoverColumns: 4;
+                width: 100%;
+                height: calc((100vw - (var(--discoverColumnPadding) * var(--numberOfDiscoverColumns))) / var(--numberOfDiscoverColumns) * 1);
+                max-height: 330px;
+
+                @media(max-width: 1250px) {
+                    --numberOfDiscoverColumns: 3
+                }
+
+                @media(max-width: 900px) {
+                    --numberOfDiscoverColumns: 2
+                }
+
+                @media(max-width: 700px) {
+                    height: 330px;
+                }
+            }
+        }
+
+        &.backdrops {
+            grid-template-columns: repeat(3, minmax(150px, 1fr));
+
+            @media(max-width: 1250px) {
+                grid-template-columns: repeat(2, minmax(150px, 1fr));
+            }
+
+            @media(max-width: 900px) {
+                display: block;
+                width: 100%;
+            }
+            
+            .imagesPreview {
+                @media(max-width: 900px) {
+                    max-width: 500px;
+                    margin: 0 auto 20px;
+                }
+            }
+
+            .poster { 
+                --discoverColumnPadding: 20px;
+                --numberOfDiscoverColumns: 3;
+                --multiplier: 1.5;
+                width: 100%;
+                height: calc((100vw - (var(--discoverColumnPadding) * var(--numberOfDiscoverColumns))) / var(--numberOfDiscoverColumns) * var(--multiplier));
+                max-height: 190px;
+
+                @media(max-width: 1250px) {
+                    --numberOfDiscoverColumns: 6;
+                    max-height: 282px;
+                    min-height: 220px;
+                }
+
+                @media(max-width: 900px) {
+                    --numberOfDiscoverColumns: 1
+                }
+
+                @media(max-width: 850px) {
+                    --multiplier: 0.5
+                }
+            }
+        }
+    }
+}
