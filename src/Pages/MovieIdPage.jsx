@@ -16,12 +16,12 @@ function MovieIdPage() {
     useEffect(() => {
         dispatch(getMovieFromId(movieId))
         window.scrollTo(0, 0)   
+        return () => dispatch(clearState())
     }, [movieId])
 
     useEffect(() => {
         setPrevStateIsClear(true)
-        return () => dispatch(clearState())
-    },[])
+    },[movieId])
 
     useUpdateTitle(movie?.title, [movie])
 

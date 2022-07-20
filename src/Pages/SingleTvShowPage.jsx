@@ -16,13 +16,13 @@ function SingleTvShowPage() {
     useEffect(() => {
         dispatch(getTvShowFromId(tvShowId))
         window.scrollTo(0, 0)
+        return () => dispatch(clearState())
     }, [tvShowId])
 
     useEffect(() => {
         // флаг который не даёт отображать стейт, пока он не очистится при размонтировании прошлого компонента
         setPrevStateIsClear(true) 
-        return () => dispatch(clearState())
-    },[])
+    },[tvShowId])
 
     useUpdateTitle(singleTvShow?.name, [singleTvShow])
 

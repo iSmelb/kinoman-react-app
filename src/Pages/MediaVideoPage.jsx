@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
-import MediaImagesPageInfo from '../components/MediaImagesPageInfo';
+import MediaVideosPageInfo from '../components/MediaVideosPageInfo';
 import Loader from '../components/UI/loader/Loader';
 import { useUpdateTitle } from '../hooks/useUpdateTitle';
 import { clearState as clearStateMovie, getMovieFromId } from '../redux/reducers/movieSlice';
 import { clearState, getTvShowFromId } from '../redux/reducers/singleTvShowSlice';
 
-function MediaImagesPage() {
+function MediaVideoPage() {
     const { id } = useParams()
     const { pathname, search } = useLocation()
     const mediaType = pathname.search(/movies/) === -1 ? 'singleTvShow' : 'movie'
@@ -40,9 +40,9 @@ function MediaImagesPage() {
         <>
             {isLoading && <div><Loader /></div>}
             {error && <div style={{ textAlign: 'center' }}>{error}</div>}
-            {prevStateIsClear && mediaFile && <MediaImagesPageInfo mediaFile={mediaFile}/>}
+            {prevStateIsClear && mediaFile && <MediaVideosPageInfo mediaFile={mediaFile}/>}
         </>
     )
 }
 
-export default MediaImagesPage
+export default MediaVideoPage

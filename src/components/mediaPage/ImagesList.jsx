@@ -6,8 +6,8 @@ function ImagesList({data}) {
 
     return (
         <div className={`images_list ${data.title}`}>
-            {data?.imagesToRend.map(image => <ImagesPreview key={image.file_path} image={image} sizeImg={size}/>)}
-            {!data?.imagesToRend.length && <p>Images not found</p>}
+            {data.elementsToRend.map(image => <ImagesPreview key={image.file_path} image={image} sizeImg={size}/>)}
+            {!data?.elementsToRend.length && <p>Images not found</p>}
         </div>
     )
 }

@@ -43,6 +43,10 @@
         border: none;
     }
 
+    h1 {
+        text-transform: capitalize;
+    }
+
     .toggleHidePanel {
         position: absolute;
         top: 50%;
@@ -115,6 +119,7 @@
 
             &.active {
                 background-color: $hoverColor;
+                pointer-events: none;
 
                 .count {
                     background-color: #fff;

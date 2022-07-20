@@ -4,7 +4,7 @@ import filterDepartaments from '../../../utils/filterDepartaments'
 import MediaCell from './MediaCell'
 
 function CreditsFullList({ credits }) {
-    const uniqueListCrew = filterDepartaments(credits.crew)
+    const uniqueListCrew = filterDepartaments(credits.crew, 'departament')
     const arrListCrew = Object.entries(uniqueListCrew)
     const arrListCrewSorted = arrListCrew.map(outsideArr => [outsideArr[0], [...outsideArr[1]].sort((a, b) => sortByRealese(a, b))])
     const arrListActingSorted = !!credits.cast.length ? [['Acting', [...credits.cast].sort((a, b) => sortByRealese(a, b))]] : []

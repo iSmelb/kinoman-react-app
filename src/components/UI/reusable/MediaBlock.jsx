@@ -3,26 +3,31 @@ import TabsListUnstyled from '@mui/base/TabsListUnstyled'
 import TabsUnstyled from '@mui/base/TabsUnstyled'
 import TabUnstyled from '@mui/base/TabUnstyled'
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { changeKeyForMovie, togglePlayer } from '../../../redux/reducers/playerSlice'
 
 function MediaBlock({images, videos}) {
-    const arrTrailers = videos.filter(video => video.type === 'Trailer')
-    const [linkToAllContent, setLinkToAllContent] = useState('media/posters?language=noLang')
-    const refPlayer = document.querySelector('#player')
+    const arrTrailers = videos.filter(video => video.type === 'Trailer' || video.type === 'Teaser')
+    const [linkToAllContent, setLinkToAllContent] = useState('media/posters')
     const dispatch = useDispatch()
 
     const openPlayer = (e) => {
-        if (refPlayer) {
-            dispatch(changeKeyForMovie(e.target.dataset.keymovie))
-            dispatch(togglePlayer())
-            document.body.classList.add('stop-scrolling')
-        }
+        dispatch(changeKeyForMovie(e.target.dataset.keymovie))
+        dispatch(togglePlayer())
+        document.body.classList.add('stop-scrolling')
     }
 
     const changeLinkToShowAll = (e) => {
-        setLinkToAllContent('media/' + e.target.dataset.name + '?language=noLang')
+        if (e.target.dataset.name === 'video') {
+            if (videos.length) {
+                setLinkToAllContent('media/' + e.target.dataset.name + `?type=${videos[0]?.type}`)
+            } else {
+                setLinkToAllContent('media/' + e.target.dataset.name)
+            }
+        } else {
+            setLinkToAllContent('media/' + e.target.dataset.name)
+        }
     }
 
     return (
@@ -37,7 +42,7 @@ function MediaBlock({images, videos}) {
                         Backdrops {images.backdrops.length}
                     </TabUnstyled>
                     <TabUnstyled data-name='video' onChange={changeLinkToShowAll}>
-                        Video {arrTrailers.length}
+                        Video {videos.length}
                     </TabUnstyled>
                 </TabsListUnstyled>
                 <div className='showAll'>

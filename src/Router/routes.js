@@ -19,6 +19,7 @@ import SeasonsPage from "../Pages/SeasonsPage"
 import SeasonPage from "../Pages/SeasonPage";
 import ReviewsPage from "../Pages/ReviewsPage";
 import MediaImagesPage from "../Pages/MediaImagesPage";
+import MediaVideoPage from "../Pages/MediaVideoPage";
 
 export const routes = [
     // {path: '/', component: HomePage},
@@ -31,6 +32,7 @@ export const routes = [
     {path: '/movies/:id/reviews', component: ReviewsPage},
     {path: '/movies/:id/media/posters', component: MediaImagesPage},
     {path: '/movies/:id/media/backdrops', component: MediaImagesPage},
+    {path: '/movies/:id/media/video', component: MediaVideoPage},
     {path: '/tv/popular', component: PopularTvShowPage},
     {path: '/tv/airing-today', component: AiringTodayTvShowPage},
     {path: '/tv/on-the-air', component: OnTheAirTvShowPage},
@@ -42,6 +44,7 @@ export const routes = [
     {path: '/tv/:id/seasons/:number', component: SeasonPage},
     {path: '/tv/:id/media/posters', component: MediaImagesPage},
     {path: '/tv/:id/media/backdrops', component: MediaImagesPage},
+    {path: '/tv/:id/media/video', component: MediaVideoPage},
     {path: '/people/popular', component: PopularPeoplePage},
     {path: '/people/:id', component: PersonIdPage},
     {path: '/collections/:id', component: CollectionsIdPage},
