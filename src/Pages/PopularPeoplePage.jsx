@@ -30,7 +30,7 @@ function PopularPeoplePage() {
     return (
         <>
             {isLoading && <Loader/>}
-            {error && <div>{error}</div>}
+            {error && <div style={{ textAlign: 'center' }}>{error}</div>}
             {people && <PeoplePageContent peopleList={people} pages={pages} type='popular'/>}
         </>
     )

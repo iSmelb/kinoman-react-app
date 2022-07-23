@@ -32,7 +32,7 @@ function NowPlayingMoviesPage() {
     return (
         <>
             {isLoading && <Loader/>}
-            {error && <div>{error}</div>}
+            {error && <div style={{ textAlign: 'center' }}>{error}</div>}
             {movies && <MoviesPageContent movies={movies} type='playingNow' pages={pages}/>}
         </>
     )

@@ -27,7 +27,7 @@ function PersonIdPage() {
     return (
         <>
             {isLoading && <div><Loader/></div>}
-            {error && <h1>{error}</h1>}
+            {error && <div style={{ textAlign: 'center' }}>{error}</div>}
             {person && <PersonIdPageInfo/>}
         </>
     )

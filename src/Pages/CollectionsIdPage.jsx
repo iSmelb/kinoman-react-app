@@ -26,7 +26,7 @@ function CollectionsIdPage() {
     return (
         <>
             {isLoading && <Loader/>}
-            {error && <div>{error}</div>}
+            {error && <div style={{ textAlign: 'center' }}>{error}</div>}
             {collectionInfo && <CollectionPageInfo/>}
         </>
     )

@@ -30,7 +30,7 @@ function TopRatedTvShowPage() {
     return (
         <>
             {isLoading && <Loader/>}
-            {error && <div>{error}</div>}
+            {error && <div style={{ textAlign: 'center' }}>{error}</div>}
             {tvShow && <TvShowPageContent tvShowList={tvShow} pages={pages} type='topRated'/>}
         </>
     )

@@ -30,7 +30,7 @@ function UpComingMoviesPage() {
     return (
         <>
             {isLoading && <Loader/>}
-            {error && <div>{error}</div>}
+            {error && <div style={{ textAlign: 'center' }}>{error}</div>}
             {movies && <MoviesPageContent movies={movies} pages={pages} type='upComing'/>}
         </>
     )
