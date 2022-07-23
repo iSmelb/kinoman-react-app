@@ -8,6 +8,7 @@ import peopleReducer from './reducers/peopleSlice'
 import singleTvShowReducer from './reducers/singleTvShowSlice'
 import personReducer from './reducers/personSlice'
 import collectionReducer from './reducers/collectionSlice'
+import shortcarBarReducer from "./reducers/shortcarBarSlice";
 
 export default configureStore({
     reducer: {
@@ -19,7 +20,8 @@ export default configureStore({
         people: peopleReducer,
         singleTvShow: singleTvShowReducer,
         person: personReducer,
-        collection: collectionReducer
+        collection: collectionReducer,
+        shortcarBar: shortcarBarReducer
     }
 })
 

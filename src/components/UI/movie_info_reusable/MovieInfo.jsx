@@ -28,7 +28,7 @@ function MovieInfo() {
         >
             <div className='movie_info conteiner'>
                 <div className='mainPoster'>
-                    {movie.poster_path && <img src={"http://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.original_title} />}
+                    {movie.poster_path && <img loading='lazy' src={"http://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.original_title} />}
                     {!movie.poster_path && <img src={unkownImg} alt={movie.original_title} />}
                 </div>
                 <div className='info'>

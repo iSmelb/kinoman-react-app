@@ -8,14 +8,14 @@ function MiniMediaBanner({mediaFile, className = ''}) {
     const isMovie = pathname.search(/movies/) === -1 ? false : true
 
     return (
-        <div className={`mini_media_banner ${className}`}>
+        <section className={`mini_media_banner ${className}`}>
                 <div className='goBack conteiner'>
                     {isMovie 
                         ? <MoviePreview movie={mediaFile} sizeImg = 'size58and87'/>
                         : <TvShowPreview tvObj={mediaFile} sizeImg = 'size58and87'/>
                     }
                 </div>
-            </div>
+        </section>
     )
 }
 

@@ -19,15 +19,7 @@ function MediaBlock({images, videos}) {
     }
 
     const changeLinkToShowAll = (e) => {
-        if (e.target.dataset.name === 'video') {
-            if (videos.length) {
-                setLinkToAllContent('media/' + e.target.dataset.name + `?type=${videos[0]?.type}`)
-            } else {
-                setLinkToAllContent('media/' + e.target.dataset.name)
-            }
-        } else {
-            setLinkToAllContent('media/' + e.target.dataset.name)
-        }
+        setLinkToAllContent('media/' + e.target.dataset.name)
     }
 
     return (
@@ -52,14 +44,14 @@ function MediaBlock({images, videos}) {
                     <TabPanelUnstyled className='posters' value={0}>
                         {images.posters.map((poster, index) => (index < 8) &&
                             <div key={index + poster.file_path}>
-                                <img src={`https://www.themoviedb.org/t/p/w220_and_h330_face${poster.file_path}`} alt="poster" />
+                                <img loading='lazy' src={`https://www.themoviedb.org/t/p/w220_and_h330_face${poster.file_path}`} alt="poster" />
                             </div>
                         )}
                     </TabPanelUnstyled>
                     <TabPanelUnstyled className='backdrops' value={1}>
                         {images.backdrops.map((backdrop, index) => (index < 3) &&
                             <div key={index + backdrop.file_path}>
-                                <img src={`https://www.themoviedb.org/t/p/w533_and_h300_bestv2/${backdrop.file_path}`} alt="backdrop" />
+                                <img loading='lazy' src={`https://www.themoviedb.org/t/p/w533_and_h300_bestv2/${backdrop.file_path}`} alt="backdrop" />
                             </div>
                         )}
                     </TabPanelUnstyled>
@@ -67,7 +59,7 @@ function MediaBlock({images, videos}) {
                         {arrTrailers.map(video =>
                             <div
                                 key={video.key}
-                                style={{ background: `url('https://i.ytimg.com/vi/${video.key}/hqdefault.jpg')`}}
+                                style={{ backgroundImage: `url('https://i.ytimg.com/vi/${video.key}/hqdefault.jpg')`, backgroundSize: 'cover'}}
                                 data-keymovie={video.key}
                                 onClick={openPlayer}
                             />)}

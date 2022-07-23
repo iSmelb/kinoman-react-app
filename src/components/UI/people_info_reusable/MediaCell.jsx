@@ -2,6 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function MediaCell({ elem }) {
+    let linkId
+
+    if(elem.media_type === 'tv') {
+        linkId = elem.id + '-' + elem.name.replace(/\s/g, '-')
+    } else {
+        linkId = elem.id + '-' + elem.title.replace(/\s/g, '-')
+    }
 
     if (elem.media_type === 'tv') return (
             <div className='cellElem'>
@@ -11,14 +18,14 @@ function MediaCell({ elem }) {
                 {('character' in elem) &&
                     <div className='title'>
                         <p>
-                            <Link to={`/tv/${elem.id}`}>{elem.original_name}</Link> ({elem.episode_count} episodes) as {elem.character || '-'}
+                            <Link to={`/tv/${linkId}`}>{elem.name}</Link> ({elem.episode_count} episodes) as {elem.character || '-'}
                         </p>
                     </div>
                 }
                 {elem.department &&
                     <div className='title'>
                         <p>
-                            <Link to={`/tv/${elem.id}`}>{elem.original_name}</Link> ({elem.episode_count} episodes) ... {elem.job}
+                            <Link to={`/tv/${linkId}`}>{elem.name}</Link> ({elem.episode_count} episodes) ... {elem.job}
                         </p>
                     </div>
                 }
@@ -33,14 +40,14 @@ function MediaCell({ elem }) {
             {('character' in elem) &&
                 <div className='title'>
                     <p>
-                        <Link to={`/movies/${elem.id}`}>{elem.title}</Link> as {elem.character || '-'}
+                        <Link to={`/movies/${linkId}`}>{elem.title}</Link> as {elem.character || '-'}
                     </p>
                 </div>
             }
             {elem.department &&
                 <div className='title'>
                     <p>
-                        <Link to={`/movies/${elem.id}`}>{elem.title}</Link> ... {elem.job}
+                        <Link to={`/movies/${linkId}`}>{elem.title}</Link> ... {elem.job}
                     </p>
                 </div>
             }

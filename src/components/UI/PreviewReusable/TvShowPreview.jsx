@@ -13,7 +13,6 @@ const pathImg58and87 = 'https://www.themoviedb.org/t/p/w58_and_h87_face/'
     */
 
 function TvShowPreview({ tvObj, discriptions = false, sizeImg = 'size300and450' }) {
-
     const allSize = {
         size250and141: pathImg250and141,
         size94and141: pathImg94and141,
@@ -21,11 +20,12 @@ function TvShowPreview({ tvObj, discriptions = false, sizeImg = 'size300and450' 
         size220and330: pathImg220and330,
         size58and87: pathImg58and87,
     }
+    const linkId = tvObj.id + '-' + tvObj.name.replace(/\s/g, '-')
 
     return (
         <div className='tvPreview'>
             <div className='poster'>
-                <Link to={`/tv/${tvObj.id}`}>
+                <Link to={`/tv/${linkId}`}>
                     {!tvObj.poster_path 
                         ? <img src={unknownImg} alt={tvObj.name + " Poster"} />
                         : <img loading='lazy' src={allSize[sizeImg] + tvObj.poster_path} alt={tvObj.name + " Poster"} />
@@ -33,7 +33,7 @@ function TvShowPreview({ tvObj, discriptions = false, sizeImg = 'size300and450' 
                 </Link>
             </div>
             <div className='title_date'>
-                <Link to={`/tv/${tvObj.id}`} title={tvObj.name}>
+                <Link to={`/tv/${linkId}`} title={tvObj.name}>
                     {tvObj.name}
                 </Link>
                 {tvObj.first_air_date &&

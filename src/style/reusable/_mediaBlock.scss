@@ -112,6 +112,10 @@
             position: relative;
             cursor: pointer;
 
+            @media(max-width: 450px) {
+                width: 100vw;
+            }
+
             &:hover::after {
                 background-color: rgba(0, 0, 0, 0.8);
             }

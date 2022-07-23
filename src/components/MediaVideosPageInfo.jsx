@@ -9,12 +9,19 @@ function MediaVideosPageInfo({mediaFile}) {
     const [searchParams] = useSearchParams();
     const videos = filterTypeVideo(mediaFile.videos.results);
     const searchType = searchParams.get('type') || ''
+    const sortedVideos = Object.entries(videos).sort((a, b) => a[0] > b[0] ? -1 : 1)
+    let videosToRend = []
+    if (searchType && !!sortedVideos.length) {
+        videosToRend = videos[searchType]
+    } else if (!searchType && !!sortedVideos.length) {
+        videosToRend = sortedVideos[0][1]
+    }
 
     const data = {
         title: 'videos',
         totalCount: mediaFile.videos.results.length,
-        results: Object.entries(videos).sort((a, b) => a[0] > b[0] ? 1 : -1),
-        elementsToRend: videos[searchType] || [],
+        results: sortedVideos,
+        elementsToRend: videosToRend,
         type: 'video'
     }
 

@@ -20,9 +20,9 @@ function CollectionPageInfo() {
     return (
         <div className='collectionPageInfo'>
             <CollectionBanner collection={collection}/>
-            <div className='conteiner'>
+            <section className='conteiner'>
                 {sortedCollection.map(movie => <MoviePreview key={movie.id} movie={movie} sizeImg='size94and141' discriptions />)}
-            </div>
+            </section>
         </div>
     )
 }

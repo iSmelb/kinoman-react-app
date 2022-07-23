@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import CollectionPageInfo from '../components/CollectionPageInfo'
 import Loader from '../components/UI/loader/Loader'
+import { useUpdateTitle } from '../hooks/useUpdateTitle'
 import { clearState, getCollectionForId } from '../redux/reducers/collectionSlice'
 
 function CollectionsIdPage() {
@@ -19,6 +20,8 @@ function CollectionsIdPage() {
     useEffect(() => {
         return () => dispatch(clearState())
     },[])
+
+    useUpdateTitle(collectionInfo?.name, [collectionInfo])
 
     return (
         <>

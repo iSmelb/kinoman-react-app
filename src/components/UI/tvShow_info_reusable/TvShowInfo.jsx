@@ -18,7 +18,7 @@ function TvShowInfo() {
         >
             <div className='tvShow_info conteiner'>
                 <div className='mainPoster'>
-                    {singleTvShow.poster_path && <img src={'https://www.themoviedb.org/t/p/w300_and_h450_bestv2' + singleTvShow.poster_path} alt={'poster' + singleTvShow.name} />}
+                    {singleTvShow.poster_path && <img loading='lazy' src={'https://www.themoviedb.org/t/p/w300_and_h450_bestv2' + singleTvShow.poster_path} alt={'poster' + singleTvShow.name} />}
                     {!singleTvShow.poster_path && <img src={unknownImg} alt={singleTvShow.name} />}
                 </div>
                 <div className='info'>

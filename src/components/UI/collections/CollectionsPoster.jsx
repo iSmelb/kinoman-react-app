@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 
 function CollectionsPoster() {
   const collectionInfo = useSelector(state => state.movie.movie.belongs_to_collection)
-
+  const linkId = collectionInfo?.id + '-' + collectionInfo?.name.replace(/\s/g, '-')
+  
   if(!collectionInfo) {
     return (
       <>
@@ -23,7 +24,7 @@ function CollectionsPoster() {
         className='collections_poster'
       >
         <h2>Part of the "{collectionInfo.name}"</h2>
-        <Link to={`/collections/${collectionInfo.id}`}>View the collection</Link>
+        <Link to={`/collections/${linkId}`}>View the collection</Link>
       </div>
     </section>
   )

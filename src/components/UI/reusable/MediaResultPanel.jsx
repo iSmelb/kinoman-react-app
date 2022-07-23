@@ -21,18 +21,6 @@ function MediaResultPanel({ data }) {
         window.scrollTo(0, 0)
     }
 
-    // <li key={item[0]} onClick={() => changeActive(item[0])}>
-    //                         <div className={`link ${item[0] === searchString ? 'active' : ''}${!searchString && index === 0 ? 'active' : ''}`}>
-    //                             {data.type === 'images' 
-    //                                 ? <span className='name'>{LANGUAGES_LIST[item[0]]?.name}</span>
-    //                                 : <span className='name'>{item[0]}</span>
-    //                             }
-    //                             <span className='count'>
-    //                                 {item[1].length}
-    //                             </span>
-    //                         </div>
-    //                     </li>)
-
     return (
         <div className={`wrapperResultPanel ${switchPanel ? 'show' : ''}`}>
             <div className='resultPanel'>

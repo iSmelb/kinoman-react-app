@@ -2,7 +2,7 @@ import React from 'react'
 
 function CollectionBanner({collection}) {
     return (
-        <div
+        <section
             style={{
                 backgroundImage: `linear-gradient( to right, rgba(6, 17, 26, 0.9) 0%, rgba(6, 17, 26, 0.9) 100%), url('http://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${collection.backdrop_path}')`,
                 backgroundSize: 'cover'
@@ -10,7 +10,7 @@ function CollectionBanner({collection}) {
             className='collection_info_bg'
         >
             <div className='collection_info conteiner'>
-                <img src={"http://image.tmdb.org/t/p/w500" + collection.poster_path} alt={collection.name} />
+                <img loading='lazy' src={"http://image.tmdb.org/t/p/w500" + collection.poster_path} alt={collection.name} />
                 <div className='info'>
                     <h1 className='title'>
                         <a target='_blank' rel="noreferrer" href={"https://www.themoviedb.org/collection/" + collection.id}>
@@ -28,7 +28,7 @@ function CollectionBanner({collection}) {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

@@ -12,7 +12,6 @@ const pathImg500and750 = 'http://image.tmdb.org/t/p/w500'
   */
 
 function MoviePreview({ movie, discriptions = false, sizeImg = 'size500and750' }) {
-
   const allSize = {
     size250and141: pathImg250and141,
     size94and141: pathImg94and141,
@@ -20,11 +19,12 @@ function MoviePreview({ movie, discriptions = false, sizeImg = 'size500and750' }
     size220and330: pathImg220and330,
     size58and87: pathImg58and87,
   }
-
+  const linkId = movie.id + '-' + movie.title.replace(/\s/g, '-')
+  
   return (
     <div className='movie_preview'>
       <div className='poster'>
-        <Link to={`/movies/${movie.id}`}>
+        <Link to={`/movies/${linkId}`}>
           {!movie.poster_path
             ? <img src={unknownImg} alt={movie.original_name + " Poster"} />
             : <img loading='lazy' src={allSize[sizeImg] + movie.poster_path} alt={movie.title + " Poster"} />
@@ -32,7 +32,7 @@ function MoviePreview({ movie, discriptions = false, sizeImg = 'size500and750' }
         </Link>
       </div>
       <div className='title_date'>
-        <Link to={`/movies/${movie.id}`} title={movie.title}>{movie.title}</Link>
+        <Link to={`/movies/${linkId}`} title={movie.title}>{movie.title}</Link>
         <time dateTime={movie.release_date}>{movie.release_date}</time>
         {discriptions && <p>{movie.overview}</p>}
       </div>

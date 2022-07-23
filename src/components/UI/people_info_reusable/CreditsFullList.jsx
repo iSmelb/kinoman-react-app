@@ -4,12 +4,18 @@ import filterDepartaments from '../../../utils/filterDepartaments'
 import MediaCell from './MediaCell'
 
 function CreditsFullList({ credits }) {
-    const uniqueListCrew = filterDepartaments(credits.crew, 'departament')
+    //получаем из массива всех фильмов объект уникальных должностей исполняемые этим человеком
+    //и делаем из него массив формата [["должность", [фильмы в этой должности], ...]]
+    const uniqueListCrew = filterDepartaments(credits.crew)
     const arrListCrew = Object.entries(uniqueListCrew)
+    // преобразуем его в новый массив такого же формата, но с отсортироваными по дате фильмами
     const arrListCrewSorted = arrListCrew.map(outsideArr => [outsideArr[0], [...outsideArr[1]].sort((a, b) => sortByRealese(a, b))])
+    // тоже самое для фильмов где человек выступал актером
     const arrListActingSorted = !!credits.cast.length ? [['Acting', [...credits.cast].sort((a, b) => sortByRealese(a, b))]] : []
+    // соедеяем все в один массив для рендера всех фильмов отсортированых по колличеству работ в конкретной должности 
     const arrToRender = [...arrListCrewSorted, ...arrListActingSorted].sort((a, b) => a[1].length > b[1].length ? -1 : 1)
     const [filterRender, setFilterRender] = useState('All')
+    const allCreditsLength = credits.cast.length + credits.crew.length
 
     function sortByRealese(a, b) {
         if (a.media_type === 'tv' && b.media_type === 'tv') {
@@ -34,8 +40,8 @@ function CreditsFullList({ credits }) {
                     label="Departament"
                     onChange={e => setFilterRender(e.target.value)}
                 >
-                    <MenuItem value='All'>All</MenuItem>
-                    {arrToRender.map(e => 
+                    <MenuItem value='All'>All ({allCreditsLength})</MenuItem>
+                    {arrToRender.map(e =>
                         <MenuItem key={e[0]} value={e[0]}>
                             {e[0]}({e[1].length})
                         </MenuItem>)
@@ -44,23 +50,24 @@ function CreditsFullList({ credits }) {
             </FormControl>
             {arrToRender && arrToRender.map(e => {
                 if (filterRender === 'All') {
-                    return <div key={e[0]} className={'list_' + e[0]}>
-                                <h4>{e[0]}</h4>
-                                <div className='list_cells'>
-                                    {e[1].map(elem => <MediaCell key={elem.id + Math.random()} elem={elem}/>)}
-                                </div>
-                            </div>
+                    return <Listblock key={e[0]} title={e[0]} arrCellls={e[1]}/>
                 } else if (e[0] === filterRender) {
-                    return <div key={e[0]} className={'list_' + e[0]}>
-                                <h4>{e[0]}</h4>
-                                <div className='list_cells'>
-                                    {e[1].map(elem => <MediaCell key={elem.id + Math.random()} elem={elem}/>)}
-                                </div>
-                            </div>
-                }   
+                    return <Listblock key={e[0]} title={e[0]} arrCellls={e[1]}/>
+                }
             })}
         </section>
     )
 }
 
 export default CreditsFullList
+
+function Listblock({title, arrCellls}) {
+    return (
+        <div className={'list_' + title}>
+            <h4>{title}</h4>
+            <div className='list_cells'>
+                {arrCellls.map(elem => <MediaCell key={elem.id + Math.random()} elem={elem} />)}
+            </div>
+        </div>
+    )
+}

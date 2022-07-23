@@ -18,10 +18,14 @@ function ReviewsPageConteiner({reviews}) {
     return (
         <div className='reviews_result conteiner'>
             <div className='writeReviews'>
+                <button className='addReview' disabled>
+                    Add Review
+                </button>
                 <span>A feature to write a review will be added soo</span>
             </div>
             <div className='list_reviews'>
                 {reviews?.results.map(review => <ReviewPreview key={review.id} limitSymbols={false} reviewInfo={review} />)}
+                {!reviews?.results.length && <p>Reviews not found</p>}
             </div>
             {pages.totalPages > 1 &&
                 <Pagination

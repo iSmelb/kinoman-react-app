@@ -18,7 +18,7 @@ function PersonPreview({ personInfo, sizeImg = 'size138and175' }) {
         size235and235: pathImg235and235,
         size66and66: pathImg66and66,
     }
-
+    const linkId = personInfo.id + '-' + personInfo.name.replace(/\s/g, '-')
     let character = personInfo?.character
 
     if ('roles' in personInfo) {
@@ -28,7 +28,7 @@ function PersonPreview({ personInfo, sizeImg = 'size138and175' }) {
     return (
         <div className='personPreview'>
             <div className='photo'>
-                <Link to={`/people/${personInfo.id}`}>
+                <Link to={`/people/${linkId}`}>
                     {!personInfo.profile_path
                         ? <img src={unknownImg} alt={personInfo.name} />
                         : <img loading='lazy' src={allSize[sizeImg] + personInfo.profile_path} alt={personInfo.name} />
@@ -37,7 +37,7 @@ function PersonPreview({ personInfo, sizeImg = 'size138and175' }) {
             </div>
             <div className='name'>
                 <h5>
-                    <Link to={`/people/${personInfo.id}`}>
+                    <Link to={`/people/${linkId}`}>
                         {personInfo.name}
                     </Link>
                 </h5>
@@ -46,12 +46,12 @@ function PersonPreview({ personInfo, sizeImg = 'size138and175' }) {
                         {character}
                     </p>
                 }
-                {personInfo?.total_episode_count && 
+                {personInfo?.total_episode_count &&
                     <p>
                         ({personInfo.total_episode_count} Episodes)
                     </p>
                 }
-                {personInfo?.job && 
+                {personInfo?.job &&
                     <p>
                         {personInfo?.job}
                     </p>
@@ -60,8 +60,18 @@ function PersonPreview({ personInfo, sizeImg = 'size138and175' }) {
                     <div className='known_for'>
                         <span>Known for: </span>
                         {personInfo.known_for.map(mediaFile => (mediaFile.media_type === 'tv')
-                            ? <Link key={mediaFile.id} to={`/tv/${mediaFile.id}`}>{mediaFile.original_name }</Link> 
-                            : <Link key={mediaFile.id} to={`/movies/${mediaFile.id}`}>{mediaFile.original_title }</Link> 
+                            ? <Link
+                                key={mediaFile.id}
+                                to={`/tv/${mediaFile.id + '-' + mediaFile.name.replace(/\s/g, '-')}`}
+                            >
+                                {mediaFile.original_name}
+                            </Link>
+                            : <Link
+                                key={mediaFile.id}
+                                to={`/movies/${mediaFile.id + '-' + mediaFile.title.replace(/\s/g, '-')}`}
+                            >
+                                {mediaFile.original_title}
+                            </Link>
                         )}
                     </div>
                 }

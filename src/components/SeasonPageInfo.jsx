@@ -6,7 +6,8 @@ import MiniMediaBanner from './UI/reusable/MiniMediaBanner'
 
 function SeasonPageInfo() {
     const { season, singleTvShow } = useSelector(state => state.singleTvShow)
-    const seasonInfo = { ...season, tvId: singleTvShow?.id }
+    const tvId = singleTvShow?.id + '-' + singleTvShow?.name.replace(/\s/g, '-')
+    const seasonInfo = { ...season, tvId: tvId}
     
     return (
         <div className='seasonPageInfo'>

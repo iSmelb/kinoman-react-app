@@ -17,7 +17,7 @@ function PersonInfo({personObj}) {
         <section className='person_info'>
             <div className='photo'>
                 {personObj.profile_path 
-                    ? <img src={pathToImg + personObj.profile_path} alt="Person poster" />
+                    ? <img loading='lazy' src={pathToImg + personObj.profile_path} alt="Person poster" />
                     : <img src={unkownImg} alt="Person poster" />
                 }
                 <span>{personObj.name}</span>
