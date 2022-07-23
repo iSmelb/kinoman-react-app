@@ -16,7 +16,7 @@ function Player() {
             <iframe
                 id="ytplayer"
                 type="text/html"
-                src={`http://www.youtube.com/embed/${key}`}
+                src={`https://www.youtube.com/embed/${key}`}
                 frameBorder="0"
                 title='player' 
             />

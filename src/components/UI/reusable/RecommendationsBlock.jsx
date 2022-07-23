@@ -11,22 +11,17 @@ import MoviePreview from "../PreviewReusable/MoviePreview";
     */
 
 function RecommendationsMovies({ recommendations, type = 'movies' }) {
-    const listMovies = useRef(null)
-
-    useEffect(() => {
-        listMovies.current.scrollTo(0, 0)
-    }, [recommendations])
 
     return (
         <section className='recommendationsMovies'>
             <h3>Recommendations</h3>
             {type === 'movies' &&
-                <div ref={listMovies} className='listMovies'>
+                <div className='listMovies'>
                     {recommendations && recommendations.map(movie => <MoviePreview movie={movie} key={movie.id} sizeImg='size250and141' />)}
                 </div>
             }
             {type === 'tv' &&
-                <div ref={listMovies} className='listTvShow'>
+                <div className='listTvShow'>
                     {recommendations && recommendations.map(tvObj => <TvShowPreview tvObj={tvObj} key={tvObj.id} sizeImg='size250and141' />)}
                 </div>
             }

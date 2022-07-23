@@ -10,7 +10,7 @@ function TvShowInfo() {
     return (
         <section
             style={{
-                backgroundImage: `linear-gradient( to right, rgba(6, 17, 26, 0.9) 0%, rgba(6, 17, 26, 0.9) 100%), url('http://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${singleTvShow.backdrop_path}')`,
+                backgroundImage: `linear-gradient( to right, rgba(6, 17, 26, 0.9) 0%, rgba(6, 17, 26, 0.9) 100%), url('https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${singleTvShow.backdrop_path}')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
             }}

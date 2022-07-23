@@ -1,14 +1,11 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import AppRouters from "./components/AppRouters";
-// import Footer from "./components/Footer";
-// import Header from "./components/header/Header";
-// import Player from "./components/Player";
 import './style/app.scss';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <AppRouters/>
     </BrowserRouter>
   );
