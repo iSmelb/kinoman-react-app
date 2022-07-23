@@ -2,7 +2,6 @@ import React from 'react'
 import VideoPreview from './VideoPreview'
 
 function VideosList({data}) {
-    console.log(data.elementsToRend)
 
     return (
         <div className={`videos_list`}>

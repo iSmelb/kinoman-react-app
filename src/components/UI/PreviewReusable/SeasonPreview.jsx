@@ -12,9 +12,6 @@ const pathToImg260and390 = 'https://www.themoviedb.org/t/p/w260_and_h390_bestv2'
 function SeasonPreview({seasonObj, sizeImg = 'size260and390'}) {
     const posterPath = seasonObj.poster_path
     const {id} = useParams()
-
-    console.log(seasonObj)
-
     const allSize = {
         size260and390: pathToImg260and390,
         size130and195: pathToImg130and195,

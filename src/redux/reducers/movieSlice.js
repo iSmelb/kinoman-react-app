@@ -14,7 +14,6 @@ export const getMovieFromId = createAsyncThunk(
     async function(movieId, thunkAPI) {
         try {
             const response = await MovieService.getMovieFromId(movieId)
-            console.log(response)
             return response.data
         } catch(e) {
             return thunkAPI.rejectWithValue('Error during server request')
@@ -28,7 +27,6 @@ export const getReviewsForMovie = createAsyncThunk(
         try {
             const {mediaId, page} = queryParams
             const response = await MovieService.getReviewsForMovie(mediaId, page)
-            console.log(response.data)
             return response.data
         } catch(e) {
             return thunkAPI.rejectWithValue('Error during server request')

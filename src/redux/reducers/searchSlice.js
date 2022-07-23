@@ -16,7 +16,6 @@ const initialState = {
 export const multiSearch = createAsyncThunk(
     'search/multiSearch',
     async function (searchParams, thunkAPI) {
-        console.log(searchParams, 'запрос на всё')
         const { query, page } = searchParams
 
         // 4 запроса делаются для того чтобы узнать тотал резулт для каждой из категории
@@ -45,7 +44,6 @@ export const multiSearch = createAsyncThunk(
 export const movieSearch = createAsyncThunk(
     'search/movieSearch',
     async function (searchParams, thunkAPI) {
-        console.log(searchParams, 'запрос на кино')
         const { query, page } = searchParams
         try {
             const movieResult = await SearchService.searchMovie(query, page)
@@ -60,7 +58,6 @@ export const movieSearch = createAsyncThunk(
 export const tvSearch = createAsyncThunk(
     'search/tvSearch',
     async function (searchParams, thunkAPI) {
-        console.log(searchParams, 'запрос на тв')
         const { query, page } = searchParams
         try {
             const tvResult = await SearchService.searchTvShow(query, page)
@@ -75,7 +72,6 @@ export const tvSearch = createAsyncThunk(
 export const peopleSearch = createAsyncThunk(
     'search/peopleSearch',
     async function (searchParams, thunkAPI) {
-        console.log(searchParams, 'запрос на людей')
         const { query, page } = searchParams
         try {
             const peopleResult = await SearchService.searchPeople(query, page)
@@ -98,7 +94,6 @@ const searchSlice = createSlice({
             state.isLoading = true
         },
         [multiSearch.fulfilled]: (state, action) => {
-            console.log(action.payload, 'общий ответ')
             state.searchResult = action.payload.searchResult
             state.searchRequest = action.payload.searchRequest
             state.isLoading = false
@@ -111,7 +106,6 @@ const searchSlice = createSlice({
             state.isLoading = true
         },
         [movieSearch.fulfilled]: (state, action) => {
-            console.log(action.payload, 'кино ответ')
             state.searchResult.movies = action.payload
             state.isLoading = false
         },
@@ -123,7 +117,6 @@ const searchSlice = createSlice({
             state.isLoading = true
         },
         [tvSearch.fulfilled]: (state, action) => {
-            console.log(action.payload, 'тв ответ')
             state.searchResult.tvShow = action.payload
             state.isLoading = false
         },
@@ -135,7 +128,6 @@ const searchSlice = createSlice({
             state.isLoading = true
         },
         [peopleSearch.fulfilled]: (state, action) => {
-            console.log(action.payload, 'люди ответ')
             state.searchResult.people = action.payload
             state.isLoading = false
         },

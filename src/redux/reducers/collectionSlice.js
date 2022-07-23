@@ -12,7 +12,6 @@ export const getCollectionForId = createAsyncThunk(
     async function(collectionId, thunkAPI) {
         try {
             const response = await MovieService.getCollectionForId(collectionId)
-            console.log(response)
             return response.data
         } catch(e) {
             return thunkAPI.rejectWithValue('Error during server request')

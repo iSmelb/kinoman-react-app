@@ -12,7 +12,6 @@ export const getPersonFromId = createAsyncThunk(
     async function(personId, thunkAPI) {
         try {
             const response = await PeopleService.getPersonFromId(personId)
-            console.log(response.data)
             return response.data
         } catch(e) {
             return thunkAPI.rejectWithValue('Error during server request')

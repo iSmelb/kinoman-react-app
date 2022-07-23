@@ -9,7 +9,6 @@ export const errorLoad = (state, action) => {
 
 export const requestFulfilled = (state, action) => {
     // функция принимает результат асинк санка, в котором поле тайп = полю в начальном состоянии и в зависимости от тайп, меняет конкретнный стейт
-    console.log(action.payload)
     const type = action.payload.type
 
     if (action.payload.response.page === 1) {

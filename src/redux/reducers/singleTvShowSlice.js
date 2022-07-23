@@ -15,7 +15,6 @@ export const getTvShowFromId = createAsyncThunk(
     async function(tvShowId, thunkAPI) {
         try {
             const response = await TvShowService.getTvShowFromId(tvShowId)
-            console.log(response.data)
             return response.data
         } catch(e) {
             return thunkAPI.rejectWithValue('Error during server request')
@@ -29,7 +28,6 @@ export const getSeasonDetails = createAsyncThunk(
         try {
             const {id, number} = queryParams
             const response = await TvShowService.getSeasonDetails(id, number)
-            console.log(response.data)
             return response.data
         } catch(e) {
             return thunkAPI.rejectWithValue('Error during server request')
@@ -43,7 +41,6 @@ export const getReviewsForTv = createAsyncThunk(
         try {
             const {mediaId, page} = queryParams
             const response = await TvShowService.getReviewsForTv(mediaId, page)
-            console.log(response.data)
             return response.data
         } catch(e) {
             return thunkAPI.rejectWithValue('Error during server request')
