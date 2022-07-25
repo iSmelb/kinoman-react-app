@@ -45,12 +45,17 @@
             left: 0;
             background-color: #fff;
             padding: 5px 0;
-            min-width: 130px;
+            min-width: 110px;
             border-radius: 5px;
             border: 1px solid #a3a3a3;
             overflow: hidden;
             z-index: 1;
             white-space: nowrap;
+
+            &.last-of-type {
+                right: 0;
+                left: auto;
+            }
 
             &.show {
                 opacity: 1;

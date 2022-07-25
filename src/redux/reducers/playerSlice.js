@@ -14,6 +14,7 @@ const playerSlice = createSlice({
         },
         togglePlayer(state) {
             state.active = !state.active
+            state.keyForMovie = ''
         }
     }
 })

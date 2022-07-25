@@ -103,7 +103,6 @@
     
         &.showInput {
             input {
-        
                 @media(max-width: 900px) {
                     width: 100%;
                     position: absolute;
@@ -112,6 +111,9 @@
                     display: block;
                     border-bottom: 1px solid $colorBordef;
                     padding: 6px 20px;
+                    height: 40px;
+                    -webkit-appearance: none;
+                    -webkit-border-radius: 0;
                 }
             }
         }

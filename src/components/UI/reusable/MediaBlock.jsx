@@ -13,8 +13,8 @@ function MediaBlock({images, videos}) {
     const dispatch = useDispatch()
 
     const openPlayer = (e) => {
-        dispatch(changeKeyForMovie(e.target.dataset.keymovie))
         dispatch(togglePlayer())
+        dispatch(changeKeyForMovie(e.target.dataset.keymovie))
         document.body.classList.add('stop-scrolling')
     }
 
@@ -56,7 +56,7 @@ function MediaBlock({images, videos}) {
                         )}
                     </TabPanelUnstyled>
                     <TabPanelUnstyled className='video' value={2}>
-                        {arrTrailers.map(video =>
+                        {arrTrailers.map((video, index) => (index < 4) &&
                             <div
                                 key={video.key}
                                 style={{ backgroundImage: `url('https://i.ytimg.com/vi/${video.key}/hqdefault.jpg')`, backgroundSize: 'cover'}}

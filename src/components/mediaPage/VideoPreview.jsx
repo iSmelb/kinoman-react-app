@@ -5,8 +5,8 @@ import { changeKeyForMovie, togglePlayer } from '../../redux/reducers/playerSlic
 function VideoPreview({ video }) {
     const dispatch = useDispatch()
     const openPlayer = (e) => {
-        dispatch(changeKeyForMovie(e.target.dataset.keymovie))
         dispatch(togglePlayer())
+        dispatch(changeKeyForMovie(e.target.dataset.keymovie))
         document.body.classList.add('stop-scrolling')
     }
 

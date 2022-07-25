@@ -18,6 +18,9 @@ function MediaResultPanel({ data }) {
         } else {
             setSearchParams({ type: item })
         }
+        if (window.innerWidth <= 900) {
+            showResPanel()
+        }
         window.scrollTo(0, 0)
     }
 

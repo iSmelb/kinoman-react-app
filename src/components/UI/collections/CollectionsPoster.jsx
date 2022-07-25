@@ -17,7 +17,7 @@ function CollectionsPoster() {
     <section className='collections'>
       <div
         style={{
-          backgroundImage: `linear-gradient( to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ), url('http://image.tmdb.org/t/p/w1440_and_h320_multi_faces/${collectionInfo.backdrop_path}')`,
+          backgroundImage: `linear-gradient( to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ), url('https://image.tmdb.org/t/p/w1440_and_h320_multi_faces/${collectionInfo.backdrop_path}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}

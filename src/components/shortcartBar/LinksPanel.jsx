@@ -59,7 +59,7 @@ function LinksPanel() {
                             <span>{obj.name}</span>
                             <FontAwesomeIcon className='arrow' icon={faSortDown}/>
                         </h3>
-                        <ul className={(menuIsOpen && currentIndex === index) ? 'show' : ''}>
+                        <ul className={`${(menuIsOpen && currentIndex === index) ? 'show' : ''} ${index === barLinks.length -1 ? 'last-of-type' : ''}`}>
                             {obj.links.map(link =>
                                 <CustomLink
                                     key={link.path}

@@ -13,13 +13,19 @@ function SearchResultPanel() {
         document.body.classList.toggle('stop-scrolling')
     }
 
+    const closePanelOnMobile = () => {
+        if (window.innerWidth <= 900) {
+            showResPanel()
+        }
+    }
+
     return (
         <div className={`wrapperResultPanel ${switchPanel ? 'show' : ''}`}>
             <div className='resultPanel'>
                 <h1>Search Results</h1>
                 <ul className='resultList'>
                     <li>
-                        <NavLink className='link' to={`/search/movies?query=${searchRequest}&page=1`}>
+                        <NavLink onClick={closePanelOnMobile} className='link' to={`/search/movies?query=${searchRequest}&page=1`}>
                             <span className='name'>Movies</span>
                             <span className='count'>
                                 {searchResult.movies
@@ -30,7 +36,7 @@ function SearchResultPanel() {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className='link' to={`/search/tv?query=${searchRequest}&page=1`}>
+                        <NavLink onClick={closePanelOnMobile} className='link' to={`/search/tv?query=${searchRequest}&page=1`}>
                             <span className='name'>Tv Show</span>
                             <span className='count'>
                                 {searchResult.tvShow
@@ -41,7 +47,7 @@ function SearchResultPanel() {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className='link' to={`/search/people?query=${searchRequest}&page=1`}>
+                        <NavLink onClick={closePanelOnMobile} className='link' to={`/search/people?query=${searchRequest}&page=1`}>
                             <span className='name'>People</span>
                             <span className='count'>
                                 {searchResult.people

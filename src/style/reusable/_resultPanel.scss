@@ -41,6 +41,7 @@
         height: 100%;
         border-radius: 0;
         border: none;
+        overflow-y: auto;
     }
 
     h1 {
@@ -48,7 +49,7 @@
     }
 
     .toggleHidePanel {
-        position: absolute;
+        position: fixed;
         top: 50%;
         transform: translateY(-50%);
         right: -17px;
