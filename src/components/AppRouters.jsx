@@ -26,10 +26,6 @@ import MediaImagesPage from "../Pages/MediaImagesPage";
 import MediaVideoPage from "../Pages/MediaVideoPage";
 import LinksPanel from './shortcartBar/LinksPanel';
 
-{/* {routes.map( route => 
-    <Route key={route.path} path={route.path} element={<route.component/>}/>
-)} */}
-
 function AppRouters() {
     return (
         <Routes>

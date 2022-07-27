@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import TvShowPreview from '../PreviewReusable/TvShowPreview'
 
 function PopularTvShow() {
-
     const tvShow = useSelector(state => state.tvShow.populars)
 
     return (

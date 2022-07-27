@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function MediaCell({ elem }) {
+    //делаем ячейку фильма или сериала в списке всех фильмов для человека
     let linkId
-
     if(elem.media_type === 'tv') {
         linkId = elem.id + '-' + elem.name.replace(/\s/g, '-')
     } else {

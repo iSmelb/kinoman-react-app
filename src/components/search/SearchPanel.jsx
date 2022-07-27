@@ -11,6 +11,7 @@ function SearchPanel() {
     const inputRef = useRef('')
 
     const showInput = (e) => {
+        //показываем импут при клике на лупу в моб версии
         e.stopPropagation()
         window.innerWidth <= 900 && setHideInput(prev => !prev)
         setTimeout(() => inputRef.current.focus(), 0)

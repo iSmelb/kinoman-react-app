@@ -6,14 +6,13 @@ import getRandomInt from '../../utils/randomNumber';
 
 function MainBanner() {
     const allPopularBackdrops = useSelector(selectAllPopular)
-     const [bgPath, setBgpath] = useState(null)
+    const [bgPath, setBgpath] = useState(null)
 
     useEffect(() => {
         if (allPopularBackdrops) {
             const randomIndex = getRandomInt(allPopularBackdrops.length)
             setBgpath(allPopularBackdrops[randomIndex].backdrop_path)
         }
-
     }, [allPopularBackdrops])
 
     return (

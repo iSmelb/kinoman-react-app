@@ -8,7 +8,7 @@ import MiniMediaBanner from './UI/reusable/MiniMediaBanner'
 function MediaImagesPageInfo({ mediaFile }) {
     const { pathname } = useLocation()
     const imagesType = pathname.search(/posters/) === -1 ? 'backdrops' : 'posters'
-    const images = filterLang(mediaFile.images[imagesType])
+    const images = filterLang(mediaFile.images[imagesType]) //создем объект формата ключ(язык): значение(массив картинок с данным языком)
     const [searchParams] = useSearchParams();
     const searchLang = searchParams.get('language') || ''
     const sortedImages = Object.entries(images).sort((a, b) => a[0] > b[0] ? 1 : -1)

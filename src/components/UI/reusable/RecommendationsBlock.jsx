@@ -4,12 +4,6 @@ import { useEffect, useRef } from 'react/cjs/react.development'
 import TvShowPreview from '../PreviewReusable/TvShowPreview'
 import MoviePreview from "../PreviewReusable/MoviePreview";
 
-/**
-    * size type can be movies(default), tv
-    *
-    *
-    */
-
 function RecommendationsMovies({ recommendations, type = 'movies' }) {
 
     return (

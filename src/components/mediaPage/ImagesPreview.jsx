@@ -4,6 +4,10 @@ const pathOriginal = 'https://www.themoviedb.org/t/p/original'
 const pathImg500and282 = 'https://www.themoviedb.org/t/p/w500_and_h282_face'
 const pathImg220and330 = 'https://www.themoviedb.org/t/p/w220_and_h330_face'
 
+/**
+  * size img can be: size500and282, size220and330(default)
+  */
+
 function ImagesPreview({ image, sizeImg = 'size220and330' }) {
     const allSize = {
         size500and282: pathImg500and282,

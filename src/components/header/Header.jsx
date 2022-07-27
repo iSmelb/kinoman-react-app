@@ -16,8 +16,8 @@ function Header() {
     }
 
     useEffect(() => {
+        //скрываем и открываем хедер при скролле
         const defaultOffset = headerRef.current?.offsetHeight
-
         const handleScroll = () => {
             const currentScrollY = window.scrollY
 
@@ -26,7 +26,6 @@ function Header() {
             } else if(currentScrollY < lastScroll.current && hideHeader) {
                 setHideHeader(false)
             }
-
             lastScroll.current = currentScrollY
         }
         window.addEventListener('scroll', handleScroll)

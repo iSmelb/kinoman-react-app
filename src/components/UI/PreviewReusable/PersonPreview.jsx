@@ -21,6 +21,7 @@ function PersonPreview({ personInfo, sizeImg = 'size138and175' }) {
     const linkId = personInfo.id + '-' + personInfo.name.replace(/\s/g, '-')
     let character = personInfo?.character
 
+    //указываем персонажа в сериале
     if ('roles' in personInfo) {
         character = personInfo.roles[0].character
     }
