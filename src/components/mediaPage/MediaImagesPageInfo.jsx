@@ -1,9 +1,9 @@
 import React from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
-import filterLang from '../utils/filterLanguage'
-import ImagesList from './mediaPage/ImagesList'
-import MediaResultPanel from './UI/reusable/MediaResultPanel'
-import MiniMediaBanner from './UI/reusable/MiniMediaBanner'
+import filterLang from '../../utils/filterLanguage'
+import ImagesList from './ImagesList'
+import MediaResultPanel from '../UI/reusable/MediaResultPanel'
+import MiniMediaBanner from '../UI/reusable/MiniMediaBanner'
 
 function MediaImagesPageInfo({ mediaFile }) {
     const { pathname } = useLocation()

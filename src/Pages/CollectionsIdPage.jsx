@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import CollectionPageInfo from '../components/CollectionPageInfo'
+import CollectionPageInfo from '../components/collectionPage/CollectionPageInfo'
 import Loader from '../components/UI/loader/Loader'
 import { useUpdateTitle } from '../hooks/useUpdateTitle'
 import { clearState, getCollectionForId } from '../redux/reducers/collectionSlice'

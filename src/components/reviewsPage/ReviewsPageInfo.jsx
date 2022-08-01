@@ -1,6 +1,6 @@
 import React from 'react';
-import ReviewsPageConteiner from './reviewsPage/ReviewsConteiner';
-import MiniMediaBanner from './UI/reusable/MiniMediaBanner';
+import ReviewsPageConteiner from './ReviewsConteiner';
+import MiniMediaBanner from '../UI/reusable/MiniMediaBanner';
 
 function ReviewsPageInfo({ mediaFile, reviews }) {
     

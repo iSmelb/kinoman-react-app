@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import SeasonPreview from './UI/PreviewReusable/SeasonPreview'
-import MiniMediaBanner from './UI/reusable/MiniMediaBanner'
+import SeasonPreview from '../UI/PreviewReusable/SeasonPreview'
+import MiniMediaBanner from '../UI/reusable/MiniMediaBanner'
 
 function SeasonsPageInfo() {
     const { singleTvShow } = useSelector(state => state.singleTvShow)

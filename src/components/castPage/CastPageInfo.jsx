@@ -1,7 +1,7 @@
 import React from 'react'
-import PersonPreview from '../components/UI/PreviewReusable/PersonPreview'
-import filterDepartaments from '../utils/filterDepartaments'
-import MiniMediaBanner from './UI/reusable/MiniMediaBanner'
+import PersonPreview from '../UI/PreviewReusable/PersonPreview'
+import filterDepartaments from '../../utils/filterDepartaments'
+import MiniMediaBanner from '../UI/reusable/MiniMediaBanner'
 
 function CastPageInfo({mediaFile, credits}) {
     const {cast, crew} = credits

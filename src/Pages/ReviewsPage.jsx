@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams, useSearchParams } from 'react-router-dom';
-import ReviewsPageInfo from '../components/ReviewsPageInfo';
+import ReviewsPageInfo from '../components/reviewsPage/ReviewsPageInfo';
 import Loader from '../components/UI/loader/Loader';
 import { useUpdateTitle } from '../hooks/useUpdateTitle';
 import { clearState as clearStateMovie, getMovieFromId, getReviewsForMovie } from '../redux/reducers/movieSlice';

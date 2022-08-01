@@ -1,7 +1,7 @@
 import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import PersonIdPageInfo from '../components/PersonIdPageInfo';
+import PersonIdPageInfo from '../components/personIdPage/PersonIdPageInfo';
 import Loader from '../components/UI/loader/Loader';
 import { useUpdateTitle } from '../hooks/useUpdateTitle';
 import { clearState, getPersonFromId } from '../redux/reducers/personSlice';

@@ -1,7 +1,7 @@
 import React from 'react'
-import CollectionBanner from './UI/collections/CollectionBanner'
+import CollectionBanner from '../UI/collections/CollectionBanner'
 import { useSelector } from 'react-redux'
-import MoviePreview from './UI/PreviewReusable/MoviePreview'
+import MoviePreview from '../UI/PreviewReusable/MoviePreview'
 
 function CollectionPageInfo() {
     const collection = useSelector(state => state.collection.collectionInfo)

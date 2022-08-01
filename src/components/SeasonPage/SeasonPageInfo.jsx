@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import EpisodesList from './SeasonPage/EpisodesList'
-import SeasonPagination from './SeasonPage/SeasonPagination'
-import MiniMediaBanner from './UI/reusable/MiniMediaBanner'
+import EpisodesList from './EpisodesList'
+import SeasonPagination from './SeasonPagination'
+import MiniMediaBanner from '../UI/reusable/MiniMediaBanner'
 
 function SeasonPageInfo() {
     const { season, singleTvShow } = useSelector(state => state.singleTvShow)

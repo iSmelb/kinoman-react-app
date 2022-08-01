@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
-import CastPageInfo from '../components/CastPageInfo';
+import CastPageInfo from '../components/castPage/CastPageInfo';
 import Loader from '../components/UI/loader/Loader';
 import { useUpdateTitle } from '../hooks/useUpdateTitle';
 import { clearState as clearStateMovie, getMovieFromId } from '../redux/reducers/movieSlice';

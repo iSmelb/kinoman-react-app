@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import Biography from './UI/people_info_reusable/Biography'
-import CreditsFullList from './UI/people_info_reusable/CreditsFullList'
-import KnownFor from './UI/people_info_reusable/KnownFor'
-import PersonInfo from './UI/people_info_reusable/PersonInfo'
+import Biography from '../UI/people_info_reusable/Biography'
+import CreditsFullList from '../UI/people_info_reusable/CreditsFullList'
+import KnownFor from '../UI/people_info_reusable/KnownFor'
+import PersonInfo from '../UI/people_info_reusable/PersonInfo'
 
 function PersonIdPageInfo() {
     const person = useSelector(state => state.person.person)

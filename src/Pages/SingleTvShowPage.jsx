@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import SingleTvShowInfo from '../components/SingleTvShowInfo';
+import SingleTvShowInfo from '../components/singleTvShowPage/SingleTvShowInfo';
 import Loader from '../components/UI/loader/Loader';
 import { useUpdateTitle } from '../hooks/useUpdateTitle';
 import { clearState, getTvShowFromId } from '../redux/reducers/singleTvShowSlice';

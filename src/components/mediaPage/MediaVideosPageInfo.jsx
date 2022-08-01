@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
-import filterTypeVideo from '../utils/filterTypeVideo'
-import VideosList from './mediaPage/VideosList'
-import MediaResultPanel from './UI/reusable/MediaResultPanel'
-import MiniMediaBanner from './UI/reusable/MiniMediaBanner'
+import filterTypeVideo from '../../utils/filterTypeVideo'
+import VideosList from './VideosList'
+import MediaResultPanel from '../UI/reusable/MediaResultPanel'
+import MiniMediaBanner from '../UI/reusable/MiniMediaBanner'
 
 function MediaVideosPageInfo({mediaFile}) {
     const [searchParams] = useSearchParams();
