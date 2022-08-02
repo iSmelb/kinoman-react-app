@@ -38,7 +38,7 @@ function MediaVideoPage() {
 
     return (
         <>
-            {isLoading && <div><Loader /></div>}
+            {isLoading && <Loader/>}
             {error && <div style={{ textAlign: 'center' }}>{error}</div>}
             {prevStateIsClear && mediaFile && <MediaVideosPageInfo mediaFile={mediaFile}/>}
         </>

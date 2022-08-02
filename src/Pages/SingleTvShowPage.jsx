@@ -28,7 +28,7 @@ function SingleTvShowPage() {
 
     return (
         <>
-            {isLoading && <div><Loader/></div>}
+            {isLoading && <Loader/>}
             {error && <div style={{textAlign: 'center'}}>{error}</div>}
             {prevStateIsClear && singleTvShow && <SingleTvShowInfo/>}
         </>

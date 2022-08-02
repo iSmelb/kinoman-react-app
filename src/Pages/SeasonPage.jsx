@@ -28,7 +28,7 @@ function SeasonPage() {
 
     return (
         <>
-            {isLoading && <div><Loader /></div>}
+            {isLoading && <Loader/>}
             {error && <div style={{textAlign: 'center'}}>{error}</div>}
             {!error && season && <SeasonPageInfo />}
         </>

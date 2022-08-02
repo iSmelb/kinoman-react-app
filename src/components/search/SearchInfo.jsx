@@ -40,10 +40,10 @@ function SearchInfo() {
   }
 
   return (
-    <section className='searchMainCOnteiner conteiner'>
+    <div className='searchMainCOnteiner conteiner'>
       <div className='searchResult'>
         <SearchResultPanel />
-        <div className='resultContent'>
+        <section className='resultContent'>
           {(!type && !!objToRender.multi?.results.length) &&
             objToRender.multi.results.map(mediaFile => getCardToRender(mediaFile))
           }
@@ -53,7 +53,7 @@ function SearchInfo() {
           {((type && !objToRender[type]?.results.length) || (!objToRender.multi?.results.length)) &&
             <p>There are no movies that matched your query.</p>
           }
-        </div>
+        </section>
       </div>
       <div className='paginatePages'>
         {pages.totalPages > 1 &&
@@ -64,7 +64,7 @@ function SearchInfo() {
           />
         }
       </div>
-    </section>
+    </div>
   )
 }
 

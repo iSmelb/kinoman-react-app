@@ -2,6 +2,7 @@ import TabPanelUnstyled from '@mui/base/TabPanelUnstyled';
 import TabsListUnstyled from '@mui/base/TabsListUnstyled';
 import TabsUnstyled from '@mui/base/TabsUnstyled';
 import TabUnstyled from '@mui/base/TabUnstyled';
+import { LinearProgress } from '@mui/material';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import MainBanner from '../components/homePage/MainBanner';

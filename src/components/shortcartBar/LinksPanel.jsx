@@ -72,7 +72,7 @@ function LinksPanel() {
                     </div>)
                 }
             </div>
-            <Outlet />
+            <Outlet/>
         </>
     )
 }

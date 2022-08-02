@@ -39,7 +39,7 @@ function CastPage() {
 
     return (
         <>
-            {isLoading && <div><Loader/></div>}
+            {isLoading && <Loader/>}
             {error && <div style={{ textAlign: 'center' }}>{error}</div>}
             {prevStateIsClear && mediaFile && <CastPageInfo mediaFile={mediaFile} credits={credits} />}
         </>

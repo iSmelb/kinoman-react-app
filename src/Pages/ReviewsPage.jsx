@@ -55,7 +55,7 @@ function ReviewsPage() {
 
     return (
         <>
-            {isLoading && <div><Loader /></div>}
+            {isLoading && <Loader/>}
             {error && <div style={{ textAlign: 'center' }}>{error}</div>}
             {prevStateIsClear && mediaFile && <ReviewsPageInfo mediaFile={mediaFile} reviews={reviews} />}
         </>
