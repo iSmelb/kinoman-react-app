@@ -14,7 +14,11 @@ function SearchPanel() {
         //показываем импут при клике на лупу в моб версии
         e.stopPropagation()
         window.innerWidth <= 900 && setHideInput(prev => !prev)
-        setTimeout(() => inputRef.current.focus(), 0)
+        if (!hideInput) {
+            inputRef.current.blur()
+        } else {
+            inputRef.current.focus()
+        }
     }
 
     const globalSearch = async (e) => {
@@ -26,6 +30,7 @@ function SearchPanel() {
         if (!hideInput) {
             setHideInput(prev => !prev)
         }
+        inputRef.current.blur()
     }
 
     useEffect(() => {
