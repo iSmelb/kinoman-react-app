@@ -11,7 +11,7 @@ function Loader() {
                 const diff = Math.random() * 10;
                 return Math.min(oldProgress + diff, 70);
             });
-        }, 500);
+        }, 200);
 
         return () => {
             clearInterval(timer);

@@ -1,0 +1,43 @@
+@import '../../style/variable';
+
+.form {
+    max-width: 700px;
+    width: 100%;
+
+    label {
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    input {
+        display: block;
+        margin-top: 5px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid $colorBordef;
+        outline: none;
+        padding: 6px 12px;
+
+        &:focus {
+            border-color: $colorBlue;
+        }
+    }
+
+    button {
+        width: 70px;
+        padding: 8px 5px;
+        font-size: 14px;
+        margin: 0;
+        border-radius: 8px;
+    }
+
+    .error {
+        margin: 5px 0;
+        color: red;
+        font-size: 14px;
+
+        p {
+            margin: 0;
+        }
+    }
+}

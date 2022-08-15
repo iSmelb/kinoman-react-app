@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
-import { routes } from '../Router/routes'
 import Layout from './Layout';
 import CollectionsIdPage from "../Pages/CollectionsIdPage";
 import HomePage from "../Pages/HomePage";
@@ -25,6 +24,10 @@ import ReviewsPage from "../Pages/ReviewsPage";
 import MediaImagesPage from "../Pages/MediaImagesPage";
 import MediaVideoPage from "../Pages/MediaVideoPage";
 import LinksPanel from './shortcartBar/LinksPanel';
+import RegisterPage from '../Pages/RegisterPage';
+import LoginPage from '../Pages/LoginPage';
+import UserPage from '../Pages/UserPage';
+import RequireAuth from '../hoc/RequireAuth';
 
 function AppRouters() {
     return (
@@ -62,6 +65,13 @@ function AppRouters() {
                 <Route path='collections/:id' element={<CollectionsIdPage />} />
                 <Route path='search/:type' element={<SearchPage />} />
                 <Route path='search' element={<SearchPage />} />
+                <Route path='register' element={<RegisterPage />} />
+                <Route path='login' element={<LoginPage />} />
+                <Route path='user' element={
+                    <RequireAuth>
+                        <UserPage />
+                    </RequireAuth>
+                } />
                 <Route path='*' element={<NotFoundPage />} />
             </Route>
         </Routes>

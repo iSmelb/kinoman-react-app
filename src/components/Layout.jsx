@@ -1,21 +1,26 @@
 import React from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import { Outlet } from 'react-router-dom'
+import { auth } from '..'
 import Footer from './Footer'
 import Header from './header/Header'
 import Player from './Player'
 
-
 function Layout() {
+  const [_, loading] = useAuthState(auth)
+
   return (
     <>
-      <div className="wrapper">
-        <Header />
-        <main className="main">
-          <Outlet/>
-        </main>
-        <Footer />
-      </div>
-      <Player/>
+      {!loading &&
+        <div className="wrapper">
+          <Header />
+          <main className="main">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+      }
+      <Player />
     </>
   )
 }

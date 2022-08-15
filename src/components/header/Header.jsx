@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SearchPanel from '../search/SearchPanel';
 import CustomMenuItem from './CustomMenuItem';
 import { movieLinks, peopleLinks, tvShowLinks } from './headerLinks';
+import LoginPanel from './LoginPanel';
 
 function Header() {
     const [burgerMenu, setBurgerMenu] = useState(false)
@@ -21,16 +22,16 @@ function Header() {
         const handleScroll = () => {
             const currentScrollY = window.scrollY
 
-            if(currentScrollY > lastScroll.current && !hideHeader && currentScrollY > defaultOffset) {
+            if (currentScrollY > lastScroll.current && !hideHeader && currentScrollY > defaultOffset) {
                 setHideHeader(true)
-            } else if(currentScrollY < lastScroll.current && hideHeader) {
+            } else if (currentScrollY < lastScroll.current && hideHeader) {
                 setHideHeader(false)
             }
             lastScroll.current = currentScrollY
         }
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
-    },[hideHeader])
+    }, [hideHeader])
 
     return (
         <header ref={headerRef} className={`header ${!hideHeader ? '' : 'hide'}`}>
@@ -41,13 +42,16 @@ function Header() {
                     </Link>
                 </div>
                 <SearchPanel />
-                <nav className={`header_nav ${burgerMenu ? 'active' : ''}`}>
-                    <ul className='navList'>
-                        <CustomMenuItem  name='Movies' dropItems={movieLinks} swichBurger={swichBurger}/>
-                        <CustomMenuItem  name='TV Show' dropItems={tvShowLinks} swichBurger={swichBurger}/>
-                        <CustomMenuItem  name='People' dropItems={peopleLinks} swichBurger={swichBurger}/>
-                    </ul>
-                </nav>
+                <div className='nav_user'>
+                    <nav className={`header_nav ${burgerMenu ? 'active' : ''}`}>
+                        <ul className='navList'>
+                            <CustomMenuItem name='Movies' dropItems={movieLinks} swichBurger={swichBurger} />
+                            <CustomMenuItem name='TV Show' dropItems={tvShowLinks} swichBurger={swichBurger} />
+                            <CustomMenuItem name='People' dropItems={peopleLinks} swichBurger={swichBurger} />
+                        </ul>
+                    </nav>
+                    <LoginPanel />
+                </div>
                 <div className='hamburgerConteiner' onClick={swichBurger}>
                     <span className={`hamburger ${burgerMenu ? 'active' : ''}`} />
                 </div>

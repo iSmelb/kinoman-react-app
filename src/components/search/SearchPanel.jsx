@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 function SearchPanel() {
     const [searchRequest, setSearchRequest] = useState('')
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const [hideInput, setHideInput] = useState(true)
     const inputRef = useRef('')
 

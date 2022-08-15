@@ -1,0 +1,22 @@
+.registerPage,
+.loginPage {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .head {
+        max-width: 700px;
+        width: 100%;
+        
+        h1 {
+            font-weight: 700;
+            font-size: 28px;
+        }
+
+        >p {
+            margin-top: 0;
+        }
+    }
+}

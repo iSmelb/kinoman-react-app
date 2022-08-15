@@ -42,7 +42,7 @@ function LinksPanel() {
             dispatch(closeMenu())
         }
         document.body.addEventListener('click', clickAnyToclose)
-        return ()=> document.body.removeEventListener('click', clickAnyToclose)
+        return () => document.body.removeEventListener('click', clickAnyToclose)
     },[])
 
     return (
