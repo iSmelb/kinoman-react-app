@@ -24,11 +24,28 @@
     }
 
     button {
-        width: 70px;
-        padding: 8px 5px;
+        --webkit-rigth-left-paddind: 10px;
+        display: inline-block;
+        width: calc(70px + var(--webkit-rigth-left-paddind));
+        padding: 8px var(--webkit-rigth-left-paddind);
         font-size: 14px;
-        margin: 0;
+        margin: 0 10px 0 0;
         border-radius: 8px;
+    }
+
+    a {
+        font-size: 14px;
+        color: $colorBlue;
+        padding: 8px 5px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:focus {
+            outline: none;
+            text-decoration: underline;
+        }
     }
 
     .error {

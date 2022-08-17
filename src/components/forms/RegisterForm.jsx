@@ -8,6 +8,7 @@ import { Alert } from '@mui/material';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../UI/loader/Loader';
+import { emailPattern } from '../../variables/regExPaterns';
 
 function RegisterForm() {
     const [
@@ -37,6 +38,9 @@ function RegisterForm() {
         }
     },[user])
 
+    // загрузка, ошибка и конфирм находятся в этой форме, так как хук "useCreateUserWithEmailAndPassword"-
+    // созданынй в разных компонентах не синхронизируется между собой можно было бы логику вынести в компонент страницы регистрации
+    // и сюда перекинуть функцию "createUserWithEmailAndPassword", но я не знаю как правильнее и лучше
     return (
         <>
             {loading && <Loader/>}
@@ -45,7 +49,10 @@ function RegisterForm() {
                     Email:
                     <input type='email' {...register('email', {
                         required: "This field is required",
-                        pattern: null
+                        pattern: {
+                            value: emailPattern,
+                            message: 'Invalid email adress'
+                        }
                     })} />
                 </label>
                 <div className={cl.error}>

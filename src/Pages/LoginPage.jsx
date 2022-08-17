@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Navigate } from 'react-router-dom'
 import { auth } from '..'
@@ -7,8 +7,10 @@ import { useUpdateTitle } from '../hooks/useUpdateTitle'
 
 function LoginPage() {
     const [user] = useAuthState(auth)
-
     useUpdateTitle('login')
+    useEffect(() => {
+        window.scrollTo(0,0)
+    },[])
 
     if(user) {
         return <Navigate to='/'/>

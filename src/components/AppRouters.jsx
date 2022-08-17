@@ -27,6 +27,7 @@ import LinksPanel from './shortcartBar/LinksPanel';
 import RegisterPage from '../Pages/RegisterPage';
 import LoginPage from '../Pages/LoginPage';
 import UserPage from '../Pages/UserPage';
+import RessetPasswordPage from '../Pages/RessetPasswordPage'
 import RequireAuth from '../hoc/RequireAuth';
 
 function AppRouters() {
@@ -67,6 +68,7 @@ function AppRouters() {
                 <Route path='search' element={<SearchPage />} />
                 <Route path='register' element={<RegisterPage />} />
                 <Route path='login' element={<LoginPage />} />
+                <Route path='resset-password' element={<RessetPasswordPage />} />
                 <Route path='user' element={
                     <RequireAuth>
                         <UserPage />
