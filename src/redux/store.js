@@ -9,6 +9,7 @@ import searchReduce from './reducers/searchSlice';
 import shortcarBarReducer from "./reducers/shortcarBarSlice";
 import singleTvShowReducer from './reducers/singleTvShowSlice';
 import tvShowReducer from './reducers/tvShowSlice';
+import userReducer from './reducers/userSlice';
 
 export default configureStore({
     reducer: {
@@ -21,6 +22,7 @@ export default configureStore({
         singleTvShow: singleTvShowReducer,
         person: personReducer,
         collection: collectionReducer,
-        shortcarBar: shortcarBarReducer
+        shortcarBar: shortcarBarReducer,
+        user: userReducer
     }
 })

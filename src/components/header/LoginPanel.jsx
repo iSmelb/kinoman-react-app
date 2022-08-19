@@ -18,10 +18,6 @@ function LoginPanel() {
         setShowOptions(prev => !prev)
     }
 
-    // useEffect(() => {
-    //     console.log(user)
-    // }, [user])
-
     useEffect(()=> {
         // закрывает юзер меню
         const closeUserMenu = () => {

@@ -1,25 +1,43 @@
+import { Alert, CircularProgress } from '@mui/material'
+import { doc, setDoc } from 'firebase/firestore'
 import React from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { Navigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { useDocument } from 'react-firebase-hooks/firestore'
+import { Link, Navigate } from 'react-router-dom'
 import { auth } from '..'
 import RegisterForm from '../components/forms/RegisterForm'
+import RegisterComplete from '../components/registerPage/RegisterComplete'
+import { db } from '../firebase'
 import { useUpdateTitle } from '../hooks/useUpdateTitle'
 
 function RegisterPage() {
     const [user] = useAuthState(auth)
+    const [
+        createUserWithEmailAndPassword,
+        userCreate,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth)
     useUpdateTitle('register')
 
-    if(user) {
-        return <Navigate to='/'/>
+    if (userCreate && user) {
+        return <RegisterComplete userId={userCreate.user.uid} />
     }
-    
+
+    if (user && !loading && !userCreate) {
+        return <Navigate to='/user' />
+    }
+
     return (
         <div className='registerPage conteiner'>
             <div className='head'>
                 <h1>Sign up for an account</h1>
                 <p>Signing up for an account is free and easy. Fill out the form below to get started.</p>
             </div>
-            <RegisterForm/>
+            <RegisterForm registerFunc={createUserWithEmailAndPassword} />
+            {loading && <CircularProgress />}
+            {error && <Alert variant='filled' severity='error'>{error.message}</Alert>}
         </div>
     )
 }
