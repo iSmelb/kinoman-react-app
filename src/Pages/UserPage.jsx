@@ -17,7 +17,6 @@ function UserPage() {
     const mediaList = value?.data() || null
     
     useUpdateTitle('My Profile')
-    console.log(mediaList)
 
     return (
         <div className='userPage'>
