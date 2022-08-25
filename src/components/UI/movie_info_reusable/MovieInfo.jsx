@@ -1,10 +1,14 @@
 import React from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import { useSelector } from 'react-redux'
+import { auth } from '../../..'
 import runtimeMovie from '../../../utils/runtimeMovie'
+import InteractionWithMedia from '../../reusable/InteractionWithMedia'
 
 const unkownImg = `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg`
 
 function MovieInfo() {
+    const [user] = useAuthState(auth)
     const {movie} = useSelector(state => state.movie)
     const runtime = runtimeMovie(movie.runtime)
     const toUSD = new Intl.NumberFormat('en', {
@@ -40,11 +44,12 @@ function MovieInfo() {
                     <span className='original_title'>
                         ({movie.original_title})
                     </span>
-                    <div className='vote'>
-                        <span>
+                    <div className='vote_interactionPanel'>
+                        <span className='rating'>
                             Rating: {movie.vote_average.toFixed(1)}/10
                             ({movie.vote_count} votes)
                         </span>
+                        {user && <InteractionWithMedia mediaFile={movie}/>}
                     </div>
                     <div className='date_genres'>
                         {movie.release_date && 

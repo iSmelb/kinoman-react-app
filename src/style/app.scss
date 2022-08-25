@@ -14,6 +14,7 @@
 @import "./reusable/miniMediaBanner";
 @import "./reusable/resultPanel";
 @import "./reusable/shortcarBar";
+@import "./reusable/InteractionWithMedia";
 
 //general styles
 @import "moviesPageContent";
@@ -30,5 +31,6 @@
 @import "seasonPage";
 @import "reviewsPage";
 @import "mediaPage";
-@import "authenticationsPage"
+@import "authenticationsPage";
+@import "userPage"
 

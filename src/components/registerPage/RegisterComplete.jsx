@@ -14,7 +14,7 @@ function RegisterComplete({ userId }) {
 
     const createUserDb = async (ref) => {
         try {
-            await setDoc(ref, { favorit: [userId] }, { merge: true })
+            await setDoc(ref, { favorit: [], watchLater: [], reviewed: [] }, { merge: true })
         } catch (error) {
             console.log(error)
         }

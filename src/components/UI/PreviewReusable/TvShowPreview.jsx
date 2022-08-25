@@ -12,7 +12,7 @@ const pathImg58and87 = 'https://www.themoviedb.org/t/p/w58_and_h87_face/'
     * size img can be: size250and141, size58and87, size94and141, size220and330, size300and450(default)
     */
 
-function TvShowPreview({ tvObj, discriptions = false, sizeImg = 'size300and450' }) {
+function TvShowPreview({ tvObj, discriptions = false, sizeImg = 'size300and450', children }) {
     const allSize = {
         size250and141: pathImg250and141,
         size94and141: pathImg94and141,
@@ -46,14 +46,17 @@ function TvShowPreview({ tvObj, discriptions = false, sizeImg = 'size300and450' 
                     <time dateTime={tvObj.air_date}>
                         ({tvObj.air_date.slice(0,4)})
                     </time>
+                    // используется в баннере для сезона
                 }
                 {'season_number' in tvObj && 
                     <div className='back_to_seasons'>
                         <Link to={`/tv/${tvObj.tvId}/seasons`}>&#10510; Back to season list</Link>
                     </div>
+                    // используется в баннере для сезона
                 }
                 {discriptions && <p>{tvObj.overview}</p>}
             </div>
+            {children}
         </div>
     )
 }

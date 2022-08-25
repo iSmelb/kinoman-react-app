@@ -1,30 +1,30 @@
-import React, { useEffect } from 'react'
+import { CircularProgress } from '@mui/material';
+import { doc } from 'firebase/firestore';
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useDocument } from 'react-firebase-hooks/firestore';
 import { auth } from '..';
-import { useCollection, useDocument } from 'react-firebase-hooks/firestore';
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
-import { db } from '../firebase';
+import MediaList from '../components/userPage/MediaList';
 import ProfileBanner from '../components/userPage/ProfileBanner';
+import { db } from '../firebase';
+import { useUpdateTitle } from '../hooks/useUpdateTitle';
 
 function UserPage() {
     const [user] = useAuthState(auth)
     const userId = user?.uid || 'fakeId' // фейк ай нужен для того чтобы страница не падала из-за "ref", при логауте
     const ref = doc(db, 'users', userId)
-    const [value, loading, error] = useDocument(
-        ref,
-    );
-
-
-
-    console.log()
-    // },[value])
+    const [value, loading, error] = useDocument(ref);
+    const mediaList = value?.data() || null
+    
+    useUpdateTitle('My Profile')
+    console.log(mediaList)
 
     return (
-        <>
-            <div>UserPage {user?.email}</div>
-            <ProfileBanner user={user}/>
-            {/* <button onClick={createUser}>add user</button> */}
-        </>
+        <div className='userPage'>
+            {user && <ProfileBanner user={user} />}
+            {loading && <CircularProgress sx={{display: 'block', margin: "0 auto"}}/>}
+            {mediaList && <MediaList allMedia={mediaList} />}
+        </div>
     )
 }
 

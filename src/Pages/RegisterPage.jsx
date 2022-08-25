@@ -1,14 +1,10 @@
 import { Alert, CircularProgress } from '@mui/material'
-import { doc, setDoc } from 'firebase/firestore'
 import React from 'react'
-import { useEffect } from 'react'
 import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
-import { useDocument } from 'react-firebase-hooks/firestore'
-import { Link, Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { auth } from '..'
 import RegisterForm from '../components/forms/RegisterForm'
 import RegisterComplete from '../components/registerPage/RegisterComplete'
-import { db } from '../firebase'
 import { useUpdateTitle } from '../hooks/useUpdateTitle'
 
 function RegisterPage() {

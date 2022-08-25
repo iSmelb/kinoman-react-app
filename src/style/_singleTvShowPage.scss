@@ -111,7 +111,9 @@
         }
     }
 
-    .vote {
+    .vote_interactionPanel {
+        position: relative;
+        display: inline-block;
         font-size: 18px;
         margin-bottom: 10px;
     }

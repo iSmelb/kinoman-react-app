@@ -1,11 +1,15 @@
 import React from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { auth } from '../../..'
+import InteractionWithMedia from '../../reusable/InteractionWithMedia'
 
 const unknownImg = `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg`
 
 function TvShowInfo() {
     const { singleTvShow } = useSelector(state => state.singleTvShow)
+    const [user] = useAuthState(auth)
 
     return (
         <section
@@ -30,11 +34,12 @@ function TvShowInfo() {
                     <span className='original_title'>
                         ({singleTvShow.original_name})
                     </span>
-                    <div className='vote'>
-                        <span>
+                    <div className='vote_interactionPanel'>
+                        <span className='rating'>
                             Rating: {singleTvShow.vote_average.toFixed(1)}/10
                             ({singleTvShow.vote_count} votes)
                         </span>
+                        {user && <InteractionWithMedia mediaFile={singleTvShow}/>}
                     </div>
                     <div className='date_genres'>
                         <ul className='list_genres'>

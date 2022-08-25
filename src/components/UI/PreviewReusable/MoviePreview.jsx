@@ -11,7 +11,7 @@ const pathImg500and750 = 'http://image.tmdb.org/t/p/w500'
   * size img can be: size250and141, size58and87, size94and141, size220and330, size500and750(default)
   */
 
-function MoviePreview({ movie, discriptions = false, sizeImg = 'size500and750' }) {
+function MoviePreview({ movie, discriptions = false, sizeImg = 'size500and750', children }) {
   const allSize = {
     size250and141: pathImg250and141,
     size94and141: pathImg94and141,
@@ -36,6 +36,7 @@ function MoviePreview({ movie, discriptions = false, sizeImg = 'size500and750' }
         <time dateTime={movie.release_date}>{movie.release_date}</time>
         {discriptions && <p>{movie.overview}</p>}
       </div>
+      {children}
     </div>
   )
 }
