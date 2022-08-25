@@ -27,12 +27,15 @@ function MediaList({ allMedia }) {
                 </TabsListUnstyled>
                 <TabPanelUnstyled value={0}>
                     {favorite.map(mediaFile => getCardToRender(mediaFile)).reverse()}
+                    {!favorite.length && <div className='emtyField'>You haven't added anything yet</div>}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={1}>
                     {watchLater.map(mediaFile => getCardToRender(mediaFile)).reverse()}
+                    {!watchLater.length && <div className='emtyField'>You haven't added anything yet</div>}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={2}>
                     {reviewed.map(mediaFile => getCardToRender(mediaFile)).reverse()}
+                    {!reviewed.length && <div className='emtyField'>You haven't added anything yet</div>}
                 </TabPanelUnstyled>
             </TabsUnstyled>
         </div>
