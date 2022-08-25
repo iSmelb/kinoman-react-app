@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/kinoman-react-app/static/css/main.5f870da8.css",
-    "main.js": "/kinoman-react-app/static/js/main.88cb42a4.js",
+    "main.css": "/kinoman-react-app/static/css/main.efd32bd2.css",
+    "main.js": "/kinoman-react-app/static/js/main.547cbecc.js",
     "index.html": "/kinoman-react-app/index.html",
-    "main.5f870da8.css.map": "/kinoman-react-app/static/css/main.5f870da8.css.map",
-    "main.88cb42a4.js.map": "/kinoman-react-app/static/js/main.88cb42a4.js.map"
+    "main.efd32bd2.css.map": "/kinoman-react-app/static/css/main.efd32bd2.css.map",
+    "main.547cbecc.js.map": "/kinoman-react-app/static/js/main.547cbecc.js.map"
   },
   "entrypoints": [
-    "static/css/main.5f870da8.css",
-    "static/js/main.88cb42a4.js"
+    "static/css/main.efd32bd2.css",
+    "static/js/main.547cbecc.js"
   ]
 }
