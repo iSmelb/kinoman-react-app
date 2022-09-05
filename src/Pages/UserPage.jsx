@@ -21,7 +21,7 @@ function UserPage() {
     return (
         <div className='userPage'>
             {user && <ProfileBanner user={user} />}
-            {loading && <CircularProgress sx={{display: 'block', margin: "0 auto"}}/>}
+            {loading && <CircularProgress sx={{display: 'block', margin: "20px auto 0"}}/>}
             {mediaList && <MediaList allMedia={mediaList} />}
         </div>
     )
